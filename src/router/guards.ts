@@ -1,14 +1,14 @@
 // 路由守卫
 import { Router } from 'vue-router'
-import { useUserStore } from '@/store/user'
+import { userStore } from '@/store/userStore'
 export default function setupGuards(router: Router) {
   router.beforeEach((to, from) => {
     // console.log('111---beforeEach', to, from)
     // if (to.name === 'home') {
     //   return { name: 'login' }
     // }
-    const userStore = useUserStore()
-    if (!userStore.token && to.name !== 'login') {
+
+    if (!userStore().token && to.name !== 'login') {
       return { name: 'login' }
     }
   })

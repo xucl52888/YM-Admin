@@ -4,10 +4,10 @@ const Random = Mock.Random
 
 const token = Random.string('upper', 32, 32)
 
-const resultSuccess = (result, { message = 'ok' } = {}) => {
+const resultSuccess = (data, { message = 'ok' } = {}) => {
   return Mock.mock({
     code: 200,
-    result,
+    data,
     message,
     type: 'success',
   })
@@ -45,6 +45,8 @@ const adminInfo = {
   ],
 }
 
+const adminMenu = []
+
 export default [
   {
     url: '/api/login',
@@ -63,11 +65,19 @@ export default [
     },
   },
   {
-    url: '/api/admin_info',
+    url: '/api/getInfo',
     timeout: 1000,
-    method: 'get',
+    method: 'post',
     response: () => {
       return resultSuccess(adminInfo)
+    },
+  },
+  {
+    url: '/api/getUserMenu',
+    timeout: 1000,
+    method: 'post',
+    response: () => {
+      return resultSuccess(adminMenu)
     },
   },
 ]

@@ -10,6 +10,9 @@ const axiosCanceler = new AxiosCanceler()
 // 请求拦截器
 request.interceptors.request.use(
   function (config: AxiosRequestConfig): any {
+    const token: string | null = localStorage.getItem('TOKEN')
+    if (token) config.headers['Authorization'] = token
+
     // 添加请求
     axiosCanceler.addPending(config)
 
