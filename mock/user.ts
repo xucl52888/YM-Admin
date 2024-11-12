@@ -4,10 +4,10 @@ const Random = Mock.Random
 
 const token = Random.string('upper', 32, 32)
 
-const resultSuccess = (data, { message = 'ok' } = {}) => {
+const resultSuccess = (result, { message = '操作成功' } = {}) => {
   return Mock.mock({
     code: 200,
-    data,
+    result,
     message,
     type: 'success',
   })

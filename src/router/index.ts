@@ -27,5 +27,8 @@ const router = createRouter({
   history: createWebHashHistory(), // 路由哈希模式 带#
   routes,
 })
+
+// 路由守卫
 setupGuards(router)
+
 export default router

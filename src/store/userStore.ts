@@ -19,8 +19,8 @@ export const userStore = defineStore('userId', {
       return this.token
     },
   },
-  // persist: {
-  //   storage: localStorage, // 默认走localStorage  sessionStorage
-  //   paths: ['token'], // 指定要缓存的数据
-  // },
+  persist: {
+    // storage: localStorage, // 默认走localStorage  sessionStorage
+    pick: ['token'], // 指定要缓存的数据
+  },
 })

@@ -18,7 +18,7 @@ export const useMenuStore = defineStore('menuId', {
       this.menu = res.data
     },
   },
-  // persist: {
-  //   paths: ['menu'],
-  // },
+  persist: {
+    pick: ['menu'],
+  },
 })

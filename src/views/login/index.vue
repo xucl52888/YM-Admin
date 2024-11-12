@@ -43,7 +43,7 @@ import useLogin from '@/hooks/useLogin'
 const onLogin = async () => {
   let res = await login(loginForm.value)
   if (res) {
-    console.log(res, 'login')
+    // console.log(res, 'login')
     //调用hooks
     useLogin(res)
     //记住密码

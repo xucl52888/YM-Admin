@@ -5,16 +5,17 @@ import router from '@/router'
 import { userStore } from '@/store/userStore'
 import { useMenuStore } from '@/store/useMenuStore'
 
+import { storage } from '@/utils/Storage'
+
 //element-plus
 import { ElMessage } from 'element-plus'
 
 const useLogin = async (res) => {
-  //判断是否登录成功
-  if (res.code != '200') return ElMessage.error(res.msg)
-
   //1. 持久化存储token
-  const token = res.data
-  localStorage.setItem('TOKEN', token || '')
+  const token = res.token
+  const ex = 7 * 24 * 60 * 60
+  storage.set('TOKEN', token || '', ex)
+  userStore().setToken(token)
 
   //2. 获取用户信息
   await userStore().getUserInfo()
