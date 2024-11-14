@@ -4,11 +4,6 @@ interface UserRuleForm {
   username: string
   password: string
 }
-interface ILoginRequest {
-  code: string
-  message: string
-  data?: string | null
-}
 //用户登录
 export const login = (params: UserRuleForm) => {
   return http.request(
@@ -19,6 +14,7 @@ export const login = (params: UserRuleForm) => {
     },
     {
       isShowSuccessMessage: true,
+      successMessageText: '登录成功',
     },
   )
 }
@@ -31,7 +27,7 @@ export const logout = (params: UserRuleForm) => {
       params,
     },
     {
-      isShowSuccessMessage: true,
+      isShowSuccessMessage: false,
     },
   )
 }

@@ -14,7 +14,7 @@ export const useMenuStore = defineStore('menuId', {
   getters: {},
   actions: {
     async getMenu() {
-      const res = await getUserMenu(userStore().rolePerm)
+      const res = await getUserMenu({ userId: userStore().rolePerm })
       this.menu = res.data
     },
   },
