@@ -1,19 +1,14 @@
 import { createWebHashHistory, createRouter, RouteRecordRaw } from 'vue-router'
 import setupGuards from './guards'
 
-// 路由配置
+//普通路由无需验证权限
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    name: 'layout',
     redirect: '/home',
     component: () => import('@/layout/index.vue'),
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: () => import('@/views/home/index.vue'),
-      },
-    ],
+    children: [],
   },
   {
     path: '/login',
@@ -21,11 +16,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/login/index.vue'),
   },
 ]
-
 const router = createRouter({
   // history: createWebHistory(),  // 路由History模式
   history: createWebHashHistory(), // 路由哈希模式 带#
-  routes,
+  routes, // 路由合集
 })
 
 // 路由守卫

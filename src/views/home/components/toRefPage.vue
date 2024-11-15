@@ -1,4 +1,5 @@
 <template>
+  <div class="mb-4 text-2xl font-bold">toRef、toRefs</div>
   <!-- reactive -->
   <div class="mb-3 text-black">reactive：{{ text1 }}</div>
   <div class="mb-3 text-black">toRef：{{ text2 }}</div>

@@ -1,4 +1,5 @@
 <template>
+  <div class="mb-4 text-2xl font-bold">computed</div>
   <div>firstNama：{{ firstNama }}</div>
   <div>lastNama：{{ lastNama }}</div>
   <!-- computed -->

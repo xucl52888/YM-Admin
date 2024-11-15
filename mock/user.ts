@@ -45,7 +45,89 @@ const adminInfo = {
   ],
 }
 
-const adminMenu = []
+const adminMenu = [
+  {
+    id: '1',
+    name: '首页',
+    path: '/home',
+    redirect: null,
+    parentView: 'layout',
+    component: 'home/index',
+    query: null,
+    alwaysShow: null,
+    type: 1,
+    meta: {
+      title: '首页',
+      icon: 'el-icon-house',
+      noCache: false,
+      hidden: false,
+      affix: true,
+      link: '',
+    },
+    children: null,
+  },
+  {
+    id: '2',
+    name: '仪表盘',
+    path: '/dashboard',
+    redirect: null,
+    parentView: 'layout',
+    component: null,
+    query: null,
+    alwaysShow: true,
+    type: 0,
+    meta: {
+      title: '仪表盘',
+      icon: 'el-icon-copy-document',
+      noCache: false,
+      hidden: false,
+      affix: false,
+      link: '',
+    },
+    children: [
+      {
+        id: '1564631321353',
+        name: '主控台',
+        path: '/dashboard/console',
+        redirect: null,
+        parentView: 'layout',
+        component: 'dashboard/consol/index',
+        query: null,
+        alwaysShow: null,
+        type: 1,
+        meta: {
+          title: '主控台',
+          icon: 'el-icon-house',
+          noCache: false,
+          hidden: false,
+          affix: true,
+          link: '',
+        },
+        children: null,
+      },
+      {
+        id: '1647154306278797312',
+        name: '工作台',
+        path: '/dashboard/workplace',
+        redirect: '',
+        parentView: 'layout',
+        component: 'dashboard/workplace/index',
+        query: null,
+        alwaysShow: null,
+        type: 1,
+        meta: {
+          title: '工作台',
+          icon: 'el-icon-user',
+          noCache: false,
+          hidden: false,
+          affix: false,
+          link: '',
+        },
+        children: null,
+      },
+    ],
+  },
+]
 
 export default [
   {

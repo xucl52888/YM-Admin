@@ -1,40 +1,19 @@
 <template>
-  <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-    <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-    <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-  </el-breadcrumb>
+  <div class="flex items-center">
+    <el-icon :size="20" @click="onIsCollapsed" class="mr-4">
+      <Operation />
+    </el-icon>
+    <el-breadcrumb separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>主控台</el-breadcrumb-item>
+    </el-breadcrumb>
+  </div>
 </template>
 <script lang="ts" setup>
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { userStore } from '@/store/userStore'
-import { storage } from '@/utils/Storage'
+import { Operation } from '@element-plus/icons-vue'
+import emitter from '@/utils/mitt'
 
-import router from '@/router'
-const onLoginOut = () => {
-  console.log('退出登录')
-  ElMessageBox.confirm('是否退出登录', '退出登录', {
-    type: 'warning',
-    cancelButtonText: '取消',
-    confirmButtonText: '退出',
-  })
-    .then(() => {
-      ElMessage({
-        type: 'success',
-        message: '退出登录',
-      })
-      storage.set('TOKEN', '')
-      userStore().setToken('')
-      router.replace({
-        path: '/login',
-      })
-    })
-    .catch(() => {
-      ElMessage({
-        type: 'info',
-        message: '取消退出',
-      })
-    })
-}
+// 发布事件
+const onIsCollapsed = () => emitter.emit('on-isCollapsed')
 </script>
 <style lang="scss" scoped></style>

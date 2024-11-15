@@ -15,7 +15,7 @@ export const useMenuStore = defineStore('menuId', {
   actions: {
     async getMenu() {
       const res = await getUserMenu({ userId: userStore().rolePerm })
-      this.menu = res.data
+      this.menu = res
     },
   },
   persist: {

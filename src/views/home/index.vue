@@ -1,7 +1,7 @@
 <template>
   <div class="mb-6 rounded-xl bg-white p-8 sm:p-10">
     <!--  -->
-    <input-one ref="oneInput" @returnRef="getOneInputRef" data="123" class="mb-6" @input="getInput" @focus="getFocus" :size="size"></input-one>
+    <input-one ref="oneInput" @returnRef="getOneInputRef" data="123" @input="getInput" @focus="getFocus" :size="size"></input-one>
     <!--  -->
     <el-button type="primary" @click="onFocus">获取焦点</el-button>
     <el-button type="primary" @click="onblur">失去焦点</el-button>

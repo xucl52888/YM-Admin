@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-16 items-center justify-center">
+  <div class="flex h-16 items-center justify-center" @click="onIsCollapsed">
     <el-avatar :src="logoImgUrl" />
   </div>
   <!-- 菜单 -->
@@ -12,6 +12,10 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import navMenu from '../components/navMenu.vue'
 import logoImgUrl from '@/assets/logo.png'
+
+import emitter from '@/utils/mitt'
+const onIsCollapsed = () => emitter.emit('on-isCollapsed')
+
 const height = ref(window.innerHeight - 64)
 // 定义一个方法更新宽高
 const updateDimensions = () => {

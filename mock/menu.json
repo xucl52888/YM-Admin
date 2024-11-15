@@ -1,0 +1,1431 @@
+[
+  {
+    "id": "1",
+    "name": "首页",
+    "path": "/home",
+    "redirect": null,
+    "parentView": "layout",
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "首页",
+      "icon": "el-icon-copy-document",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "2",
+        "name": "仪表盘",
+        "path": "/dashboard",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "home",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "仪表盘",
+          "icon": "el-icon-house",
+          "noCache": false,
+          "hidden": false,
+          "affix": true,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1647154306278797312",
+        "name": "账号信息",
+        "path": "/home/user-center",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "userCenter/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "账号信息",
+          "icon": "el-icon-user",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1648944380972687362",
+    "name": "新媒体",
+    "path": "/media",
+    "redirect": "",
+    "parentView": "layout",
+    "component": "",
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "新媒体",
+      "icon": "el-icon-iphone",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1648946059860303872",
+        "name": "渠道账号",
+        "path": "/media/channel",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "media/channel/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "渠道账号",
+          "icon": "el-icon-chat-square",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1648946703350423552",
+        "name": "引流管理",
+        "path": "/media/management",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "media/management/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "引流管理",
+          "icon": "el-icon-magnet",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1648974742658523136",
+        "name": "设置账号",
+        "path": "/media/channel/channel-account",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "media/channel/channel-account",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "设置账号",
+          "icon": "el-icon-setting",
+          "noCache": false,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670687436751040512",
+        "name": "账号管理",
+        "path": "account",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "账号管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670688951817531392",
+        "name": "渠道管理",
+        "path": "channel",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "渠道管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670689785334788096",
+        "name": "日数据明细",
+        "path": "data",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "日数据明细",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670690551189532672",
+        "name": "流量数据统计",
+        "path": "流量数据统计",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "流量数据统计",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670691501358772224",
+        "name": "计划",
+        "path": "plan",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "计划",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670695842366943232",
+        "name": "渠道分类",
+        "path": "channelCategory",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "渠道分类",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670696987357409280",
+        "name": "渠道管理2",
+        "path": "channel2",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "渠道管理2",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1660912007185973248",
+    "name": "办理",
+    "path": "/process",
+    "redirect": null,
+    "parentView": null,
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "办理",
+      "icon": "el-icon-edit-pen",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1661653868662071296",
+        "name": "办理中心",
+        "path": "/process/index",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "process/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "办理中心",
+          "icon": "el-icon-avatar",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1663448079229116416",
+        "name": "订单标签",
+        "path": "/process/orderTag",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "process/orderTag/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "订单标签",
+          "icon": "el-icon-collection-tag",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670712636385325056",
+        "name": "订单管理",
+        "path": "order",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "订单管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670714642005028864",
+        "name": "退款管理",
+        "path": "refund",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "退款管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1673506728093798400",
+        "name": "退款详情",
+        "path": "/process/refund",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "process/refund/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "退款详情",
+          "icon": "el-icon-coin",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1660931359847235584",
+        "name": "办理缴费",
+        "path": "/process/payment",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "process/payment/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "办理缴费",
+          "icon": "el-icon-credit-card",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1663447959301382144",
+        "name": "支付分期",
+        "path": "/process/installment",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "process/installment/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "支付分期",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1664800992295776256",
+    "name": "就业",
+    "path": "/job",
+    "redirect": null,
+    "parentView": null,
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "就业",
+      "icon": "school",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1664802158102573056",
+        "name": "就业中心",
+        "path": "/job/index",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "job/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "就业中心",
+          "icon": "el-icon-home-filled",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1651389739439341568",
+    "name": "教学",
+    "path": "/teach",
+    "redirect": null,
+    "parentView": null,
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "教学",
+      "icon": "el-icon-mic",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1656213836560080896",
+        "name": "科目管理",
+        "path": "/teach/subject",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "teach/subject/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "科目管理",
+          "icon": "el-icon-collection",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670960481407442944",
+        "name": "点名管理",
+        "path": "call",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "点名管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670960903589306368",
+        "name": "排课管理",
+        "path": "work",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "排课管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670962973679656960",
+        "name": "阶段管理",
+        "path": "stage",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "阶段管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1653585062324649984",
+        "name": "班级管理",
+        "path": "/teach/class",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "teach/class/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "班级管理",
+          "icon": "el-icon-house",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1659030028253450240",
+        "name": "教材管理",
+        "path": "/teach/textbook",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "teach/textbook/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "教材管理",
+          "icon": "el-icon-notebook",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1651390445151961088",
+    "name": "招生",
+    "path": "/recruit",
+    "redirect": null,
+    "parentView": null,
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "招生",
+      "icon": "el-icon-service",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1654319468697911296",
+        "name": "咨询本",
+        "path": "/recruit/consult",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/consult/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "咨询本",
+          "icon": "wechat",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1655484797973180416",
+        "name": "查看详情",
+        "path": "/recruit/consult/detail",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/consult/detail/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "查看详情",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1656536464428744704",
+        "name": "群管理",
+        "path": "/recruit/group",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/group/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "群管理",
+          "icon": "el-icon-grape",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1656830627292434432",
+        "name": "设置",
+        "path": "/recruit/setting",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/setting/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "设置",
+          "icon": "el-icon-setting",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1658680435133194240",
+        "name": "公有池",
+        "path": "/recruit/public",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/public/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "公有池",
+          "icon": "el-icon-cpu",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1660466811856044032",
+        "name": "优惠券",
+        "path": "/recruit/coupon",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/coupon/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "优惠券",
+          "icon": "el-icon-discount",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1661936836265713664",
+        "name": "订单详情",
+        "path": "/recruit/hiddenComponent/orderDetail",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/hiddenComponent/orderDetail/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "订单详情",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1663380421716557824",
+        "name": "笔记代码",
+        "path": "/recruit/noteCode",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/noteCode/index",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "笔记代码",
+          "icon": "el-icon-notebook",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670698935896829952",
+        "name": "试听管理",
+        "path": "audition",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "试听管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670706051760058368",
+        "name": "考试管理",
+        "path": "exam",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "考试管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670707942233534464",
+        "name": "文件管理",
+        "path": "file",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "文件管理",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1670710019215126528",
+        "name": "操作日志",
+        "path": "logger",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "操作日志",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1673537353228005376",
+        "name": "新建咨询",
+        "path": "/recruit/consult/add",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "recruit/consult/add",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "新建咨询",
+          "icon": "",
+          "noCache": true,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1552832554816569344",
+    "name": "系统",
+    "path": "/system",
+    "redirect": "/system/user",
+    "parentView": "layout",
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "系统",
+      "icon": "el-icon-setting",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1552834825520480256",
+        "name": "用户管理",
+        "path": "/system/user",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/user/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "用户管理",
+          "icon": "el-icon-user",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1647150752751169536",
+        "name": "分配角色",
+        "path": "/system/user/user-assignRole",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/user/user-assignRole",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "分配角色",
+          "icon": "user-filled",
+          "noCache": false,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1647152031393165312",
+        "name": "城市地区",
+        "path": "/system/city",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/city/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "城市地区",
+          "icon": "el-icon-school",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1847301230204702720",
+        "name": "中国地图",
+        "path": "/system/map",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/map/china",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "中国地图",
+          "icon": "map-location",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1847903776183046144",
+        "name": "中国省地图",
+        "path": "/system/province",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/map/province",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "中国省地图",
+          "icon": "location-filled",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1847914451513004032",
+        "name": "中国市地图",
+        "path": "/system/citys",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/map/citys",
+        "query": "",
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "中国市地图",
+          "icon": "location-filled",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552837943025008640",
+        "name": "角色管理",
+        "path": "/system/role",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/role/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "角色管理",
+          "icon": "el-icon-platform",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1553289085710274560",
+        "name": "角色授权",
+        "path": "/system/role/role-assign",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/role/role-assign",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "角色授权",
+          "icon": "Coordinate",
+          "noCache": false,
+          "hidden": true,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552838255668428800",
+        "name": "菜单管理",
+        "path": "/system/menu",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/menu/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "菜单管理",
+          "icon": "el-icon-menu",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552840272302374912",
+        "name": "机构管理",
+        "path": "/system/unit",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/unit/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "机构管理",
+          "icon": "el-icon-cellphone",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552840644655906816",
+        "name": "岗位管理",
+        "path": "/system/post",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/post/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "岗位管理",
+          "icon": "el-icon-postcard",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552840927784009728",
+        "name": "字典管理",
+        "path": "/system/dict",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/dict/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "字典管理",
+          "icon": "el-icon-reading",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1553289562300649472",
+        "name": "字典项管理",
+        "path": "/system/dict-item",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "system/dict/dic-item",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "字典项管理",
+          "icon": "el-icon-credit-card",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552841237894070272",
+        "name": "参数设置",
+        "path": "/system/config",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/config/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "参数设置",
+          "icon": "el-icon-data-line",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552841910891118592",
+        "name": "通知公告",
+        "path": "/system/notice",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "system/notice/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "通知公告",
+          "icon": "el-icon-bell",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1819192448329338880",
+        "name": "系统测试",
+        "path": "/system/test",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "",
+        "query": "",
+        "alwaysShow": null,
+        "type": 0,
+        "meta": {
+          "title": "系统测试",
+          "icon": "",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1552831340867551232",
+    "name": "监控",
+    "path": "/monitor",
+    "redirect": "/monitor/server",
+    "parentView": "layout",
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "监控",
+      "icon": "el-icon-monitor",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1552843150869987328",
+        "name": "服务监控",
+        "path": "/monitor/server",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "monitor/server/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "服务监控",
+          "icon": "el-icon-aim",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1647149514101895168",
+        "name": "调度日志",
+        "path": "/monitor/timinglog",
+        "redirect": "",
+        "parentView": "layout",
+        "component": "monitor/log/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "调度日志",
+          "icon": "alarm-clock",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552843370894786560",
+        "name": "缓存监控",
+        "path": "/monitor/cache",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "monitor/cache/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "缓存监控",
+          "icon": "el-icon-notification",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552843537425432576",
+        "name": "定时任务",
+        "path": "/monitor/timing",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "monitor/timing/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "定时任务",
+          "icon": "el-icon-timer",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1552842207126421504",
+    "name": "日志",
+    "path": "/logger",
+    "redirect": "/logger/loginlog",
+    "parentView": "layout",
+    "component": null,
+    "query": null,
+    "alwaysShow": true,
+    "type": 0,
+    "meta": {
+      "title": "日志",
+      "icon": "el-icon-scale-to-original",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": ""
+    },
+    "children": [
+      {
+        "id": "1552842481920442368",
+        "name": "操作日志",
+        "path": "/log/operatelog",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "log/operatelog/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "操作日志",
+          "icon": "el-icon-alarm-clock",
+          "noCache": false,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      },
+      {
+        "id": "1552842905746472960",
+        "name": "登录日志",
+        "path": "/log/loginlog",
+        "redirect": null,
+        "parentView": "layout",
+        "component": "log/loginlog/index",
+        "query": null,
+        "alwaysShow": null,
+        "type": 1,
+        "meta": {
+          "title": "登录日志",
+          "icon": "el-icon-clock",
+          "noCache": true,
+          "hidden": false,
+          "affix": false,
+          "link": ""
+        },
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "1554660092320739328",
+    "name": "小鹿线",
+    "path": "http://www.xuexiluxian.cn",
+    "redirect": "/dashboard",
+    "parentView": "layout",
+    "component": "http://www.xuexiluxian.cn",
+    "query": null,
+    "alwaysShow": null,
+    "type": 1,
+    "meta": {
+      "title": "小鹿线",
+      "icon": "bug-fill",
+      "noCache": false,
+      "hidden": false,
+      "affix": false,
+      "link": "http://www.xuexiluxian.cn"
+    },
+    "children": null
+  }
+]

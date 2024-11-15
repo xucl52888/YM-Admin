@@ -1,4 +1,5 @@
 <template>
+  <div class="mb-4 text-2xl font-bold">ref、shallowRef、customRef、dom</div>
   <!-- ref -->
   <div class="mb-3 text-black">ref：{{ text1 }}</div>
   <el-button type="primary" @click="onSetText1">ref点击</el-button>
