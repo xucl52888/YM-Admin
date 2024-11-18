@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-16 items-center justify-between px-4">
+  <div class="flex h-16 items-center justify-between px-6">
     <breadcrumb></breadcrumb>
 
     <navbars></navbars>

@@ -1,11 +1,14 @@
 <template>
-  <div class="flex h-16 items-center justify-center" @click="onIsCollapsed">
-    <el-avatar :src="logoImgUrl" />
+  <div class="h-screen bg-[#282c34]">
+    <!-- logo -->
+    <div class="flex h-16 items-center justify-center" @click="onIsCollapsed">
+      <el-avatar :src="logoImgUrl" />
+    </div>
+    <!-- 菜单 -->
+    <el-scrollbar :height="height + 'px'">
+      <nav-menu></nav-menu>
+    </el-scrollbar>
   </div>
-  <!-- 菜单 -->
-  <el-scrollbar :height="height + 'px'">
-    <nav-menu></nav-menu>
-  </el-scrollbar>
 </template>
 
 <script lang="ts" setup>

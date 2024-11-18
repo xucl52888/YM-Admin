@@ -1,3 +1,5 @@
+// 同一请求只保留一个，取消之前的请求，防止重复请求
+
 import axios, { AxiosRequestConfig, Canceler } from 'axios'
 import qs from 'qs'
 
