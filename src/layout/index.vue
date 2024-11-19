@@ -38,7 +38,7 @@ import Content from './content/index.vue'
   padding: 0;
 }
 .layout-container .el-header {
-  height: 64px;
+  height: auto;
   padding: 0;
 }
 </style>

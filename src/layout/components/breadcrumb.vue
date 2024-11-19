@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center">
     <!-- 左侧菜单折叠按钮 -->
-    <el-icon :size="20" @click="onIsCollapsed" class="mr-4">
+    <el-icon :size="20" @click="onIsCollapsed" class="mr-4 cursor-pointer">
       <Operation />
     </el-icon>
     <!-- 面包屑 -->

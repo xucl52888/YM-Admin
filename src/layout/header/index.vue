@@ -1,7 +1,8 @@
 <template>
   <div class="flex h-16 items-center justify-between px-6">
+    <!-- 面包屑 -->
     <breadcrumb></breadcrumb>
-
+    <!-- 按钮 -->
     <navbars></navbars>
   </div>
 </template>
