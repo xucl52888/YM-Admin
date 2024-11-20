@@ -37,14 +37,17 @@
 <script lang="ts" setup>
 import { onBeforeMount, ref, watch } from 'vue'
 import { Operation } from '@element-plus/icons-vue'
-import emitter from '@/utils/mitt'
 import { Parent } from '@/interface/user'
 import router from '@/router'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
 // 左侧菜单折叠发布事件
-const onIsCollapsed = () => emitter.emit('on-isCollapsed')
+import { useProjectSettingStore } from '@/store/projectSetting'
+const onIsCollapsed = () => useProjectSettingStore().setCollapsed()
+// 放弃了使用发布订阅方法
+// import emitter from '@/utils/mitt'
+// const onIsCollapsed = () => emitter.emit('on-isCollapsed')
 
 // 点击面包屑菜单
 const handleCommand = (item: any) => {

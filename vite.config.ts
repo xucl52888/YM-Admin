@@ -4,6 +4,14 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { resolve } from 'path'
+import { format } from 'date-fns'
+
+import pkg from './package.json' // 获取package.json中的name
+const { dependencies, devDependencies, name, version } = pkg
+const __APP_INFO__ = {
+  pkg: { dependencies, devDependencies, name, version },
+  lastBuildTime: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+}
 
 // mock-plugin
 import { viteMockServe } from 'vite-plugin-mock'
@@ -35,6 +43,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
         // supportTs: true, // 如果您的 Mock 数据文件是 TypeScript 文件，请设置为 true
       }),
     ],
+    // 全局变量
+    define: {
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
+    },
     css: {},
     // 别名
     resolve: {

@@ -5,25 +5,25 @@
     background-color="#282c34"
     text-color="#fff"
     router
-    :collapse="isCollapsed"
+    :collapse="useProjectSettingStore().collapsed"
   >
     <menu-tree :menu="menuList"></menu-tree>
   </el-menu>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import menuTree from './menuTree.vue'
-import emitter from '@/utils/mitt'
 import { useMenuStore } from '@/store/useMenuStore'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
-const isCollapsed = ref(false)
-
-// 订阅事件
-emitter.on('on-isCollapsed', () => {
-  isCollapsed.value = !isCollapsed.value
-})
+import { useProjectSettingStore } from '@/store/projectSetting'
+// 订阅事件:放弃此方法
+// import emitter from '@/utils/mitt'
+// const isCollapsed = ref(false)
+// emitter.on('on-isCollapsed', () => {
+//   isCollapsed.value = !isCollapsed.value
+// })
 
 const menuList = ref(useMenuStore().menu)
 </script>

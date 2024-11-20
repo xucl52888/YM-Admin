@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <!--  -->
-    <div class="flex-1 overflow-hidden">
+    <div class="flex-shrink flex-grow overflow-hidden">
       <el-scrollbar ref="scrollbar" @scroll="handleScroll" :min-size="50" always>
         <div class="flex h-12 items-center">
           <el-button
@@ -42,6 +42,7 @@
       </el-dropdown>
     </div>
   </div>
+  <!-- 鼠标右击 -->
   <div
     v-show="state.showDropdown"
     class="fixed flex flex-col rounded-md bg-white p-1 shadow-md"

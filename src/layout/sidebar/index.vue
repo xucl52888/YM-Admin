@@ -16,8 +16,11 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import navMenu from '../components/navMenu.vue'
 import logoImgUrl from '@/assets/logo.png'
 
-import emitter from '@/utils/mitt'
-const onIsCollapsed = () => emitter.emit('on-isCollapsed')
+import { useProjectSettingStore } from '@/store/projectSetting'
+const onIsCollapsed = () => useProjectSettingStore().setCollapsed()
+// 放弃发布订阅方式
+// import emitter from '@/utils/mitt'
+// const onIsCollapsed = () => emitter.emit('on-isCollapsed')
 
 const height = ref(window.innerHeight - 64)
 // 定义一个方法更新宽高

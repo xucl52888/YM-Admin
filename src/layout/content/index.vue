@@ -1,7 +1,6 @@
 <template>
   <el-scrollbar>
-    <div class="bg-[#007fff] px-6 pb-6">
-      <tag-bar></tag-bar>
+    <div class="px-6 pb-6">
       <!--  -->
       <router-view v-slot="{ Component }">
         <!-- <Transition name="fade" mode="out-in" appear> -->
@@ -15,7 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import TagBar from '../components/tagBar.vue'
 import { useTagStore } from '@/store/useTagStore'
 const tagStore = useTagStore()
 </script>
