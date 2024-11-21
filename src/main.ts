@@ -7,6 +7,9 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 // element图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
 async function bootstrap() {
   const app = createApp(App)
   // pinia
@@ -22,6 +25,10 @@ async function bootstrap() {
 
   // router
   app.use(router)
+  // element 国际化
+  app.use(ElementPlus, {
+    locale: zhCn,
+  })
 
   app.mount('#app')
 }
