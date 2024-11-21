@@ -1,6 +1,6 @@
 <template>
   <el-row :gutter="20">
-    <el-col :span="6" v-for="item in cardList" :key="item">
+    <el-col :span="6" v-for="(item, index) in cardList" :key="item">
       <el-card class="rounded-md" shadow="hover">
         <template #header>
           <div class="card-header flex justify-between">
@@ -9,10 +9,13 @@
           </div>
         </template>
         <div>
-          <div class="mb-2 text-2xl font-bold">{{ item.data }}</div>
-          <div class="flex justify-between">
+          <el-statistic class="mb-2 text-2xl font-bold" :value="item.data" />
+          <div v-if="index === 1">
+            <el-progress :text-inside="true" :stroke-width="26" :percentage="70" />
+          </div>
+          <div v-else class="flex justify-between">
             <span>日同比 {{ item.dayOnDay }}</span>
-            <span>周同比 {{ item.dayOnDay }}</span>
+            <span>周同比 {{ item.monthOnMonth }}</span>
           </div>
         </div>
         <template #footer>
@@ -41,7 +44,9 @@
   <el-card class="mt-6 rounded-md" shadow="never">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
       <el-tab-pane label="浏览趋势" name="first">
-        <el-card>浏览趋势</el-card>
+        <el-card>
+          <chartPie :series-data="pieDataList" :extra-option="extraOption" style="width: 500px; height: 500px" />
+        </el-card>
       </el-tab-pane>
       <el-tab-pane label="访问量" name="second">
         <el-card>访问量</el-card>
@@ -59,12 +64,19 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
-import { data } from 'autoprefixer'
-
+import chartPie from '@/components/echart/chartPie/index.vue'
+const pieDataList = [
+  { name: 'Vue', value: 20 },
+  { name: 'React', value: 20 },
+  { name: 'Angular', value: 20 },
+]
+const extraOption = {
+  color: ['#fe883a', '#2d90d1', '#f75981', '#90e2a9'],
+}
 const cardList = ref([
   {
     name: '访问量',
-    data: '80,481',
+    data: 80481,
     total: '875,233',
     totalName: '总访问量',
     dayOnDay: '63%',
@@ -73,7 +85,7 @@ const cardList = ref([
   },
   {
     name: '销售额',
-    data: '787,788',
+    data: 787788,
     total: '787,44',
     totalName: '总销售额',
     dayOnDay: '56%',
@@ -82,7 +94,7 @@ const cardList = ref([
   },
   {
     name: '订单量',
-    data: '88,786',
+    data: 88786,
     total: '35%',
     totalName: '转化率',
     dayOnDay: '63%',
@@ -91,7 +103,7 @@ const cardList = ref([
   },
   {
     name: '成交额',
-    data: '65,786',
+    data: 65786,
     total: '253,235',
     totalName: '总成交额',
     dayOnDay: '31%',

@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 *.lock
+package-lock.json
 *.d.ts
 !vite-env.d.ts
 !types/*.d.ts

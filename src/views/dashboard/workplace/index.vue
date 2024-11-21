@@ -43,67 +43,67 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#000"><Ship /></el-icon>
               </span>
               <span class="ml-4 text-lg">Github</span>
             </div>
-            <div class="mt-2 flex h-10 text-gray-400">是一个面向开源及私有软件项目的托管平台。</div>
-            <div class="mt-2 flex h-10 text-gray-400">开源君，2021-07-04</div>
+            <div class="mt-2 flex text-gray-400">是一个面向开源及私有软件项目的托管平台。</div>
+            <div class="mt-2 flex text-gray-400">开源君，2021-07-04</div>
           </el-card>
           <!-- 2 -->
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex">
               <span>
-                <el-icon size="30" color="#42b983"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#42b983"><Brush /></el-icon>
               </span>
               <span class="ml-4 text-lg">Vue</span>
             </div>
-            <div class="mt-2 flex h-10 text-gray-400">渐进式 JavaScript 框架</div>
-            <div class="mt-2 flex h-10 text-gray-400">学不动也要学，2021-07-04</div>
+            <div class="mt-2 flex text-gray-400">渐进式 JavaScript 框架</div>
+            <div class="mt-2 flex text-gray-400">学不动也要学，2021-07-04</div>
           </el-card>
           <!-- 3 -->
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex">
               <span>
-                <el-icon size="30" color="#e44c27"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#e44c27"><Bicycle /></el-icon>
               </span>
               <span class="ml-4 text-lg">Html5</span>
             </div>
-            <div class="mt-2 flex h-10 text-gray-400">HTML5是互联网的下一代标准。</div>
-            <div class="mt-2 flex h-10 text-gray-400">撸码也是一种艺术 2021-04-01</div>
+            <div class="mt-2 flex text-gray-400">HTML5是互联网的下一代标准。</div>
+            <div class="mt-2 flex text-gray-400">撸码也是一种艺术 2021-04-01</div>
           </el-card>
           <!-- 4 -->
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex">
               <span>
-                <el-icon size="30" color="#dd0031"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#dd0031"><Dessert /></el-icon>
               </span>
               <span class="ml-4 text-lg">Angular</span>
             </div>
-            <div class="mt-2 flex h-10 text-gray-400">现代 Web 开发平台，百万粉丝热捧。</div>
-            <div class="mt-2 flex h-10 text-gray-400">铁粉君 2021-07-04。</div>
+            <div class="mt-2 flex text-gray-400">现代 Web 开发平台，百万粉丝热捧。</div>
+            <div class="mt-2 flex text-gray-400">铁粉君 2021-07-04。</div>
           </el-card>
           <!-- 5 -->
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex">
               <span>
-                <el-icon size="30" color="#61dafb"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#61dafb"><HotWater /></el-icon>
               </span>
               <span class="ml-4 text-lg">React</span>
             </div>
-            <div class="mt-2 flex h-10 text-gray-400">用于构建用户界面的 JavaScript 库。</div>
-            <div class="mt-2 flex h-10 text-gray-400">技术牛 2021-07-04。</div>
+            <div class="mt-2 flex text-gray-400">用于构建用户界面的 JavaScript 库。</div>
+            <div class="mt-2 flex text-gray-400">技术牛 2021-07-04。</div>
           </el-card>
           <!-- 6 -->
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex">
               <span>
-                <el-icon size="30" color="#61dafb"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#e600ff"><ColdDrink /></el-icon>
               </span>
               <span class="ml-4 text-lg">Js</span>
             </div>
-            <div class="mt-2 flex h-10 text-gray-400">路是走出来的，而不是空想出来的。</div>
-            <div class="mt-2 flex h-10 text-gray-400">架构组 2021-07-04</div>
+            <div class="mt-2 flex text-gray-400">路是走出来的，而不是空想出来的。</div>
+            <div class="mt-2 flex text-gray-400">架构组 2021-07-04</div>
           </el-card>
         </div>
       </el-card>
@@ -144,7 +144,7 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex flex-col items-center">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#5cdbd3"><Phone /></el-icon>
               </span>
               <div class="mt-2 flex h-10 text-gray-400">主控台</div>
             </div>
@@ -153,7 +153,7 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex flex-col items-center">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#ff00e0"><ElementPlus /></el-icon>
               </span>
               <div class="mt-2 flex h-10 text-gray-400">列表</div>
             </div>
@@ -162,7 +162,7 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex flex-col items-center">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#ff0000"><WindPower /></el-icon>
               </span>
               <div class="mt-2 flex h-10 text-gray-400">表单</div>
             </div>
@@ -171,7 +171,7 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex flex-col items-center">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#fff200"><Lightning /></el-icon>
               </span>
               <div class="mt-2 flex h-10 text-gray-400">权限管理</div>
             </div>
@@ -180,7 +180,7 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex flex-col items-center">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#00ff64"><Goods /></el-icon>
               </span>
               <div class="mt-2 flex h-10 text-gray-400">系统管理</div>
             </div>
@@ -189,7 +189,7 @@
           <el-card class="project-card-item ms:w-1/2 cursor-pointer rounded-md md:w-1/3" shadow="hover">
             <div class="flex flex-col items-center">
               <span>
-                <el-icon size="30" color="#5cdbd3"><ColdDrink /></el-icon>
+                <el-icon size="30" color="#002bff"><MagicStick /></el-icon>
               </span>
               <div class="mt-2 flex h-10 text-gray-400">主控台</div>
             </div>
