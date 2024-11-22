@@ -1,7 +1,7 @@
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core'
 // 按需引入折线图、饼状图、柱状图，图表后缀都为 Chart
-import { BarChart, PieChart, LineChart } from 'echarts/charts'
+import { BarChart, PieChart, LineChart, CandlestickChart } from 'echarts/charts'
 // 引入提示框，标题，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component
 import { TitleComponent, TooltipComponent, GridComponent, DatasetComponent, TransformComponent, LegendComponent } from 'echarts/components'
 // 标签自动布局、全局过渡动画等特性
@@ -20,6 +20,7 @@ echarts.use([
   BarChart,
   PieChart,
   LineChart,
+  CandlestickChart,
   LabelLayout,
   UniversalTransition,
   CanvasRenderer,

@@ -44,18 +44,24 @@
   <el-card class="mt-6 rounded-md" shadow="never">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
       <el-tab-pane label="浏览趋势" name="first">
-        <el-card>
-          <chartPie :series-data="pieDataList" :extra-option="extraOption" style="width: 500px; height: 500px" />
+        <el-card style="border: 0" :body-style="{ padding: 0 }">
+          <chart-candlestick :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
         </el-card>
       </el-tab-pane>
       <el-tab-pane label="访问量" name="second">
-        <el-card>访问量</el-card>
+        <el-card style="border: 0" :body-style="{ padding: 0 }">
+          <chart-bar :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
+        </el-card>
       </el-tab-pane>
       <el-tab-pane label="饼图" name="third">
-        <el-card>饼图</el-card>
+        <el-card style="border: 0" :body-style="{ padding: 0 }">
+          <chart-pie :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
+        </el-card>
       </el-tab-pane>
       <el-tab-pane label="折线图" name="fourth">
-        <el-card>折线图</el-card>
+        <el-card style="border: 0" :body-style="{ padding: 0 }">
+          <chart-line :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
+        </el-card>
       </el-tab-pane>
     </el-tabs>
   </el-card>
@@ -65,6 +71,9 @@
 import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import chartPie from '@/components/echart/chartPie/index.vue'
+import chartBar from '@/components/echart/chartBar/index.vue'
+import chartLine from '@/components/echart/chartLine/index.vue'
+import chartCandlestick from '@/components/echart/chartCandlestick/index.vue'
 const pieDataList = [
   { name: 'Vue', value: 20 },
   { name: 'React', value: 20 },
