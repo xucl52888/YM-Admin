@@ -3,16 +3,17 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, ref, onMounted, onUnmounted, watch, inject } from 'vue'
-import { merge } from 'lodash'
+import { merge } from 'lodash' // 合并对象
 import ResizeListener from 'element-resize-detector' // 监听窗口的变化
-import { COLORSARRAY } from '../color'
-import { BASEOPTIONS } from './defaultOptions'
-let echartInstance: any = null
+import { COLORSARRAY } from '../color' // 颜色数组
+import { BASEOPTIONS } from './defaultOptions' // 默认配置
+
 // 导入全局挂载的echarts
 const echarts: any = inject('$echarts')
 
 // 使用vue的refs声明dom节点，方便后续操作
 const chartRef: any = ref(null)
+
 const props = defineProps({
   // 正常的业务数据，对应echarts饼图配置中series[0].data
   seriesData: {
@@ -52,6 +53,7 @@ const addChartResizeListener = () => {
   })
 }
 
+// 合并配置项
 const assembleDataToOption = () => {
   // 这部分的图例formatter取决于UI要求，如果你的项目中不需要，就可以不写formatter
   // 由于echarts版本的迭代，这里的写法也有稍许改变
@@ -61,6 +63,7 @@ const assembleDataToOption = () => {
     const percent = data.value ? `${Math.round((data.value / total) * 100)}%` : '0%'
     return `${name} ${percent}`
   }
+  // 这里使用lodash的merge方法，将默认配置和用户配置合并
   return merge(
     {},
     BASEOPTIONS,
@@ -72,15 +75,18 @@ const assembleDataToOption = () => {
     props.extraOption,
   )
 }
+
 /**
  * 初始化图表
  */
+let echartInstance: any = null // echart实例
 const updateChartView = () => {
   if (!chartRef.value) return
   const fullOption = assembleDataToOption()
-  echartInstance = echarts.init(chartRef.value)
+  echartInstance = echarts.init(chartRef.value) // 初始化echart实例
   echartInstance.setOption(fullOption)
 }
+
 /**
  * 当窗口缩放时，echart动态调整自身大小
  */
@@ -89,17 +95,20 @@ const handleWindowResize = () => {
     echartInstance.resize()
   }
 }
+
 onMounted(() => {
   updateChartView()
   // 增加事件监听 resize 监听window的窗口尺寸变化
   window.addEventListener('resize', handleWindowResize)
   addChartResizeListener()
 })
+
 onUnmounted(() => {
   // 取消事件监听
   window.removeEventListener('resize', handleWindowResize)
 })
 </script>
+
 <style scoped lang="scss">
 .chart {
   width: 100%;

@@ -2,7 +2,6 @@
 const BASEOPTIONS = {
   title: {
     text: '数据',
-    subtext: '子类',
     left: 'center',
   },
   tooltip: {
@@ -16,7 +15,7 @@ const BASEOPTIONS = {
     {
       name: '占比',
       type: 'pie',
-      radius: '50%',
+      radius: '80%', // 饼图的半径大小
       emphasis: {
         itemStyle: {
           shadowBlur: 10,

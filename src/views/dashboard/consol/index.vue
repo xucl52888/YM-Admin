@@ -30,7 +30,7 @@
 
   <el-row :gutter="20" class="mt-6">
     <el-col :span="3" v-for="(item, index) in dataList" :key="index">
-      <el-card class="rounded-md" shadow="hover">
+      <el-card class="cursor-pointer rounded-md" shadow="hover">
         <div class="flex flex-col items-center justify-center">
           <el-icon size="24" :color="item.color">
             <component :is="item.icon"></component>
@@ -43,24 +43,19 @@
 
   <el-card class="mt-6 rounded-md" shadow="never">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-      <el-tab-pane label="浏览趋势" name="first">
+      <el-tab-pane label="柱状图" name="second">
         <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-candlestick :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
-        </el-card>
-      </el-tab-pane>
-      <el-tab-pane label="访问量" name="second">
-        <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-bar :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
+          <chart-bar />
         </el-card>
       </el-tab-pane>
       <el-tab-pane label="饼图" name="third">
         <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-pie :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
+          <chart-pie />
         </el-card>
       </el-tab-pane>
       <el-tab-pane label="折线图" name="fourth">
         <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-line :series-data="pieDataList" :extra-option="extraOption" style="width: 100%; height: 500px" />
+          <chart-line />
         </el-card>
       </el-tab-pane>
     </el-tabs>
@@ -70,18 +65,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
-import chartPie from '@/components/echart/chartPie/index.vue'
-import chartBar from '@/components/echart/chartBar/index.vue'
-import chartLine from '@/components/echart/chartLine/index.vue'
-import chartCandlestick from '@/components/echart/chartCandlestick/index.vue'
-const pieDataList = [
-  { name: 'Vue', value: 20 },
-  { name: 'React', value: 20 },
-  { name: 'Angular', value: 20 },
-]
-const extraOption = {
-  color: ['#fe883a', '#2d90d1', '#f75981', '#90e2a9'],
-}
+import chartPie from './components/chartPie.vue'
+import chartBar from './components/chartBar.vue'
+import chartLine from './components/chartLine.vue'
+
+const activeName = ref('second')
+
 const cardList = ref([
   {
     name: '访问量',
@@ -120,7 +109,6 @@ const cardList = ref([
     type: '月',
   },
 ])
-const activeName = ref('first')
 
 const dataList = ref([
   {

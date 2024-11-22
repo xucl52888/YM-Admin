@@ -67,7 +67,7 @@ const assembleDataToOption = () => {
     { color: COLORSARRAY },
     {
       legend: { formatter },
-      series: [{ data: props.seriesData }],
+      series: [...props.seriesData],
     },
     props.extraOption,
   )
