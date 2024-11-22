@@ -10,7 +10,7 @@
         <el-breadcrumb-item v-if="item.path != '/'" :key="item.path">
           <!-- 有二级菜单 -->
           <el-dropdown placement="bottom" size="large" v-if="item.children && item.children.length > 0" @command="handleCommand">
-            <span class="text-black">
+            <span>
               <el-icon>
                 <component :is="item.meta?.icon.replace('el-icon-', '')" />
               </el-icon>

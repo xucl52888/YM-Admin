@@ -4,8 +4,8 @@
       <Sidebar></Sidebar>
     </el-aside>
 
-    <el-container class="bg-[#eee]">
-      <el-header class="bg-white">
+    <el-container class="layout-content">
+      <el-header class="layout-content-header">
         <Header></Header>
       </el-header>
 
@@ -42,5 +42,11 @@ const menuWidth = computed(() => {
 .layout-container .el-header {
   height: auto;
   padding: 0;
+}
+.layout-content {
+  background-color: #f5f7f9;
+}
+.layout-content-header {
+  background-color: #fff;
 }
 </style>

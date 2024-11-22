@@ -1,12 +1,5 @@
 <template>
-  <el-menu
-    :default-active="route.path"
-    class="el-menu-vertical-demo border-r-0"
-    background-color="#282c34"
-    text-color="#fff"
-    router
-    :collapse="useProjectSettingStore().collapsed"
-  >
+  <el-menu :default-active="route.path" class="el-menu-vertical-demo border-r-0" router :collapse="useProjectSettingStore().collapsed">
     <menu-tree :menu="menuList"></menu-tree>
   </el-menu>
 </template>

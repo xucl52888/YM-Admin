@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen bg-[#282c34]">
+  <div class="layout-content-sidebar h-screen">
     <!-- logo -->
-    <div class="flex h-16 items-center justify-center" @click="onIsCollapsed">
+    <div class="layout-content-sidebar-logo flex h-16 items-center justify-center" @click="onIsCollapsed">
       <el-avatar :src="logoImgUrl" />
     </div>
     <!-- 菜单 -->
@@ -41,5 +41,13 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .el-scrollbar {
   height: auto;
+}
+.layout-content-sidebar {
+  border-right: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+.layout-content-sidebar-logo {
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
 }
 </style>

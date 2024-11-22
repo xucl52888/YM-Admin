@@ -7,9 +7,6 @@ import { useMenuStore } from '@/store/useMenuStore'
 
 import { storage } from '@/utils/Storage'
 
-//element-plus
-import { ElMessage } from 'element-plus'
-
 const useLogin = async (res) => {
   //1. 持久化存储token
   const token = res.token

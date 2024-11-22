@@ -8,8 +8,6 @@
             @click="onTagBar(item)"
             v-for="item in viewTags"
             :key="item.path"
-            text
-            bg
             :type="isActive(item) ? 'primary' : ''"
             @contextmenu="handleContextMenu($event)"
           >
@@ -43,24 +41,25 @@
     </div>
   </div>
   <!-- 鼠标右击 -->
-  <div
+  <el-card
     v-show="state.showDropdown"
-    class="fixed flex flex-col rounded-md bg-white p-1 shadow-md"
+    class="fixed p-1"
+    :body-style="{ padding: 0 }"
     :style="{ top: state.dropdownY + 'px', left: state.dropdownX + 'px', 'z-index': 999 }"
   >
-    <el-button text size="large" @click="closeHandleSelect('1')">
+    <el-button text size="large" @click="closeHandleSelect('1')" style="display: block">
       <el-icon class="el-icon--left"><Refresh /></el-icon>刷新当前
     </el-button>
-    <el-button text size="large" @click="closeHandleSelect('2')" style="margin-left: 0" :disabled="state.isCloseCurrent">
+    <el-button text size="large" @click="closeHandleSelect('2')" style="margin-left: 0; display: block" :disabled="state.isCloseCurrent">
       <el-icon class="el-icon--left"><CloseBold /></el-icon>关闭当前
     </el-button>
-    <el-button text size="large" @click="closeHandleSelect('3')" style="margin-left: 0">
+    <el-button text size="large" @click="closeHandleSelect('3')" style="margin-left: 0; display: block">
       <el-icon class="el-icon--left"><ScaleToOriginal /></el-icon>关闭其他
     </el-button>
-    <el-button text size="large" @click="closeHandleSelect('4')" style="margin-left: 0">
+    <el-button text size="large" @click="closeHandleSelect('4')" style="margin-left: 0; display: block">
       <el-icon class="el-icon--left"><SemiSelect /></el-icon>关闭全部
     </el-button>
-  </div>
+  </el-card>
 </template>
 
 <script lang="ts" setup>

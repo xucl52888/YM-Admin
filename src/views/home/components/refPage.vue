@@ -1,13 +1,13 @@
 <template>
   <div class="mb-4 text-2xl font-bold">ref、shallowRef、customRef、dom</div>
   <!-- ref -->
-  <div class="mb-3 text-black">ref：{{ text1 }}</div>
+  <div class="mb-3">ref：{{ text1 }}</div>
   <el-button type="primary" @click="onSetText1">ref点击</el-button>
   <!-- shallowRef -->
-  <div class="mb-3 text-black">shallowRef：{{ text2 }}</div>
+  <div class="mb-3">shallowRef：{{ text2 }}</div>
   <el-button type="primary" @click="onSetText2">shallowRef点击</el-button>
   <!-- customRef -->
-  <div class="mb-3 text-black">customRef：{{ text3 }}</div>
+  <div class="mb-3">customRef：{{ text3 }}</div>
   <el-button type="primary" @click="onSetText3">customRef点击</el-button>
   <!-- dom -->
   <div class="my-3">

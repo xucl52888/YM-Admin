@@ -1,0 +1,32 @@
+@import 'node_modules/element-plus/theme-chalk/src/dark/css-vars.scss';
+* {
+  margin: 0;
+  padding: 0;
+}
+// a {
+//   text-decoration: none;
+//   color: #333;
+// }
+
+html.dark {
+  //登录页背景
+  .login {
+    background: var(--el-bg-color);
+  }
+  a {
+    color: #e5eaf3;
+  }
+  .layout-content {
+    background-color: var(--el-bg-color);
+  }
+  .layout-content-header,
+  .layout-content-sidebar {
+    background-color: #18181c;
+  }
+  .layout-content-sidebar {
+    border-right: 1px solid #393939;
+  }
+  .layout-content-sidebar-logo {
+    border-bottom: 1px solid #393939;
+  }
+}

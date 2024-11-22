@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-6 rounded-xl bg-white p-8 sm:p-10">
+  <el-card class="mb-6 rounded-xl">
     <!--  -->
     <input-one ref="oneInput" @returnRef="getOneInputRef" data="123" @input="getInput" @focus="getFocus" :size="size"></input-one>
     <!--  -->
@@ -7,20 +7,20 @@
     <el-button type="primary" @click="onblur">失去焦点</el-button>
     <el-button type="primary" @click="onClear">清空inout值</el-button>
     <el-button type="primary" @click="size === 'large' ? (size = 'small') : (size = 'large')">改变size</el-button>
-  </div>
-  <div class="mb-6 rounded-xl bg-white p-8 sm:p-10">
+  </el-card>
+  <el-card class="rounded-xl0 mb-6">
     <ref-page></ref-page>
-  </div>
-  <div class="mb-6 rounded-xl bg-white p-8 sm:p-10">
+  </el-card>
+  <el-card class="mb-6 rounded-xl">
     <reactive-page></reactive-page>
-  </div>
-  <div class="mb-6 rounded-xl bg-white p-8 sm:p-10">
+  </el-card>
+  <el-card class="mb-6 rounded-xl">
     <to-ref-page></to-ref-page>
-  </div>
-  <div class="mb-6 rounded-xl bg-white p-8 sm:p-10">
+  </el-card>
+  <el-card class="mb-6 rounded-xl">
     <computed-page></computed-page>
-  </div>
-  <div class="h-96 bg-sky-700 px-4 py-2 hover:bg-sky-800 sm:px-8 sm:py-3">首页</div>
+  </el-card>
+  <el-card class="h-96">首页</el-card>
 </template>
 
 <script lang="ts" setup>

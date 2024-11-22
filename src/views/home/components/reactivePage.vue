@@ -1,10 +1,10 @@
 <template>
   <div class="mb-4 text-2xl font-bold">reactive、shallowReactive</div>
   <!-- reactive -->
-  <div class="mb-3 text-black">reactive：{{ text1 }}</div>
+  <div class="mb-3">reactive：{{ text1 }}</div>
   <el-button type="primary" @click="onSetText1">reactive点击</el-button>
   <!-- shallowReactive -->
-  <div class="mb-3 text-black">shallowReactive：{{ text2 }}</div>
+  <div class="mb-3">shallowReactive：{{ text2 }}</div>
   <el-button type="primary" @click="onSetText2">shallowReactive点击</el-button>
 </template>
 

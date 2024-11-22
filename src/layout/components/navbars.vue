@@ -8,10 +8,11 @@
         </el-icon>
       </el-tooltip>
     </div>
-    <div class="flex items-center">
-      <el-tooltip class="box-item" effect="dark" content="菜单搜索" placement="bottom">
-        <el-icon :size="20">
-          <Search />
+    <div class="flex cursor-pointer items-center">
+      <el-tooltip class="box-item" effect="dark" content="换肤" placement="bottom">
+        <el-icon :size="20" @click="configDark">
+          <Sunny v-if="dark === 'dark'" />
+          <Moon v-else />
         </el-icon>
       </el-tooltip>
     </div>
@@ -37,8 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
-import { Search, Refresh, FullScreen } from '@element-plus/icons-vue'
+import { ref, reactive } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { userStore } from '@/store/userStore'
@@ -72,6 +72,20 @@ const onPersonalCenter = () => {
     message: '个人中心',
   })
 }
+
+//换肤
+const dark = ref<string | null>(storage.get('dark'))
+const configDark = (): void => {
+  const element = document.querySelector('html') as HTMLElement | null
+  if (element) {
+    if (element.className === 'dark') element.className = ''
+    else element.className = 'dark'
+
+    dark.value = element.className
+    storage.set('dark', element.className)
+  }
+}
+
 // 退出登录
 const onLoginOut = () => {
   ElMessageBox.confirm('是否退出登录', '退出登录', {
