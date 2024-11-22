@@ -30,3 +30,24 @@ html.dark {
     border-bottom: 1px solid #393939;
   }
 }
+
+.custom-loading-bar .el-loading-spinner {
+  height: 4px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background-color: #409eff;
+  animation: loading-bar 1.5s linear infinite;
+}
+
+@keyframes loading-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

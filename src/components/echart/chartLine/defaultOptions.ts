@@ -1,5 +1,6 @@
 // 这里的数据会被深度合并
 const BASEOPTIONS = {
+  backgroundColor: 'transparent',
   title: {
     text: '折线图',
   },

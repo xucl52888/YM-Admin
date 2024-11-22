@@ -20,7 +20,6 @@ const extraOption = {
     text: '技术栈',
     left: 'center',
     textStyle: {
-      color: '#000',
       fontSize: 20,
     },
   },

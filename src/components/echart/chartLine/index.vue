@@ -78,7 +78,7 @@ const assembleDataToOption = () => {
 const updateChartView = () => {
   if (!chartRef.value) return
   const fullOption = assembleDataToOption()
-  echartInstance = echarts.init(chartRef.value)
+  echartInstance = echarts.init(chartRef.value, 'dark')
   echartInstance.setOption(fullOption)
 }
 /**

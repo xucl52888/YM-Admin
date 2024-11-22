@@ -5,6 +5,7 @@ import { useMenuStore } from '@/store/useMenuStore'
 import { Parent } from '@/interface/user'
 import router from '@/router'
 import { cloneDeep } from 'lodash-es'
+import { startLoading, stopLoading } from '@/utils/loadingBar'
 
 // 404页面
 const ErrorPageRoute: RouteRecordRaw = {
@@ -32,6 +33,7 @@ const ErrorPageRoute: RouteRecordRaw = {
 
 export default function setupGuards(router: Router) {
   router.beforeEach(async (to, from) => {
+    startLoading()
     if (!userStore().token && to.name !== 'login') return { name: 'login' } // 如果没有token且不是登录页，则跳转到登录页
 
     //动态添加路由
@@ -44,7 +46,9 @@ export default function setupGuards(router: Router) {
 
   router.beforeResolve((to, from) => {})
 
-  router.afterEach((to, from) => {})
+  router.afterEach((to, from) => {
+    stopLoading()
+  })
 }
 
 interface Child {

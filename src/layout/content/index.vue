@@ -2,12 +2,14 @@
   <el-scrollbar>
     <div class="px-6 pb-6">
       <!--  -->
-      <router-view v-slot="{ Component }">
-        <!-- <Transition name="fade" mode="out-in" appear> -->
-        <keep-alive :include="tagStore.keepAlive">
-          <component :is="Component"></component>
-        </keep-alive>
-        <!-- </Transition> -->
+      <router-view>
+        <template #default="{ Component, route }">
+          <!-- <transition name="zoom-fade" mode="out-in" appear> -->
+          <keep-alive :include="tagStore.keepAlive">
+            <component :is="Component" :key="route.fullPath"></component>
+          </keep-alive>
+          <!-- </transition> -->
+        </template>
       </router-view>
     </div>
   </el-scrollbar>
@@ -15,6 +17,7 @@
 
 <script lang="ts" setup>
 import { useTagStore } from '@/store/useTagStore'
+
 const tagStore = useTagStore()
 </script>
 
