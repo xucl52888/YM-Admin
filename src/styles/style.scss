@@ -3,19 +3,19 @@
   margin: 0;
   padding: 0;
 }
-// a {
-//   text-decoration: none;
-//   color: #333;
-// }
 
 html.dark {
-  //登录页背景
-  .login {
-    background: var(--el-bg-color);
-  }
   a {
     color: #e5eaf3;
   }
+  //登录页背景
+  .login-container {
+    background-color: #191919 !important;
+    .login-box {
+      background-color: #000c !important;
+    }
+  }
+  // layout
   .layout-content {
     background-color: var(--el-bg-color);
   }
@@ -30,7 +30,7 @@ html.dark {
     border-bottom: 1px solid #393939;
   }
 }
-
+// 顶部加载条
 .custom-loading-bar .el-loading-spinner {
   height: 4px;
   width: 100%;

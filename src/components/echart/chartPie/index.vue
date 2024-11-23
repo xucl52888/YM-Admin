@@ -83,7 +83,8 @@ let echartInstance: any = null // echart实例
 const updateChartView = () => {
   if (!chartRef.value) return
   const fullOption = assembleDataToOption()
-  echartInstance = echarts.init(chartRef.value, 'dark') // 初始化echart实例
+  // echartInstance = echarts.init(chartRef.value, 'dark') // 初始化echart实例
+  echartInstance = echarts.init(chartRef.value) // 初始化echart实例
   echartInstance.setOption(fullOption)
 }
 

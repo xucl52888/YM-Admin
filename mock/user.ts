@@ -127,7 +127,6 @@ const adminMenu = [
       },
     ],
   },
-
   {
     id: '3459390430',
     name: '系统设置',
@@ -139,7 +138,7 @@ const adminMenu = [
     alwaysShow: true,
     type: 0,
     meta: {
-      title: '仪表盘',
+      title: '系统设置',
       icon: 'el-icon-copy-document',
       noCache: false,
       hidden: false,
@@ -208,6 +207,47 @@ const adminMenu = [
       link: '',
     },
     children: null,
+  },
+  {
+    id: '12345452332',
+    name: '异常页面',
+    path: '/exception',
+    redirect: null,
+    parentView: 'layout',
+    component: null,
+    query: null,
+    alwaysShow: true,
+    type: 0,
+    meta: {
+      title: '异常页面',
+      icon: 'el-icon-copy-document',
+      noCache: false,
+      hidden: false,
+      affix: false,
+      link: '',
+    },
+    children: [
+      {
+        id: '3457623930',
+        name: '404',
+        path: '/exception/404',
+        redirect: null,
+        parentView: 'layout',
+        component: 'exception/404',
+        query: null,
+        alwaysShow: null,
+        type: 1,
+        meta: {
+          title: '404页面',
+          icon: 'el-icon-house',
+          noCache: false,
+          hidden: false,
+          affix: false,
+          link: '',
+        },
+        children: null,
+      },
+    ],
   },
 ]
 
