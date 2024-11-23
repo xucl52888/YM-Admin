@@ -41,7 +41,7 @@
 import { ref } from 'vue'
 import { login } from '@/api/user'
 import loginImg from '@/assets/login-left.svg'
-import { storage } from '@/utils/Storage'
+
 const loginForm = ref({
   username: 'admin',
   password: '111111',
@@ -49,16 +49,17 @@ const loginForm = ref({
 })
 
 //换肤
-const dark = ref<string | null>(storage.get('dark'))
+import { useProjectSettingStore } from '@/store/projectSetting'
+const dark = ref<string | null>(useProjectSettingStore().elementTheme)
 const configDark = (): void => {
   const element = document.querySelector('html') as HTMLElement | null // 获取html元素
   if (element) {
-    if (element.className === 'dark')
-      element.className = '' // 如果当前是深色模式，则切换为浅色模式
-    else element.className = 'dark' // 如果当前是浅色模式，则切换为深色模式
+    // 如果当前是浅色模式，则切换为深色模式
+    if (element.className === 'dark') element.className = 'light'
+    else element.className = 'dark'
 
     dark.value = element.className
-    storage.set('dark', element.className)
+    useProjectSettingStore().setElementTheme(dark.value)
   }
 }
 

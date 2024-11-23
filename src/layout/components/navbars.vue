@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { userStore } from '@/store/userStore'
@@ -74,15 +74,16 @@ const onPersonalCenter = () => {
 }
 
 //换肤
-const dark = ref<string | null>(storage.get('dark'))
+import { useProjectSettingStore } from '@/store/projectSetting'
+const dark = ref<string | null>(useProjectSettingStore().elementTheme)
 const configDark = (): void => {
   const element = document.querySelector('html') as HTMLElement | null
   if (element) {
-    if (element.className === 'dark') element.className = ''
+    if (element.className === 'dark') element.className = 'light'
     else element.className = 'dark'
 
     dark.value = element.className
-    storage.set('dark', element.className)
+    useProjectSettingStore().setElementTheme(dark.value)
   }
 }
 

@@ -4,18 +4,25 @@ export const useProjectSettingStore = defineStore({
   id: 'app-project-setting',
   state: () => ({
     collapsed: false, // 菜单是否折叠，默认 false 不折叠
+    elementTheme: 'light', // 主题，默认 light，可选 dark
   }),
   getters: {
     getCollapsed(): boolean {
       return this.collapsed
+    },
+    getElementTheme(): string {
+      return this.elementTheme
     },
   },
   actions: {
     setCollapsed() {
       this.collapsed = !this.collapsed
     },
+    setElementTheme(val: string) {
+      this.elementTheme = val
+    },
   },
   persist: {
-    pick: ['collapsed'],
+    pick: ['collapsed', 'elementTheme'],
   },
 })

@@ -1,6 +1,6 @@
 <template>
   <!-- 过度动画 -->
-  <section class="loader_ly" v-if="false">
+  <section class="loader_ly" v-if="themeIsOverAnimated">
     <div class="slider_ly" style="--i: 0"></div>
     <div class="slider_ly" style="--i: 1"></div>
     <div class="slider_ly" style="--i: 2"></div>
@@ -9,22 +9,38 @@
   <router-view></router-view>
 </template>
 <script lang="ts" setup>
-import { ref, onBeforeMount } from 'vue'
-import { storage } from '@/utils/Storage'
+import { ref, onBeforeMount, watch } from 'vue'
 // console.log('环境变量', import.meta.env.MODE, import.meta.env.VITE_ENV)
 // console.log('环境变量接口地址', import.meta.env.VITE_BASE_URL)
 // console.log('环境变量标题', import.meta.env.VITE_TITLE)
 
-// vue生命周期回调函数
+// 主题
+import { useProjectSettingStore } from '@/store/projectSetting'
 onBeforeMount(() => {
   // 获取当前主题
-  const dark = ref<string | null>(storage.get('dark'))
+  const dark = ref<string | null>(useProjectSettingStore().elementTheme)
   const element = document.querySelector('html') as HTMLElement | null
   if (element) {
     if (dark.value === 'dark') element.className = 'dark'
-    else element.className = ''
+    else element.className = 'light'
   }
 })
+
+const themeIsOverAnimated = ref(false)
+const themeConversion = () => {
+  themeIsOverAnimated.value = true
+  setTimeout(() => {
+    themeIsOverAnimated.value = false
+  }, 1000)
+}
+
+watch(
+  () => useProjectSettingStore().elementTheme,
+  (newVal, oldVal) => {
+    console.log(newVal, oldVal, 2222)
+    themeConversion()
+  },
+)
 </script>
 <style lang="scss">
 @import './styles/style.scss';
