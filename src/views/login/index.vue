@@ -2,7 +2,13 @@
   <div class="login-container flex h-screen items-center justify-center">
     <div class="login-box flex items-center justify-around">
       <!-- 换肤 -->
-      <el-button @click="configDark" :icon="dark === 'dark' ? 'Sunny' : 'Moon'" circle size="large" class="absolute right-10 top-10" />
+      <el-button
+        @click="handleThemeSwitch($event)"
+        :icon="useProjectSettingStore()?.elementTheme === 'dark' ? 'Sunny' : 'Moon'"
+        circle
+        size="large"
+        class="absolute right-10 top-10"
+      />
 
       <!-- 登录页图片 -->
       <el-image :src="loginImg" style="width: 720px; height: 720px" />
@@ -41,6 +47,8 @@
 import { ref } from 'vue'
 import { login } from '@/api/user'
 import loginImg from '@/assets/login-left.svg'
+import { useProjectSettingStore } from '@/store/projectSetting'
+import { useThemeSwitcher } from '@/hooks/useThemeSwitcher'
 
 const loginForm = ref({
   username: 'admin',
@@ -49,18 +57,9 @@ const loginForm = ref({
 })
 
 //换肤
-import { useProjectSettingStore } from '@/store/projectSetting'
-const dark = ref<string | null>(useProjectSettingStore().elementTheme)
-const configDark = (): void => {
-  const element = document.querySelector('html') as HTMLElement | null // 获取html元素
-  if (element) {
-    // 如果当前是浅色模式，则切换为深色模式
-    if (element.className === 'dark') element.className = 'light'
-    else element.className = 'dark'
-
-    dark.value = element.className
-    useProjectSettingStore().setElementTheme(dark.value)
-  }
+const { changeThemeWithTransition } = useThemeSwitcher()
+const handleThemeSwitch = (e) => {
+  changeThemeWithTransition(e)
 }
 
 //hooks

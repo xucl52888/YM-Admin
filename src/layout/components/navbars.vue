@@ -10,8 +10,8 @@
     </div>
     <div class="flex cursor-pointer items-center">
       <el-tooltip class="box-item" effect="dark" content="换肤" placement="bottom">
-        <el-icon :size="20" @click="configDark">
-          <Sunny v-if="dark === 'dark'" />
+        <el-icon :size="20" @click="handleThemeSwitch($event)" color="#ffb531">
+          <Sunny v-if="useProjectSettingStore()?.elementTheme === 'dark'" />
           <Moon v-else />
         </el-icon>
       </el-tooltip>
@@ -38,13 +38,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { userStore } from '@/store/userStore'
 import { storage } from '@/utils/Storage'
 import router from '@/router'
 import { useRouter } from 'vue-router'
+import { useProjectSettingStore } from '@/store/projectSetting'
+import { useThemeSwitcher } from '@/hooks/useThemeSwitcher'
 
 const routera = useRouter()
 
@@ -74,17 +75,9 @@ const onPersonalCenter = () => {
 }
 
 //换肤
-import { useProjectSettingStore } from '@/store/projectSetting'
-const dark = ref<string | null>(useProjectSettingStore().elementTheme)
-const configDark = (): void => {
-  const element = document.querySelector('html') as HTMLElement | null
-  if (element) {
-    if (element.className === 'dark') element.className = 'light'
-    else element.className = 'dark'
-
-    dark.value = element.className
-    useProjectSettingStore().setElementTheme(dark.value)
-  }
+const { changeThemeWithTransition } = useThemeSwitcher()
+const handleThemeSwitch = (e) => {
+  changeThemeWithTransition(e)
 }
 
 // 退出登录
