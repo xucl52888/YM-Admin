@@ -5,11 +5,12 @@ import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
 // element图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-
 import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import zhCn from 'element-plus/es/locale/lang/zh-cn' // element 中文
+import 'element-plus/theme-chalk/dark/css-vars.css' // 暗黑模式
 
 // 按需引入echarts
 import { setupEcharts } from './plugins/echarts'

@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="flex items-center justify-between"> -->
-  <div class="grid grid-cols-4 gap-1">
+  <div class="grid grid-cols-5 gap-1">
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
         <el-icon :size="20" @click="reloadPage">
@@ -10,17 +10,25 @@
     </div>
     <div class="flex cursor-pointer items-center">
       <el-tooltip class="box-item" effect="dark" content="换肤" placement="bottom">
-        <el-icon :size="20" @click="handleThemeSwitch($event)" color="#ffb531">
+        <el-icon :size="20" @click="handleThemeSwitch($event)">
           <Sunny v-if="useProjectSettingStore()?.elementTheme === 'dark'" />
           <Moon v-else />
         </el-icon>
       </el-tooltip>
     </div>
     <div class="flex items-center">
-      <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
+      <el-tooltip class="box-item" effect="dark" :content="useProjectSettingStore()?.fullScreen ? '缩小' : '放大'" placement="bottom">
         <el-icon :size="20" @click="toggleFullScreen">
-          <FullScreen />
+          <Aim v-if="useProjectSettingStore()?.fullScreen" />
+          <FullScreen v-else />
         </el-icon>
+      </el-tooltip>
+    </div>
+    <div class="flex items-center">
+      <el-tooltip class="box-item" effect="dark" content="设置主题色" placement="bottom">
+        <div>
+          <el-color-picker v-model="color" :predefine="predefineColors" @change="changeThemeColor" />
+        </div>
       </el-tooltip>
     </div>
     <div class="flex items-center">
@@ -38,6 +46,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { userStore } from '@/store/userStore'
@@ -56,6 +65,7 @@ const toggleFullScreen = () => {
   } else {
     if (document.exitFullscreen) document.exitFullscreen()
   }
+  useProjectSettingStore().setFullScreen()
 }
 
 // 刷新页面
@@ -78,6 +88,19 @@ const onPersonalCenter = () => {
 const { changeThemeWithTransition } = useThemeSwitcher()
 const handleThemeSwitch = (e) => {
   changeThemeWithTransition(e)
+}
+
+// 设置主题色
+import { useStorage } from '@vueuse/core'
+import { useElementPlusTheme } from 'use-element-plus-theme'
+const layoutThemeColor = useStorage('layout-theme-color', '#409EFF') // 默认主题色
+
+const { changeTheme } = useElementPlusTheme(layoutThemeColor.value) // 初始化主题色
+let color = ref(layoutThemeColor.value)
+const predefineColors = ref(['#2d8cf0', '#009688', '#ff5c93', '#ee4f12', '#9c27b0', '#ff9800', '#04ff68', '#000', '#ff3d68', '#fc5404'])
+const changeThemeColor = (color: string) => {
+  layoutThemeColor.value = color // 保存主题色
+  changeTheme(color) // 修改 Element Plus 组件主题色
 }
 
 // 退出登录

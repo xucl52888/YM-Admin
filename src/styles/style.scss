@@ -8,6 +8,10 @@ html.dark {
   a {
     color: #e5eaf3;
   }
+  .el-menu-item:hover,
+  .el-sub-menu__title:hover {
+    background-color: var(--el-bg-color);
+  }
   //登录页背景
   .login-container {
     background-color: #191919 !important;

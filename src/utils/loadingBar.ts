@@ -20,8 +20,8 @@ export const stopLoading = () => {
   clearTimeout(timer) // 如果还在延迟中，清除定时器
   timer = null
 
+  loadingInstance?.close()
   if (loadingInstance) {
-    loadingInstance.close()
     loadingInstance = null
   }
 }

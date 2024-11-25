@@ -33,7 +33,6 @@ const ErrorPageRoute: RouteRecordRaw = {
 
 export default function setupGuards(router: Router) {
   router.beforeEach(async (to, from) => {
-    startLoading()
     if (!userStore().token && to.name !== 'login') return { name: 'login' } // 如果没有token且不是登录页，则跳转到登录页
 
     //动态添加路由
@@ -42,6 +41,7 @@ export default function setupGuards(router: Router) {
 
     //当前路由没有匹配到任何路由记录
     if (to.matched.length == 0) router.push(to.fullPath) // 如果未匹配到路由记录，则跳转到当前路由
+    startLoading()
   })
 
   router.beforeResolve((to, from) => {})
