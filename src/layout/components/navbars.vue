@@ -27,7 +27,7 @@
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="设置主题色" placement="bottom">
         <div>
-          <el-color-picker v-model="color" :predefine="predefineColors" @change="changeThemeColor" />
+          <el-color-picker v-model="themeColor" :predefine="predefineColors" @change="changeThemeColor" />
         </div>
       </el-tooltip>
     </div>
@@ -91,16 +91,32 @@ const handleThemeSwitch = (e) => {
 }
 
 // 设置主题色
-import { useStorage } from '@vueuse/core'
+import { useStorage, useCssVar } from '@vueuse/core'
 import { useElementPlusTheme } from 'use-element-plus-theme'
-const layoutThemeColor = useStorage('layout-theme-color', '#409EFF') // 默认主题色
 
+const layoutThemeColor = useStorage('layout-theme-color', '2d8cf0') // 默认主题色
 const { changeTheme } = useElementPlusTheme(layoutThemeColor.value) // 初始化主题色
-let color = ref(layoutThemeColor.value)
+
+let themeColor = ref(layoutThemeColor.value)
 const predefineColors = ref(['#2d8cf0', '#009688', '#ff5c93', '#ee4f12', '#9c27b0', '#ff9800', '#04ff68', '#000', '#ff3d68', '#fc5404'])
+
 const changeThemeColor = (color: string) => {
-  layoutThemeColor.value = color // 保存主题色
-  changeTheme(color) // 修改 Element Plus 组件主题色
+  if (color) {
+    layoutThemeColor.value = color // 保存主题色
+    changeTheme(color) // 修改 Element Plus 组件主题色
+    if (useProjectSettingStore().elementTheme === 'dark') {
+      const elRoot = document.documentElement
+      const cssVarPrimary = useCssVar('--el-color-primary-light-9', elRoot)
+      cssVarPrimary.value = '#242424'
+    }
+  } else {
+    themeColor.value = layoutThemeColor.value // 恢复默认主题色
+    if (useProjectSettingStore().elementTheme === 'dark') {
+      const elRoot = document.documentElement
+      const cssVarPrimary = useCssVar('--el-color-primary-light-9', elRoot)
+      cssVarPrimary.value = '#242424'
+    }
+  }
 }
 
 // 退出登录

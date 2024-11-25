@@ -23,7 +23,8 @@
     "paths": {
       // 模块名称到基于 baseUrl 的路径映射
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["element-plus/global"] // element-plus指定全局组件类型
   },
   "include": ["vite.config.ts", "types/**/*.d.ts"]
 }
