@@ -11,15 +11,15 @@
     <div class="flex cursor-pointer items-center">
       <el-tooltip class="box-item" effect="dark" content="换肤" placement="bottom">
         <el-icon :size="20" @click="handleThemeSwitch($event)">
-          <Sunny v-if="useProjectSettingStore()?.elementTheme === 'dark'" />
+          <Sunny v-if="useProjectSetting?.elementTheme === 'dark'" />
           <Moon v-else />
         </el-icon>
       </el-tooltip>
     </div>
     <div class="flex items-center">
-      <el-tooltip class="box-item" effect="dark" :content="useProjectSettingStore()?.fullScreen ? '缩小' : '放大'" placement="bottom">
+      <el-tooltip class="box-item" effect="dark" :content="useProjectSetting?.fullScreen ? '缩小' : '放大'" placement="bottom">
         <el-icon :size="20" @click="toggleFullScreen">
-          <Aim v-if="useProjectSettingStore()?.fullScreen" />
+          <Aim v-if="useProjectSetting?.fullScreen" />
           <FullScreen v-else />
         </el-icon>
       </el-tooltip>
@@ -53,8 +53,10 @@ import { userStore } from '@/store/userStore'
 import { storage } from '@/utils/Storage'
 import router from '@/router'
 import { useRouter } from 'vue-router'
-import { useProjectSettingStore } from '@/store/projectSetting'
 import { useThemeSwitcher } from '@/hooks/useThemeSwitcher'
+import { useThemeColor } from '@/hooks/useThemeSwitcher'
+import { useProjectSettingStore } from '@/store/projectSetting'
+const useProjectSetting = useProjectSettingStore()
 
 const routera = useRouter()
 
@@ -65,7 +67,7 @@ const toggleFullScreen = () => {
   } else {
     if (document.exitFullscreen) document.exitFullscreen()
   }
-  useProjectSettingStore().setFullScreen()
+  useProjectSetting.setFullScreen()
 }
 
 // 刷新页面
@@ -91,30 +93,23 @@ const handleThemeSwitch = (e) => {
 }
 
 // 设置主题色
-import { useStorage, useCssVar } from '@vueuse/core'
-import { useElementPlusTheme } from 'use-element-plus-theme'
-
-const layoutThemeColor = useStorage('layout-theme-color', '2d8cf0') // 默认主题色
-const { changeTheme } = useElementPlusTheme(layoutThemeColor.value) // 初始化主题色
-
-let themeColor = ref(layoutThemeColor.value)
-const predefineColors = ref(['#2d8cf0', '#009688', '#ff5c93', '#ee4f12', '#9c27b0', '#ff9800', '#04ff68', '#000', '#ff3d68', '#fc5404'])
+const { setDarkThemeColor, setThemeColor } = useThemeColor()
+let themeColor = ref(useProjectSetting.themeColor)
+const predefineColors = ref(['#409eff', '#009688', '#ff5c93', '#ee4f12', '#9c27b0', '#ff0000', '#42b883', '#C62549', '#BA5322', '#27B0B0'])
 
 const changeThemeColor = (color: string) => {
   if (color) {
-    layoutThemeColor.value = color // 保存主题色
-    changeTheme(color) // 修改 Element Plus 组件主题色
-    if (useProjectSettingStore().elementTheme === 'dark') {
-      const elRoot = document.documentElement
-      const cssVarPrimary = useCssVar('--el-color-primary-light-9', elRoot)
-      cssVarPrimary.value = '#242424'
+    useProjectSetting.setThemeColor(color)
+    setThemeColor(color)
+    if (useProjectSetting.elementTheme === 'dark') {
+      setDarkThemeColor()
     }
   } else {
-    themeColor.value = layoutThemeColor.value // 恢复默认主题色
-    if (useProjectSettingStore().elementTheme === 'dark') {
-      const elRoot = document.documentElement
-      const cssVarPrimary = useCssVar('--el-color-primary-light-9', elRoot)
-      cssVarPrimary.value = '#242424'
+    themeColor.value = '#409eff'
+    useProjectSetting.setThemeColor('#409eff')
+    setThemeColor('#409eff')
+    if (useProjectSetting.elementTheme === 'dark') {
+      setDarkThemeColor()
     }
   }
 }

@@ -5,7 +5,7 @@ import { useMenuStore } from '@/store/useMenuStore'
 import { Parent } from '@/interface/user'
 import router from '@/router'
 import { cloneDeep } from 'lodash-es'
-import { startLoading, stopLoading } from '@/utils/loadingBar'
+// import { startLoading, stopLoading } from '@/utils/loadingBar'
 
 // 404页面
 const ErrorPageRoute: RouteRecordRaw = {
@@ -41,13 +41,13 @@ export default function setupGuards(router: Router) {
 
     //当前路由没有匹配到任何路由记录
     if (to.matched.length == 0) router.push(to.fullPath) // 如果未匹配到路由记录，则跳转到当前路由
-    startLoading()
+    // startLoading()
   })
 
   router.beforeResolve((to, from) => {})
 
   router.afterEach((to, from) => {
-    stopLoading()
+    // stopLoading()
   })
 }
 
@@ -69,19 +69,15 @@ interface Child extends Omit<Parent, 'children'> {
   children?: Child[] | null
 }
 
-let routesAdded = false
 // 1. 动态添加路由 => 整个过程
 const initRouter = () => {
-  if (!routesAdded) {
-    let menu: Parent[] = useMenuStore().menu //获取菜单
-    let menuRouter: Child[] = filterRouter(menu) //过滤路由
-    menuRouter = flatRoutes(menuRouter) //扁平化路由
-    menuRouter.forEach((item: any) => {
-      // 如果父级是layout，则添加到layout下，否则添加到根路由下
-      router.addRoute(item.parentView == 'layout' ? 'layout' : '', item)
-    })
-    routesAdded = true
-  }
+  let menu: Parent[] = useMenuStore().menu //获取菜单
+  let menuRouter: Child[] = filterRouter(menu) //过滤路由
+  menuRouter = flatRoutes(menuRouter) //扁平化路由
+  menuRouter.forEach((item: any) => {
+    // 如果父级是layout，则添加到layout下，否则添加到根路由下
+    router.addRoute(item.parentView == 'layout' ? 'layout' : '', item)
+  })
 }
 
 // 2. 把component 重构成 箭头函数的形式

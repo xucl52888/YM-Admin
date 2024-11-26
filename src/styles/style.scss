@@ -2,33 +2,6 @@
   margin: 0;
   padding: 0;
 }
-// 深色模式
-html.dark {
-  a {
-    color: #e5eaf3;
-  }
-  //登录页背景
-  .login-container {
-    background-color: #191919 !important;
-    .login-box {
-      background-color: #000c !important;
-    }
-  }
-  // layout 暗黑模式样式
-  .layout-content {
-    background-color: var(--el-bg-color);
-  }
-  .layout-content-header,
-  .layout-content-sidebar {
-    background-color: #18181c;
-  }
-  .layout-content-sidebar {
-    border-right: 1px solid #393939;
-  }
-  .layout-content-sidebar-logo {
-    border-bottom: 1px solid #393939;
-  }
-}
 
 // 顶部加载条
 .custom-loading-bar .el-loading-spinner {
@@ -39,8 +12,7 @@ html.dark {
   background-color: #409eff;
   animation: loading-bar 1.5s linear infinite;
 }
-
-@keyframes loading-bar {
+@keyframes loag-bar {
   0% {
     transform: translateX(-100%);
   }

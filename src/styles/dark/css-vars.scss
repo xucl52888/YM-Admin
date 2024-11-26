@@ -1,0 +1,25 @@
+// 深色模式
+html.dark {
+  //登录页背景
+  .login-container {
+    background-color: #191919 !important;
+    .login-box {
+      background-color: #000c !important;
+    }
+  }
+  // layout 暗黑模式样式
+  .layout-content {
+    background-color: var(--el-bg-color);
+  }
+  .layout-content-header,
+  .layout-content-sidebar {
+    background-color: #18181c;
+  }
+  .layout-content-sidebar {
+    border-right: 1px solid #393939;
+  }
+  .layout-content-sidebar-logo {
+    border-bottom: 1px solid #393939;
+  }
+  /** layout 暗黑模式样式end **/
+}

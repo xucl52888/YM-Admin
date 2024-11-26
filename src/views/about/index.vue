@@ -32,7 +32,7 @@
       </el-descriptions-item>
       <el-descriptions-item label="gitee">
         <div class="flex items-center">
-          <a href="https://gitee.com/xcl52888/vite-project" target="_blank">查看Github地址</a>
+          <el-link href="https://gitee.com/xcl52888/vite-project" target="_blank">查看Github地址</el-link>
         </div>
       </el-descriptions-item>
     </el-descriptions>

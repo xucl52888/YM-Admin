@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useProjectSettingStore } from '@/store/projectSetting'
 
+// 深色模式切换
 export function useThemeSwitcher() {
   const isDarkMode = ref(false)
 
@@ -43,5 +44,28 @@ export function useThemeSwitcher() {
   return {
     isDarkMode,
     changeThemeWithTransition,
+  }
+}
+
+// 动态切换主题色
+import { useCssVar } from '@vueuse/core'
+import { useElementPlusTheme } from 'use-element-plus-theme'
+export function useThemeColor() {
+  const setDarkThemeColor = () => {
+    const elRoot = document.documentElement
+    const light9Primary = useCssVar('--el-color-primary-light-9', elRoot)
+    const light7Primary = useCssVar('--el-color-primary-light-7', elRoot)
+    light9Primary.value = '#242424' // transparent  #242424
+    light7Primary.value = '#4c4d4f'
+  }
+
+  const setThemeColor = (color: string) => {
+    const { changeTheme } = useElementPlusTheme(useProjectSettingStore().themeColor) // 初始化主题色
+    changeTheme(color)
+  }
+
+  return {
+    setDarkThemeColor,
+    setThemeColor,
   }
 }
