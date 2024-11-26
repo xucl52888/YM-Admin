@@ -6,7 +6,8 @@ export const useProjectSettingStore = defineStore({
     collapsed: false, // 菜单是否折叠，默认 false 不折叠
     fullScreen: false, // 是否全屏，默认 false 不全屏
     elementTheme: 'light', // 主题，默认 light，可选 dark
-    themeColor: '#409eff',
+    themeColor: '#409eff', // 主题颜色，默认 #409eff
+    navigationBarMode: 'leftMenu', // 导航栏模式 topMenu
   }),
   getters: {
     // 菜单折叠
@@ -24,6 +25,10 @@ export const useProjectSettingStore = defineStore({
     // 主题颜色
     getThemeColor(): string {
       return this.themeColor
+    },
+    // 导航栏模式
+    getNavigationBarMode(): string {
+      return this.navigationBarMode
     },
   },
   actions: {
@@ -43,8 +48,12 @@ export const useProjectSettingStore = defineStore({
     setThemeColor(val: string) {
       this.themeColor = val
     },
+    // 导航栏模式
+    setNavigationBarMode(val: string) {
+      this.navigationBarMode = val
+    },
   },
   persist: {
-    pick: ['collapsed', 'fullScreen', 'elementTheme', 'themeColor'],
+    pick: ['collapsed', 'fullScreen', 'elementTheme', 'themeColor', 'navigationBarMode'],
   },
 })

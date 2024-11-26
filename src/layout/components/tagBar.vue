@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="relative px-6">
     <!--  -->
     <div class="flex-shrink flex-grow overflow-hidden">
       <el-scrollbar ref="scrollbar" @scroll="handleScroll" :min-size="50" always>
@@ -18,7 +18,7 @@
       </el-scrollbar>
     </div>
     <!--  -->
-    <div class="flex items-center">
+    <div class="absolute bottom-1/2 right-6 flex translate-y-1/2 items-center">
       <el-dropdown placement="bottom-end" size="large" @visible-change="handleVisibleChange">
         <el-icon size="18px" class="ml-2"><ArrowDown /></el-icon>
         <template #dropdown>

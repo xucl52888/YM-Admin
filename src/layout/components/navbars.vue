@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="flex items-center justify-between"> -->
-  <div class="grid grid-cols-5 gap-1">
+  <div class="grid grid-cols-6 gap-1">
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
         <el-icon :size="20" @click="reloadPage">
@@ -30,6 +30,19 @@
           <el-color-picker v-model="themeColor" :predefine="predefineColors" @change="changeThemeColor" />
         </div>
       </el-tooltip>
+    </div>
+    <div class="flex items-center">
+      <el-dropdown placement="bottom-end" size="large">
+        <el-icon :size="20">
+          <Setting />
+        </el-icon>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item @click="useProjectSettingStore().setNavigationBarMode('leftMenu')">左侧菜单模式</el-dropdown-item>
+            <el-dropdown-item @click="useProjectSettingStore().setNavigationBarMode('topMenu')">顶部菜单模式</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
     <div class="flex items-center">
       <el-dropdown placement="bottom-end" size="large">

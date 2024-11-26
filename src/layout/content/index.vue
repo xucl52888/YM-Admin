@@ -1,6 +1,6 @@
 <template>
   <el-scrollbar>
-    <div class="px-6 pb-6">
+    <div class="px-6 pb-6 pt-12">
       <!--  -->
       <router-view>
         <template #default="{ Component, route }">

@@ -1,10 +1,17 @@
 <template>
-  <el-menu :default-active="route.path" class="el-menu-vertical-demo border-r-0" router :collapse="useProjectSettingStore().collapsed">
+  <el-menu
+    class="el-menu-vertical-demo"
+    :default-active="route.path"
+    :mode="props.mode"
+    router
+    :collapse="useProjectSettingStore().collapsed"
+    :style="{ width: props.menuWidth }"
+  >
     <menu-tree :menu="menuList"></menu-tree>
   </el-menu>
 </template>
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import menuTree from './menuTree.vue'
 import { useMenuStore } from '@/store/useMenuStore'
 import { useRoute } from 'vue-router'
@@ -19,6 +26,18 @@ import { useProjectSettingStore } from '@/store/projectSetting'
 // })
 
 const menuList = ref(useMenuStore().menu)
+const props = defineProps({
+  mode: {
+    type: String,
+    default: 'vertical', // horizontal
+  },
+  menuWidth: {
+    type: String,
+    default: 'auto',
+  },
+})
+console.log(props.mode)
+console.log(props.menuWidth)
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -26,5 +45,6 @@ const menuList = ref(useMenuStore().menu)
 }
 .el-menu {
   border-right: 0;
+  border-bottom: 0;
 }
 </style>

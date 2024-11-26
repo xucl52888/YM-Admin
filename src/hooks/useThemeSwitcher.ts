@@ -51,14 +51,17 @@ export function useThemeSwitcher() {
 import { useCssVar } from '@vueuse/core'
 import { useElementPlusTheme } from 'use-element-plus-theme'
 export function useThemeColor() {
+  // 暗色模式下修改部分主题色
   const setDarkThemeColor = () => {
     const elRoot = document.documentElement
     const light9Primary = useCssVar('--el-color-primary-light-9', elRoot)
     const light7Primary = useCssVar('--el-color-primary-light-7', elRoot)
+    const light8Primary = useCssVar('--el-color-primary-light-8', elRoot)
     light9Primary.value = '#242424' // transparent  #242424
     light7Primary.value = '#4c4d4f'
+    light8Primary.value = '#525252'
   }
-
+  // 动态修改主题色
   const setThemeColor = (color: string) => {
     const { changeTheme } = useElementPlusTheme(useProjectSettingStore().themeColor) // 初始化主题色
     changeTheme(color)
