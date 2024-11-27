@@ -50,6 +50,7 @@ export const useProjectSettingStore = defineStore({
     },
     // 导航栏模式
     setNavigationBarMode(val: string) {
+      this.collapsed = false
       this.navigationBarMode = val
     },
   },

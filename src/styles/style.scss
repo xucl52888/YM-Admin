@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
 }
-
+// element-plus样式修改
+.el-dropdown-menu__item:hover,
+.el-sub-menu__title:hover,
+.el-menu-item:hover {
+  color: var(--el-color-primary);
+}
 // 顶部加载条
 .custom-loading-bar .el-loading-spinner {
   height: 4px;

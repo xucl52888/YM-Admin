@@ -1,20 +1,17 @@
 <template>
-  <div class="h-screen">
-    <!-- logo -->
-    <logo-avatar class="layout-content-sidebar-logo"></logo-avatar>
-    <!-- 菜单 -->
-    <el-scrollbar :height="height + 'px'">
-      <nav-menu menuWidth=""></nav-menu>
-    </el-scrollbar>
+  <!-- logo -->
+  <div class="layout-content-sidebar-logo flex h-16 items-center justify-center">
+    <logo-avatar></logo-avatar>
   </div>
+  <!-- 菜单 -->
+  <el-scrollbar height="calc(100vh - 64px)">
+    <nav-menu menuWidth=""></nav-menu>
+  </el-scrollbar>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import navMenu from '../components/navMenu.vue'
 import logoAvatar from '../components/logoAvatar.vue'
-
-const height = ref(window.innerHeight - 64)
 </script>
 
 <style scoped lang="scss">

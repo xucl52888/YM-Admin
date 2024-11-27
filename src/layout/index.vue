@@ -1,8 +1,8 @@
 <template>
-  <el-container class="layout-container h-screen">
+  <el-container class="layout-container" style="height: 100vh">
     <!--  -->
-    <el-aside style="width: auto" v-if="useProjectSettingStore()?.navigationBarMode === 'leftMenu'">
-      <Sidebar class="layout-content-sidebar"></Sidebar>
+    <el-aside class="layout-content-sidebar" style="width: auto" v-if="useProjectSettingStore()?.navigationBarMode === 'leftMenu'">
+      <Sidebar></Sidebar>
     </el-aside>
 
     <el-container class="layout-content">
@@ -10,15 +10,17 @@
       <el-header class="layout-content-header">
         <Header></Header>
       </el-header>
-
+      <div class="layout-content-tagbar">
+        <tag-bar></tag-bar>
+      </div>
       <!--  -->
       <el-main>
-        <div
+        <!-- <div
           class="layout-content-tagbar fixed z-50 transition-all"
           :style="{ width: `calc(100vw - ${menuWidth} - 10px)`, left: `calc(1px + ${menuWidth})`, 'transition-duration': '450ms' }"
         >
           <tag-bar></tag-bar>
-        </div>
+        </div> -->
         <Content></Content>
       </el-main>
     </el-container>

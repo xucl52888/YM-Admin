@@ -9,7 +9,7 @@
       </el-tooltip>
     </div>
     <div class="flex cursor-pointer items-center">
-      <el-tooltip class="box-item" effect="dark" content="换肤" placement="bottom">
+      <el-tooltip class="box-item" effect="dark" :content="useProjectSetting?.elementTheme === 'dark' ? '浅色主题' : '深色主图'" placement="bottom">
         <el-icon :size="20" @click="handleThemeSwitch($event)">
           <Sunny v-if="useProjectSetting?.elementTheme === 'dark'" />
           <Moon v-else />
@@ -38,8 +38,16 @@
         </el-icon>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item @click="useProjectSettingStore().setNavigationBarMode('leftMenu')">左侧菜单模式</el-dropdown-item>
-            <el-dropdown-item @click="useProjectSettingStore().setNavigationBarMode('topMenu')">顶部菜单模式</el-dropdown-item>
+            <el-dropdown-item
+              :disabled="useProjectSettingStore().navigationBarMode === 'leftMenu'"
+              @click="useProjectSettingStore().setNavigationBarMode('leftMenu')"
+              >左侧菜单模式</el-dropdown-item
+            >
+            <el-dropdown-item
+              :disabled="useProjectSettingStore().navigationBarMode === 'topMenu'"
+              @click="useProjectSettingStore().setNavigationBarMode('topMenu')"
+              >顶部菜单模式</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>

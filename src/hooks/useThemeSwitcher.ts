@@ -57,7 +57,7 @@ export function useThemeColor() {
     const light9Primary = useCssVar('--el-color-primary-light-9', elRoot)
     const light7Primary = useCssVar('--el-color-primary-light-7', elRoot)
     const light8Primary = useCssVar('--el-color-primary-light-8', elRoot)
-    light9Primary.value = '#242424' // transparent  #242424
+    light9Primary.value = '#111' // transparent  #242424
     light7Primary.value = '#4c4d4f'
     light8Primary.value = '#525252'
   }
