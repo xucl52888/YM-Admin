@@ -37,7 +37,6 @@
 </template>
 <script lang="ts" setup>
 import { onBeforeMount, ref, watch } from 'vue'
-import { Operation } from '@element-plus/icons-vue'
 import { Parent } from '@/interface/user'
 import router from '@/router'
 import { useRoute } from 'vue-router'
@@ -46,15 +45,13 @@ const route = useRoute()
 // 左侧菜单折叠发布事件
 import { useProjectSettingStore } from '@/store/projectSetting'
 const onIsCollapsed = () => useProjectSettingStore().setCollapsed()
-// 放弃了使用发布订阅方法
-// import emitter from '@/utils/mitt'
-// const onIsCollapsed = () => emitter.emit('on-isCollapsed')
 
 // 点击面包屑菜单
 const handleCommand = (item: any) => {
   if (item.path) router.push(item.path)
 }
 
+// 面包屑数据
 const breadList = ref<Parent[]>([])
 const getBreadcrumb = () => {
   let matched: Parent[] = route.meta.breadcrumb as Parent[]
@@ -70,5 +67,9 @@ onBeforeMount(() => {
 watch(route, () => {
   getBreadcrumb()
 })
+
+// 放弃了使用发布订阅方法
+// import emitter from '@/utils/mitt'
+// const onIsCollapsed = () => emitter.emit('on-isCollapsed')
 </script>
 <style lang="scss" scoped></style>

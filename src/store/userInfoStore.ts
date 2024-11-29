@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-import { getInfo } from '@/api/user'
 
-export const userStore = defineStore('userId', {
+export const userInfoStore = defineStore('userId', {
   state: () => ({
     token: '',
     rolePerm: '',
@@ -10,9 +9,7 @@ export const userStore = defineStore('userId', {
     setToken(token: string) {
       this.token = token
     },
-    async getUserInfo() {
-      const res = await getInfo()
-    },
+    async setUserInfo() {},
   },
   getters: {
     getToken(): string {

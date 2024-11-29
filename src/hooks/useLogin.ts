@@ -2,23 +2,25 @@
 import router from '@/router'
 
 //store
-import { userStore } from '@/store/userStore'
+import { userInfoStore } from '@/store/userInfoStore'
 import { useMenuStore } from '@/store/useMenuStore'
 
-import { storage } from '@/utils/Storage'
+import { getUserMenu } from '@/api/user'
+import { getInfo } from '@/api/user'
+import { initRouter } from '@/hooks/useInitTouter'
 
 const useLogin = async (res) => {
   //1. 持久化存储token
   const token = res.token
-  const ex = 7 * 24 * 60 * 60
-  storage.set('TOKEN', token || '', ex)
-  userStore().setToken(token)
+  userInfoStore().setToken(token)
 
   //2. 获取用户信息
-  await userStore().getUserInfo()
+  await getInfo({ userId: userInfoStore().rolePerm })
 
   //3. 获取路由
-  await useMenuStore().getMenu()
+  const data = await getUserMenu({ userId: userInfoStore().rolePerm })
+  await useMenuStore().setMenu(data)
+  await initRouter()
 
   //4. 跳转后台管理系统首页
   router.push('/home')

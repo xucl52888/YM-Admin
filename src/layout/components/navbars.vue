@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="flex items-center justify-between"> -->
   <div class="grid grid-cols-6 gap-1">
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
@@ -70,7 +69,7 @@
 import { ref } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { userStore } from '@/store/userStore'
+import { userInfoStore } from '@/store/userInfoStore'
 import { storage } from '@/utils/Storage'
 import router from '@/router'
 import { useRouter } from 'vue-router'
@@ -147,8 +146,8 @@ const onLoginOut = () => {
         type: 'success',
         message: '退出登录',
       })
-      storage.set('TOKEN', '')
-      userStore().setToken('')
+      storage.clear()
+      userInfoStore().setToken('')
       router.replace({
         path: '/login',
       })
@@ -162,8 +161,4 @@ const onLoginOut = () => {
 }
 </script>
 
-<style scoped lang="scss">
-.a {
-  width: 100px;
-}
-</style>
+<style scoped lang="scss"></style>

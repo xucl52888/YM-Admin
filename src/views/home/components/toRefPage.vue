@@ -23,8 +23,8 @@ const onSetText1 = () => {
 }
 
 const text3 = reactive({ name: 'hello', age: 18 })
-console.log('toRaw', text3)
-console.log('toRaw', toRaw(text3)) // toRaw 可以将响应式对象转换为普通对象
+// console.log('toRaw', text3)
+// console.log('toRaw', toRaw(text3)) // toRaw 可以将响应式对象转换为普通对象
 </script>
 
 <style scoped lang="scss"></style>

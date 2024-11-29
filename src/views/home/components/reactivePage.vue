@@ -21,8 +21,8 @@ const onSetText1 = () => {
   text1.age = 22 // 可以正常更新视图
 
   // text1 = { name: 'world', age: 22 } // 不能直接赋值，否则会破坏响应式对象，失去响应式
-  console.log('isReactive---text1', isReactive(text1)) // true
-  console.log('text1', text1)
+  // console.log('isReactive---text1', isReactive(text1)) // true
+  // console.log('text1', text1)
 }
 
 /**
@@ -30,7 +30,7 @@ const onSetText1 = () => {
  * 会被响应式代理，但是不能修改
  */
 const readonlyText1 = readonly(text1) // 将响应式对象转换为只读对象
-console.log(readonlyText1) // readonly({ name: 'hello', age: 18 })
+// console.log(readonlyText1) // readonly({ name: 'hello', age: 18 })
 
 /**
  * shallowReactive：浅层响应式，只对对象的第一层属性进行响应式处理，如果对象的属性是对象，那么这个属性不会变成响应式对象
@@ -41,8 +41,8 @@ const onSetText2 = () => {
   // text2.age = 22 // 可以正常更新视图
   text2.obj.name = 'world' // 不会更新视图，因为 obj 不是一个响应式对象,但会被其他响应式影响
   // text2 = { name: 'world', age: 22 } // 不能直接赋值，否则会破坏响应式对象，失去响应式
-  console.log('isReactive---text2', isReactive(text2)) // true
-  console.log('text2', text2)
+  // console.log('isReactive---text2', isReactive(text2)) // true
+  // console.log('text2', text2)
 }
 
 /**

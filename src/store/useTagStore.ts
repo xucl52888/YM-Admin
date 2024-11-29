@@ -24,7 +24,7 @@ export const useTagStore = defineStore('tagId', {
     },
     //添加标签
     pushViewTags(route: ITagRoute) {
-      let target = this.viewTags.find((item) => item.path == route.path) as ITagRoute
+      let target = this.viewTags.find((item) => item.path === route.path) as ITagRoute
       if (!target) {
         this.viewTags.push(route)
         this.keepAlive.push(route.name)

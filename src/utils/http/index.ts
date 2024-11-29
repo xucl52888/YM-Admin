@@ -2,6 +2,8 @@ import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import { AxiosCanceler } from './axiosCancel'
 import transformRequestData from './transformRequestData'
 import responseInterceptorsCatch from './responseInterceptorsCatch'
+import { userInfoStore } from '@/store/userInfoStore'
+
 import { isFunction } from '@/utils/is'
 
 // 创建axios实例
@@ -13,7 +15,7 @@ const axiosCanceler = new AxiosCanceler()
 // 请求拦截器
 axiosInstance.interceptors.request.use(
   function (config: AxiosRequestConfig): any {
-    const token: string | null = localStorage.getItem('TOKEN')
+    const token: string | null = userInfoStore().getToken
     if (token) config.headers['Authorization'] = token
 
     // 添加请求

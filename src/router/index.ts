@@ -15,6 +15,28 @@ const routes: RouteRecordRaw[] = [
     name: 'login',
     component: () => import('@/views/login/index.vue'),
   },
+  // {
+  //   path: '/:path(.*)*',
+  //   name: '404',
+  //   component: () => import('@/layout/index.vue'),
+  //   children: [
+  //     {
+  //       path: '/:path(.*)*',
+  //       name: '404',
+  //       component: import('@/views/exception/404.vue'),
+  //       meta: {
+  //         title: '404',
+  //         affix: false,
+  //         breadcrumb: [
+  //           {
+  //             path: '/404',
+  //             name: '404',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   ],
+  // },
 ]
 const router = createRouter({
   // history: createWebHistory(),  // 路由History模式

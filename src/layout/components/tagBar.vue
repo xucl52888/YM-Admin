@@ -209,7 +209,7 @@ watch(
       tagStore.pushViewTags(currentTag)
     }
   },
-  { immediate: true },
+  { immediate: true }, // 立即执行
 )
 </script>
 

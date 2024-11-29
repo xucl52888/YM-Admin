@@ -28,8 +28,8 @@ const text1 = ref({ name: 'hello' })
 const onSetText1 = () => {
   // text1.value = { name: 'world' } // 可以正常更新视图
   text1.value.name = 'world' // 可以正常更新视图
-  console.log('isRef---text1', isRef(text1)) // true
-  console.log('text1', text1)
+  // console.log('isRef---text1', isRef(text1)) // true
+  // console.log('text1', text1)
 }
 /**
  * shallowRef：浅层响应式，只对对象的第一层属性进行响应式处理
@@ -41,8 +41,8 @@ const onSetText2 = () => {
   // text2.value = { name: 'world' } // 可以正常更新视图 浅层响应式，只对对象的第一层属性进行响应式处理
   text2.value.name = 'world' // 不会触发视图更新，当页面有ref时，会触发triggerRef，所以可以正常更新视图
   triggerRef(text2) // 使用triggerRef手动触发更新
-  console.log('isRef---text2', isRef(text2)) // true
-  console.log('text2', text2)
+  // console.log('isRef---text2', isRef(text2)) // true
+  // console.log('text2', text2)
 }
 
 /**
@@ -69,8 +69,8 @@ const onSetText3 = () => {
   // text3.value = { name: 'world' } // 可以正常更新视图
   text3.value.name = 'world' // 不会触发视图更新，当页面有ref时，会触发triggerRef，所以可以正常更新视图
   triggerRef(text2) // 使用triggerRef手动触发更新
-  console.log('isRef---text3', isRef(text3)) // true
-  console.log('text3', text3)
+  // console.log('isRef---text3', isRef(text3)) // true
+  // console.log('text3', text3)
 }
 
 /**
@@ -79,7 +79,7 @@ const onSetText3 = () => {
 const input = ref('我是dom，点击获取')
 const domTag = ref<HTMLDivElement>(null)
 const onGetDom = () => {
-  console.log('domTag', domTag.value)
+  // console.log('domTag', domTag.value)
   domTag.value.focus() // 获取焦点
 }
 
