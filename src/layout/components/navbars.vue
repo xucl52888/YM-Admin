@@ -1,17 +1,9 @@
 <template>
-  <div class="grid grid-cols-6 gap-1">
+  <div class="grid grid-cols-4 gap-1">
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
         <el-icon :size="20" @click="reloadPage">
           <Refresh />
-        </el-icon>
-      </el-tooltip>
-    </div>
-    <div class="flex cursor-pointer items-center">
-      <el-tooltip class="box-item" effect="dark" :content="useProjectSetting?.elementTheme === 'dark' ? '浅色主题' : '深色主图'" placement="bottom">
-        <el-icon :size="20" @click="handleThemeSwitch($event)">
-          <Sunny v-if="useProjectSetting?.elementTheme === 'dark'" />
-          <Moon v-else />
         </el-icon>
       </el-tooltip>
     </div>
@@ -24,32 +16,9 @@
       </el-tooltip>
     </div>
     <div class="flex items-center">
-      <el-tooltip class="box-item" effect="dark" content="设置主题色" placement="bottom">
-        <div>
-          <el-color-picker v-model="themeColor" :predefine="predefineColors" @change="changeThemeColor" />
-        </div>
-      </el-tooltip>
-    </div>
-    <div class="flex items-center">
-      <el-dropdown placement="bottom-end" size="large">
-        <el-icon :size="20">
-          <Setting />
-        </el-icon>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item
-              :disabled="useProjectSettingStore().navigationBarMode === 'leftMenu'"
-              @click="useProjectSettingStore().setNavigationBarMode('leftMenu')"
-              >左侧菜单模式</el-dropdown-item
-            >
-            <el-dropdown-item
-              :disabled="useProjectSettingStore().navigationBarMode === 'topMenu'"
-              @click="useProjectSettingStore().setNavigationBarMode('topMenu')"
-              >顶部菜单模式</el-dropdown-item
-            >
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <el-icon :size="20" @click="openDrawer">
+        <Setting />
+      </el-icon>
     </div>
     <div class="flex items-center">
       <el-dropdown placement="bottom-end" size="large">
@@ -66,15 +35,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { inject } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { userInfoStore } from '@/store/userInfoStore'
-import { storage } from '@/utils/Storage'
 import router from '@/router'
 import { useRouter } from 'vue-router'
-import { useThemeSwitcher } from '@/hooks/useThemeSwitcher'
-import { useThemeColor } from '@/hooks/useThemeSwitcher'
 import { useProjectSettingStore } from '@/store/projectSetting'
 const useProjectSetting = useProjectSettingStore()
 
@@ -91,12 +57,14 @@ const toggleFullScreen = () => {
 }
 
 // 刷新页面
+const reload = inject('reload', () => {})
 const reloadPage = () => {
   console.log(routera.getRoutes(), '路由')
-  // router.push({
-  //   path: '/redirect' + unref(route).fullPath,
-  // })
+  reload()
 }
+
+// 抽屉
+const openDrawer = inject('openDrawer', () => {})
 
 // 个人中心
 const onPersonalCenter = () => {
@@ -104,34 +72,6 @@ const onPersonalCenter = () => {
     type: 'success',
     message: '个人中心',
   })
-}
-
-//换肤
-const { changeThemeWithTransition } = useThemeSwitcher()
-const handleThemeSwitch = (e) => {
-  changeThemeWithTransition(e)
-}
-
-// 设置主题色
-const { setDarkThemeColor, setThemeColor } = useThemeColor()
-let themeColor = ref(useProjectSetting.themeColor)
-const predefineColors = ref(['#409eff', '#009688', '#ff5c93', '#ee4f12', '#9c27b0', '#ff0000', '#42b883', '#C62549', '#BA5322', '#27B0B0'])
-
-const changeThemeColor = (color: string) => {
-  if (color) {
-    useProjectSetting.setThemeColor(color)
-    setThemeColor(color)
-    if (useProjectSetting.elementTheme === 'dark') {
-      setDarkThemeColor()
-    }
-  } else {
-    themeColor.value = '#409eff'
-    useProjectSetting.setThemeColor('#409eff')
-    setThemeColor('#409eff')
-    if (useProjectSetting.elementTheme === 'dark') {
-      setDarkThemeColor()
-    }
-  }
 }
 
 // 退出登录
@@ -146,11 +86,11 @@ const onLoginOut = () => {
         type: 'success',
         message: '退出登录',
       })
-      storage.clear()
       userInfoStore().setToken('')
-      router.replace({
-        path: '/login',
-      })
+      // router.replace({
+      //   path: '/login',
+      // })
+      router.push('/login')
     })
     .catch(() => {
       ElMessage({

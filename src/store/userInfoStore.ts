@@ -9,7 +9,7 @@ export const userInfoStore = defineStore('userId', {
     setToken(token: string) {
       this.token = token
     },
-    async setUserInfo() {},
+    setUserInfo() {},
   },
   getters: {
     getToken(): string {

@@ -1,7 +1,7 @@
 <template>
   <el-container class="layout-container" style="height: 100vh">
     <!--  -->
-    <el-aside class="layout-content-sidebar" style="width: auto" v-if="useProjectSettingStore()?.navigationBarMode === 'leftMenu'">
+    <el-aside class="layout-content-sidebar" style="width: auto" v-if="useProjectSetting?.navigationBarMode === 'leftMenu'">
       <Sidebar></Sidebar>
     </el-aside>
 
@@ -10,40 +10,46 @@
       <el-header class="layout-content-header">
         <Header></Header>
       </el-header>
-      <div class="layout-content-tagbar">
+      <div class="layout-content-tagbar" v-show="useProjectSetting?.showTags">
         <tag-bar></tag-bar>
       </div>
       <!--  -->
       <el-main>
-        <!-- <div
-          class="layout-content-tagbar fixed z-50 transition-all"
-          :style="{ width: `calc(100vw - ${menuWidth} - 10px)`, left: `calc(1px + ${menuWidth})`, 'transition-duration': '450ms' }"
-        >
-          <tag-bar></tag-bar>
-        </div> -->
-        <Content></Content>
+        <Content :class="useProjectSetting?.showTags ? '' : 'pt-6'" :isRouterAlive="isRouterAlive"></Content>
       </el-main>
     </el-container>
   </el-container>
+  <!-- 设置抽屉 -->
+  <el-drawer v-model="drawer" :with-header="false" direction="rtl" :show-close="false" size="300px" custom-class="drawer-box">
+    <div class="text-16px pb-2 text-center font-bold">主题设置</div>
+    <Drawer></Drawer>
+  </el-drawer>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { ref, nextTick, provide } from 'vue'
 import Sidebar from './sidebar/index.vue'
 import Header from './header/index.vue'
 import Content from './content/index.vue'
 import TagBar from './components/tagBar.vue'
+import Drawer from './components/Drawer.vue'
 import { useProjectSettingStore } from '@/store/projectSetting'
+const useProjectSetting = useProjectSettingStore()
 
-const menuWidth = computed(() => {
-  if (useProjectSettingStore().navigationBarMode === 'leftMenu') {
-    if (useProjectSettingStore().collapsed) {
-      return '64px'
-    } else {
-      return '200px'
-    }
-  } else return '0px'
-})
+const isRouterAlive = ref(true)
+const reload = () => {
+  isRouterAlive.value = false
+  nextTick(() => {
+    isRouterAlive.value = true
+  })
+}
+provide('reload', reload)
+
+const drawer = ref(false)
+const openDrawer = () => {
+  drawer.value = true
+}
+provide('openDrawer', openDrawer)
 </script>
 
 <style lang="scss" scoped>

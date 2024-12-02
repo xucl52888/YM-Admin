@@ -1,6 +1,6 @@
 <template>
   <!-- logo -->
-  <div class="layout-content-sidebar-logo flex h-16 items-center justify-center">
+  <div class="layout-content-sidebar-logo flex h-16 items-center justify-center" v-if="useProjectSetting.showLogo">
     <logo-avatar></logo-avatar>
   </div>
   <!-- 菜单 -->
@@ -12,6 +12,8 @@
 <script lang="ts" setup>
 import navMenu from '../components/navMenu.vue'
 import logoAvatar from '../components/logoAvatar.vue'
+import { useProjectSettingStore } from '@/store/projectSetting'
+const useProjectSetting = useProjectSettingStore()
 </script>
 
 <style scoped lang="scss">

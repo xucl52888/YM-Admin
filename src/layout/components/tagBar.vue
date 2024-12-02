@@ -1,9 +1,9 @@
 <template>
   <div class="relative px-6">
     <!--  -->
-    <div class="flex-shrink flex-grow overflow-hidden">
+    <div class="flex-shrink flex-grow overflow-hidden pr-6">
       <el-scrollbar ref="scrollbar" @scroll="handleScroll" :min-size="50" always>
-        <div class="flex h-12 items-center">
+        <div class="flex h-12 items-center pb-1">
           <el-button
             @click="onTagBar(item)"
             v-for="item in viewTags"
@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onBeforeUnmount, ref, reactive, watch, nextTick } from 'vue'
+import { onMounted, onBeforeUnmount, ref, reactive, watch, nextTick, inject } from 'vue'
 // 滚动条ref
 const scrollbar = ref(null)
 // 需要滚动的距离
@@ -182,7 +182,10 @@ const closeTag = (tag: ITagRoute) => {
   }
 }
 // 刷新页面
-const reloadPage = () => {}
+const reload = inject('reload', () => {})
+const reloadPage = () => {
+  reload()
+}
 // 关闭当前
 const removeTab = (val) => {
   closeTag(val)

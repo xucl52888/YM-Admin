@@ -2,11 +2,11 @@
   <div class="flex items-center">
     <!-- 左侧菜单折叠按钮 -->
     <el-icon :size="20" @click="onIsCollapsed" class="mr-4 cursor-pointer">
-      <Expand v-if="useProjectSettingStore()?.collapsed" />
+      <Expand v-if="useProjectSetting?.collapsed" />
       <Fold v-else />
     </el-icon>
     <!-- 面包屑 -->
-    <el-breadcrumb separator="/">
+    <el-breadcrumb v-if="useProjectSetting?.showBreadcrumb" separator="/">
       <template v-for="(item, index) in breadList" :key="item.path">
         <el-breadcrumb-item v-if="item.path != '/'" :key="item.path">
           <!-- 有二级菜单 -->
@@ -42,9 +42,11 @@ import router from '@/router'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
-// 左侧菜单折叠发布事件
 import { useProjectSettingStore } from '@/store/projectSetting'
-const onIsCollapsed = () => useProjectSettingStore().setCollapsed()
+const useProjectSetting = useProjectSettingStore()
+
+// 左侧菜单折叠发布事件
+const onIsCollapsed = () => useProjectSetting.setCollapsed()
 
 // 点击面包屑菜单
 const handleCommand = (item: any) => {

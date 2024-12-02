@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-16 items-center justify-between px-6">
-    <div v-if="useProjectSettingStore()?.navigationBarMode === 'topMenu'" class="flex flex-1 items-center">
-      <logo-avatar class="mr-6"></logo-avatar>
+    <div v-if="useProjectSetting?.navigationBarMode === 'topMenu'" class="flex flex-1 items-center">
+      <logo-avatar class="mr-6" v-if="useProjectSetting?.showLogo"></logo-avatar>
       <nav-menu mode="horizontal"></nav-menu>
     </div>
     <!-- 面包屑 -->
@@ -17,6 +17,7 @@ import navbars from '../components/navbars.vue'
 import navMenu from '../components/navMenu.vue'
 import logoAvatar from '../components/logoAvatar.vue'
 import { useProjectSettingStore } from '@/store/projectSetting'
+const useProjectSetting = useProjectSettingStore()
 </script>
 
 <style scoped lang="scss"></style>
