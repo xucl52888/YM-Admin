@@ -11,8 +11,8 @@
         <el-breadcrumb-item v-if="item.path != '/'" :key="item.path">
           <!-- 有二级菜单 -->
           <el-dropdown placement="bottom" size="large" v-if="item.children && item.children.length > 0" @command="handleCommand">
-            <span>
-              <el-icon>
+            <span class="flex items-center">
+              <el-icon v-if="useProjectSetting.showBreadcrumbIcon" class="mr-1">
                 <component :is="item.meta?.icon.replace('el-icon-', '')" />
               </el-icon>
               {{ item.meta?.title }}
@@ -25,10 +25,12 @@
           </el-dropdown>
           <!-- 无二级菜单 -->
           <template v-else>
-            <el-icon>
-              <component :is="item.meta?.icon.replace('el-icon-', '')" />
-            </el-icon>
-            {{ item.meta?.title }}
+            <span class="flex items-center">
+              <el-icon v-if="useProjectSetting.showBreadcrumbIcon" class="mr-1">
+                <component :is="item.meta?.icon.replace('el-icon-', '')" />
+              </el-icon>
+              {{ item.meta?.title }}
+            </span>
           </template>
         </el-breadcrumb-item>
       </template>

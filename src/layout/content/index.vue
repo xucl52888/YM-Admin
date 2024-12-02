@@ -2,25 +2,30 @@
   <el-scrollbar>
     <div class="px-6 pb-6">
       <!--  -->
-      <router-view v-if="isRouterAlive" v-slot="{ Component, route }">
-        <!-- <transition name="zoom-fade" mode="out-in" appear> -->
-        <keep-alive :include="tagStore.keepAlive">
-          <component :is="Component" :key="route.fullPath"></component>
-        </keep-alive>
-        <!-- </transition> -->
-      </router-view>
+      <RouterView v-if="isRouterAlive" v-slot="{ Component, route }">
+        <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType" appear>
+          <KeepAlive :include="tagStore.keepAlive">
+            <component :is="Component" :key="route.fullPath"></component>
+          </KeepAlive>
+        </transition>
+      </RouterView>
     </div>
   </el-scrollbar>
 </template>
 
 <script lang="ts" setup>
+import { defineProps, watchEffect } from 'vue'
+import { RouterView } from 'vue-router'
 import { useTagStore } from '@/store/useTagStore'
-const props = defineProps({
+import { useProjectSettingStore } from '@/store/projectSetting'
+const useProjectSetting = useProjectSettingStore()
+defineProps({
   isRouterAlive: {
     type: Boolean,
     default: true,
   },
 })
+watchEffect(() => {})
 
 const tagStore = useTagStore()
 </script>

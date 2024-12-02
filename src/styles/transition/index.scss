@@ -1,0 +1,13 @@
+@import url('./base.scss');
+@import url('./fade.scss');
+@import url('./scale.scss');
+@import url('./slide.scss');
+@import url('./scroll.scss');
+@import url('./zoom.scss');
+
+.collapse-transition {
+  transition:
+    0.2s height ease-in-out,
+    0.2s padding-top ease-in-out,
+    0.2s padding-bottom ease-in-out;
+}

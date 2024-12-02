@@ -10,9 +10,9 @@
         </el-icon>
       </div>
     </div>
-    <!-- 系统主题 -->
+    <!-- 系统主题色 -->
     <div>
-      <el-divider content-position="center">系统主题</el-divider>
+      <el-divider content-position="center">系统主题色</el-divider>
       <div class="flex items-center justify-center">
         <el-color-picker v-model="themeColor" :predefine="predefineColors" @change="changeThemeColor" />
       </div>
@@ -74,9 +74,29 @@
           <span>显示多页签</span>
           <el-switch v-model="useProjectSetting.showTags" />
         </div>
-        <div class="flex items-center justify-between">
+        <div class="mb-2 flex items-center justify-between">
           <span>显示面包屑</span>
           <el-switch v-model="useProjectSetting.showBreadcrumb" />
+        </div>
+        <div class="flex items-center justify-between">
+          <span>显示面包屑图标</span>
+          <el-switch v-model="useProjectSetting.showBreadcrumbIcon" />
+        </div>
+      </div>
+    </div>
+    <!-- 动画 -->
+    <div>
+      <el-divider content-position="center">界面功能</el-divider>
+      <div class="flex flex-col">
+        <div class="mb-2 flex items-center justify-between">
+          <span>禁用动画</span>
+          <el-switch v-model="useProjectSetting.isPageAnimate" />
+        </div>
+        <div class="flex items-center justify-between">
+          <span>动画类型</span>
+          <el-select v-model="useProjectSetting.pageAnimateType" placeholder="Select" size="large" style="width: 100px">
+            <el-option v-for="item in animates" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </div>
       </div>
     </div>
@@ -89,6 +109,15 @@ import { useThemeSwitcher } from '@/hooks/useThemeSwitcher'
 import { useThemeColor } from '@/hooks/useThemeSwitcher'
 import { useProjectSettingStore } from '@/store/projectSetting'
 const useProjectSetting = useProjectSettingStore()
+
+const animates = [
+  { value: 'zoom-fade', label: '渐变' },
+  { value: 'zoom-out', label: '闪现' },
+  { value: 'fade-slide', label: '滑动' },
+  { value: 'fade', label: '消退' },
+  { value: 'fade-bottom', label: '底部消退' },
+  { value: 'fade-scale', label: '缩放消退' },
+]
 
 //换肤
 const { changeThemeWithTransition } = useThemeSwitcher()

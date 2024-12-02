@@ -11,6 +11,9 @@ export const useProjectSettingStore = defineStore({
     showLogo: true, // 显示logo
     showTags: true, // 显示标签页
     showBreadcrumb: true, // 显示面包屑
+    showBreadcrumbIcon: true, // 显示面包屑图标
+    isPageAnimate: true, // 是否开启页面动画
+    pageAnimateType: 'zoom-fade', // 动画类型
   }),
   getters: {
     // 菜单折叠

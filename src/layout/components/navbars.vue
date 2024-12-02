@@ -1,25 +1,29 @@
 <template>
   <div class="grid grid-cols-4 gap-1">
+    <!-- 刷新 -->
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
-        <el-icon :size="20" @click="reloadPage">
+        <el-icon :size="20" @click="reloadPage" class="cursor-pointer">
           <Refresh />
         </el-icon>
       </el-tooltip>
     </div>
+    <!-- 放大缩小 -->
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" :content="useProjectSetting?.fullScreen ? '缩小' : '放大'" placement="bottom">
-        <el-icon :size="20" @click="toggleFullScreen">
+        <el-icon :size="20" @click="toggleFullScreen" class="cursor-pointer">
           <Aim v-if="useProjectSetting?.fullScreen" />
           <FullScreen v-else />
         </el-icon>
       </el-tooltip>
     </div>
+    <!-- 设置 -->
     <div class="flex items-center">
-      <el-icon :size="20" @click="openDrawer">
+      <el-icon :size="20" @click="openDrawer" class="cursor-pointer">
         <Setting />
       </el-icon>
     </div>
+    <!-- 头像 -->
     <div class="flex items-center">
       <el-dropdown placement="bottom-end" size="large">
         <el-avatar :size="40" :src="logoImgUrl" />
