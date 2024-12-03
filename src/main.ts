@@ -6,9 +6,8 @@ import router from './router'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-// element图标
-import 'element-plus/dist/index.css'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import 'element-plus/dist/index.css' // element css
+import * as ElementPlusIconsVue from '@element-plus/icons-vue' // element图标
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn' // element 中文
 import 'element-plus/theme-chalk/dark/css-vars.css' // 暗黑模式

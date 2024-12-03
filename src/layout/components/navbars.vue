@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 gap-1">
+  <el-space size="large">
     <!-- 刷新 -->
     <div class="flex items-center">
       <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
@@ -35,7 +35,7 @@
         </template>
       </el-dropdown>
     </div>
-  </div>
+  </el-space>
 </template>
 
 <script lang="ts" setup>
