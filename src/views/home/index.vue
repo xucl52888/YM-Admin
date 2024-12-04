@@ -7,6 +7,7 @@
     <el-button type="primary" @click="onblur">失去焦点</el-button>
     <el-button type="primary" @click="onClear">清空inout值</el-button>
     <el-button type="primary" @click="size === 'large' ? (size = 'small') : (size = 'large')">改变size</el-button>
+    <el-button type="primary" @click="oneInput.appendCenter('触发了子组件自己声明的方法')">触发子组件声明的方法</el-button>
   </el-card>
   <el-card class="rounded-xl0 mb-6">
     <ref-page></ref-page>

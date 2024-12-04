@@ -14,6 +14,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css' // 暗黑模式
 
 // 按需引入echarts
 import { setupEcharts } from './plugins/echarts'
+import { setupDirectives } from './plugins/directives'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -29,6 +30,9 @@ async function bootstrap() {
   }
   // echarts
   setupEcharts(app)
+
+  // 注册全局自定义指令，如：v-permission权限指令
+  setupDirectives(app)
 
   // router
   app.use(router)

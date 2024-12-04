@@ -48,9 +48,9 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
 const form = reactive({
-  bigSize: '',
-  smallSize: '',
-  watermarkTransparency: '',
+  bigSize: '500*500',
+  smallSize: '100*100',
+  watermarkTransparency: '0.5',
   watermarkPosition: 'center',
   pricePrecisionDigits: 'two',
   pricePrecisionMethod: 'rounding',

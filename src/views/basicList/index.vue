@@ -22,14 +22,14 @@
       <el-table-column type="index" label="#" width="50" />
       <el-table-column prop="brand" label="品牌" width="180" />
       <el-table-column prop="name" label="商品名称" width="180" />
-      <el-table-column prop="length" label="长度" width="100" />
-      <el-table-column prop="width" label="宽度" width="100" />
-      <el-table-column prop="height" label="高度" width="100" />
-      <el-table-column prop="heatDissipation" label="CPU散热器限高" width="180" />
-      <el-table-column prop="gpuLength" label="显卡限长" width="180" />
-      <el-table-column prop="price" label="价格" width="180" />
+      <el-table-column prop="length" label="长度" width="80" />
+      <el-table-column prop="width" label="宽度" width="80" />
+      <el-table-column prop="height" label="高度" width="80" />
+      <el-table-column prop="heatDissipation" label="CPU散热器限高" width="150" />
+      <el-table-column prop="gpuLength" label="显卡限长" width="80" />
+      <el-table-column prop="price" label="价格" width="80" />
       <el-table-column prop="type" label="类型" width="180" />
-      <el-table-column prop="describe" label="描述" />
+      <el-table-column prop="describe" label="描述" min-width="350" />
     </el-table>
   </el-card>
 </template>

@@ -35,10 +35,10 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
 const form = reactive({
-  name: '',
-  number: '',
-  iphone: '',
-  desc: '',
+  name: 'YM-Admin',
+  number: '粤ICP备20230xxx号-1',
+  iphone: '15xxxxxx',
+  desc: '深圳市xxxx',
   resource: 'TRUE',
   delivery: false,
   tips: '网站维护中，暂时无法访问！本网站正在进行系统维护和技术升级，网站暂时无法访问，敬请谅解！',

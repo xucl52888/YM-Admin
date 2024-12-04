@@ -3,7 +3,7 @@
     <div class="px-6 pb-6">
       <!--  -->
       <RouterView v-if="isRouterAlive" v-slot="{ Component, route }">
-        <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType" appear>
+        <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType">
           <KeepAlive :include="tagStore.keepAlive">
             <component :is="Component" :key="route.fullPath"></component>
           </KeepAlive>

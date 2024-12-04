@@ -16,5 +16,12 @@ const emit = defineEmits(['returnRef'])
 onMounted(() => {
   emit('returnRef', inputOne)
 })
+const appendCenter = (val: string) => {
+  input.value += val
+}
+// 需要通过defineExpose暴露出去才能被父组件调用
+defineExpose({
+  appendCenter,
+})
 </script>
 <style lang="scss" scoped></style>

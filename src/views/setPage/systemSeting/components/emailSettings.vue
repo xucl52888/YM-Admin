@@ -13,7 +13,7 @@
       <el-input v-model="form.name" />
     </el-form-item>
     <el-form-item label="SMTP密码" prop="password">
-      <el-input v-model="form.password" />
+      <el-input v-model="form.password" type="password" />
     </el-form-item>
     <el-form-item label="邮件测试" prop="resource">
       <el-button type="primary" bg text>邮件测试</el-button>
@@ -29,11 +29,11 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
 const form = reactive({
-  email: '',
-  serverAddress: '',
-  serverPort: '',
-  name: '',
-  password: '',
+  email: 'xxx@xxx.com',
+  serverAddress: '127.0.0.0',
+  serverPort: '8080',
+  name: 'XSDSDF',
+  password: '12313132',
 })
 interface RuleForm {
   email: string

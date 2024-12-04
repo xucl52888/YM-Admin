@@ -23,10 +23,10 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
 const form = reactive({
-  name: '',
-  email: '',
-  iphone: '',
-  desc: '',
+  name: 'YM-Admin',
+  email: 'xxx@qq.com',
+  iphone: '15xxxxx',
+  desc: '深圳市xxxxx',
 })
 interface RuleForm {
   name: string
