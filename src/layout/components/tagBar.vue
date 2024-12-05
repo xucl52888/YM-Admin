@@ -1,5 +1,5 @@
 <template>
-  <div class="relative px-6">
+  <div class="relative px-6 py-1">
     <!--  -->
     <div class="flex-shrink flex-grow overflow-hidden pr-6">
       <el-scrollbar ref="scrollbar" @scroll="handleScroll" :min-size="50" always>
