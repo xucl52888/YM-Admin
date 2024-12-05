@@ -28,6 +28,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
   } else {
     console.log('is build')
   }
+  const prodMock = true
   return {
     plugins: [
       vue(),
@@ -39,8 +40,15 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
       }),
       // 配置mock
       viteMockServe({
-        mockPath: './mock/',
-        // supportTs: true, // 如果您的 Mock 数据文件是 TypeScript 文件，请设置为 true
+        mockPath: 'mock', // mock文件夹路径
+        localEnabled: command === 'serve', // 本地模式
+        prodEnabled: command !== 'serve' && prodMock, // 生产模式
+        // 如果需要在生成模式下使用需要注入代码，在src文件下创建 mockProdServer.ts 文件
+        injectCode: `
+          import { setupProdMockServer } from './mockProdServer';
+          setupProdMockServer();
+        `,
+        logger: false, // 是否打印日志
       }),
     ],
     // 全局变量

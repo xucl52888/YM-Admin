@@ -22,7 +22,7 @@ const throttle: Directive = {
     if (typeof binding.value !== 'function') {
       throw '回调必须是函数'
     }
-    let timer: NodeJS.Timeout | null = null // 定时器
+    let timer = null // 定时器
     el.__handleClick__ = function () {
       if (timer) clearTimeout(timer)
       if (!el.disabled) {

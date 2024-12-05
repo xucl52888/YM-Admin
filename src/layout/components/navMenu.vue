@@ -1,5 +1,11 @@
 <template>
-  <el-menu class="el-menu-vertical-demo" :default-active="route.path" :mode="props.mode" router :collapse="useProjectSettingStore()?.collapsed">
+  <el-menu
+    class="el-menu-vertical-demo"
+    :default-active="route.path"
+    :mode="props.mode === 'horizontal' ? 'horizontal' : 'vertical'"
+    router
+    :collapse="useProjectSettingStore()?.collapsed"
+  >
     <menu-tree :menu="useMenuStore().getMenu"></menu-tree>
   </el-menu>
 </template>

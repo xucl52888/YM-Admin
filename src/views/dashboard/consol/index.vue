@@ -1,6 +1,6 @@
 <template>
   <el-row :gutter="20">
-    <el-col :span="6" v-for="(item, index) in cardList" :key="item">
+    <el-col :span="6" v-for="(item, index) in cardList" :key="item.data">
       <el-card class="rounded-md" shadow="hover">
         <template #header>
           <div class="card-header flex justify-between">

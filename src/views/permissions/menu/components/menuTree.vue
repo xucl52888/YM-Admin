@@ -53,7 +53,7 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="resetForm(ruleFormRef)">重置</el-button>
-        <el-button type="primary" @click="onSubmit"> 提交 </el-button>
+        <el-button type="primary" @click="onSubmit(ruleFormRef)"> 提交 </el-button>
       </div>
     </template>
   </el-dialog>

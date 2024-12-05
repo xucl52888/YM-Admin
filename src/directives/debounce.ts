@@ -16,7 +16,7 @@ const debounce: Directive = {
     if (typeof binding.value !== 'function') {
       throw '回调必须是函数'
     }
-    let timer: NodeJS.Timeout | null = null // 定义定时器
+    let timer = null // 定义定时器
     el.__handleClick__ = function () {
       if (timer) clearInterval(timer) // 清除定时器
       timer = setTimeout(() => {
