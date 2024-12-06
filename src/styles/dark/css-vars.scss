@@ -8,19 +8,23 @@ html.dark {
     }
   }
   // layout 暗黑模式样式
-  .layout-content,
-  .layout-content-tagbar {
-    background-color: #121212;
+  .layout-content {
+    background-color: #14161a;
   }
   .layout-content-header,
-  .layout-content-sidebar {
-    background-color: #18181c;
+  .layout-content-sidebar,
+  .layout-content-tagbar {
+    background-color: #1c1e23;
   }
   .layout-content-sidebar {
-    border-right: 1px solid #393939;
+    border-right: 1px solid #36363a;
+    box-sizing: border-box;
   }
-  .layout-content-sidebar-logo {
-    border-bottom: 1px solid #393939;
+  .layout-content-header {
+    border-bottom: 1px solid #36363a;
   }
   /** layout 暗黑模式样式end **/
+  .bars-hover:hover {
+    background-color: #36363a;
+  }
 }

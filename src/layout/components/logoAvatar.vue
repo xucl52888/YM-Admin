@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center gap-2" @click="onIsCollapsed">
+  <div class="flex items-center justify-center gap-2">
     <!-- <el-avatar :src="logoImgUrl"/> -->
     <img :src="logoImgUrl" alt="" width="30" height="30" class="logoImg" />
     <div class="text-lg font-bold" v-show="!useProjectSettingStore()?.collapsed && useProjectSettingStore()?.navigationBarMode === 'leftMenu'">
@@ -11,8 +11,6 @@
 <script lang="ts" setup>
 import logoImgUrl from '@/assets/logo.svg'
 import { useProjectSettingStore } from '@/store/projectSetting'
-
-const onIsCollapsed = () => useProjectSettingStore().setCollapsed()
 </script>
 
 <style scoped lang="scss">

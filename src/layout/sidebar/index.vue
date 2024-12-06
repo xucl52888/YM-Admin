@@ -1,6 +1,6 @@
 <template>
   <!-- logo -->
-  <div class="layout-content-sidebar-logo flex h-16 items-center justify-center" v-if="useProjectSetting.showLogo">
+  <div class="flex h-16 items-center justify-center" v-if="useProjectSetting.showLogo">
     <logo-avatar></logo-avatar>
   </div>
   <!-- 菜单 -->
@@ -19,9 +19,5 @@ const useProjectSetting = useProjectSettingStore()
 <style scoped lang="scss">
 .el-scrollbar {
   height: auto;
-}
-.layout-content-sidebar-logo {
-  border-bottom: 1px solid #e0e0e0;
-  box-sizing: border-box;
 }
 </style>

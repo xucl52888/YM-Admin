@@ -1,21 +1,24 @@
 <template>
   <el-container class="layout-container" style="height: 100vh">
-    <!--  -->
-    <el-aside class="layout-content-sidebar" style="width: auto" v-if="useProjectSetting?.navigationBarMode === 'leftMenu'">
+    <!-- 菜单侧边栏 -->
+    <el-aside class="layout-content-sidebar px-2" style="width: auto" v-if="useProjectSetting?.navigationBarMode === 'leftMenu'">
       <Sidebar></Sidebar>
     </el-aside>
 
     <el-container class="layout-content">
-      <!--  -->
+      <!-- 头部 -->
       <el-header class="layout-content-header">
         <Header></Header>
       </el-header>
+
+      <!-- 标签页 -->
       <div class="layout-content-tagbar" v-show="useProjectSetting?.showTags">
         <tag-bar></tag-bar>
       </div>
-      <!--  -->
+
+      <!-- 主体区域 -->
       <el-main>
-        <Content :class="useProjectSetting?.showTags ? '' : 'pt-6'" :isRouterAlive="isRouterAlive"></Content>
+        <Content :isRouterAlive="isRouterAlive"></Content>
       </el-main>
     </el-container>
   </el-container>
@@ -60,15 +63,19 @@ provide('openDrawer', openDrawer)
   height: auto;
   padding: 0;
 }
-.layout-content,
-.layout-content-tagbar {
-  background-color: #f5f7f9;
+.layout-content {
+  background-color: #f1f3f6;
 }
-.layout-content-header {
+.layout-content-header,
+.layout-content-tagbar {
   background-color: #fff;
 }
 .layout-content-sidebar {
-  border-right: 1px solid #e0e0e0;
+  border-right: 1px solid #e4e4e7;
+  box-sizing: border-box;
+}
+.layout-content-header {
+  border-bottom: 1px solid #e4e4e7;
   box-sizing: border-box;
 }
 </style>

@@ -8,6 +8,8 @@
             @click="onTagBar(item)"
             v-for="item in viewTags"
             :key="item.path"
+            :text="isActive(item) ? false : true"
+            :bg="isActive(item) ? false : true"
             :type="isActive(item) ? 'primary' : ''"
             @contextmenu="handleContextMenu($event)"
           >

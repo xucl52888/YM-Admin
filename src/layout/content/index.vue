@@ -1,6 +1,6 @@
 <template>
   <el-scrollbar>
-    <div class="px-6 pb-6">
+    <div class="p-6">
       <!--  -->
       <RouterView v-if="isRouterAlive" v-slot="{ Component, route }">
         <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType">

@@ -11,6 +11,11 @@
   color: var(--el-color-primary);
 }
 
+.el-menu-item,
+.el-sub-menu__title {
+  border-radius: 8px;
+}
+
 // 顶部加载条
 .custom-loading-bar .el-loading-spinner {
   height: 4px;

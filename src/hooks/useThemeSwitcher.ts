@@ -57,9 +57,11 @@ export function useThemeColor() {
     const light9Primary = useCssVar('--el-color-primary-light-9', elRoot)
     const light7Primary = useCssVar('--el-color-primary-light-7', elRoot)
     const light8Primary = useCssVar('--el-color-primary-light-8', elRoot)
-    light9Primary.value = '#111' // transparent  #242424
+    const elBgColorOverlay = useCssVar('--el-bg-color-overlay', elRoot)
+    light9Primary.value = '#2e3033' // transparent  #242424
     light7Primary.value = '#4c4d4f'
     light8Primary.value = '#525252'
+    elBgColorOverlay.value = '#1c1e23'
   }
   // 动态修改主题色
   const setThemeColor = (color: string) => {
