@@ -45,17 +45,17 @@
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
       <el-tab-pane label="柱状图" name="second">
         <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-bar />
+          <chart-bar v-if="activeName === 'second'" />
         </el-card>
       </el-tab-pane>
       <el-tab-pane label="饼图" name="third">
         <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-pie />
+          <chart-pie v-if="activeName === 'third'" />
         </el-card>
       </el-tab-pane>
       <el-tab-pane label="折线图" name="fourth">
         <el-card style="border: 0" :body-style="{ padding: 0 }">
-          <chart-line />
+          <chart-line v-if="activeName === 'fourth'" />
         </el-card>
       </el-tab-pane>
     </el-tabs>
@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import chartPie from './components/chartPie.vue'
 import chartBar from './components/chartBar.vue'
@@ -153,9 +153,7 @@ const dataList = ref([
   },
 ])
 
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-  // console.log(tab, event)
-}
+const handleClick = (tab: TabsPaneContext, event: Event) => {}
 </script>
 
 <style scoped lang="scss"></style>

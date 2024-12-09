@@ -7,6 +7,8 @@ import { merge } from 'lodash' // 合并对象
 import ResizeListener from 'element-resize-detector' // 监听窗口的变化
 import { COLORSARRAY } from '../color' // 颜色数组
 import { BASEOPTIONS } from './defaultOptions' // 默认配置
+import { useProjectSettingStore } from '@/store/projectSetting'
+const useProjectSetting = useProjectSettingStore()
 
 // 导入全局挂载的echarts
 const echarts: any = inject('$echarts')
@@ -82,12 +84,16 @@ const assembleDataToOption = () => {
 let echartInstance: any = null // echart实例
 const updateChartView = () => {
   if (!chartRef.value) return
+  echartInstance = echarts.init(chartRef.value, useProjectSetting.elementTheme === 'dark' ? 'dark' : '') // 初始化echart实例
+  echartSetOption()
+}
+/**
+ * 根据配置项更新echart视图
+ */
+const echartSetOption = () => {
   const fullOption = assembleDataToOption()
-  // echartInstance = echarts.init(chartRef.value, 'dark') // 初始化echart实例
-  echartInstance = echarts.init(chartRef.value) // 初始化echart实例
   echartInstance.setOption(fullOption)
 }
-
 /**
  * 当窗口缩放时，echart动态调整自身大小
  */
@@ -97,6 +103,16 @@ const handleWindowResize = () => {
   }
 }
 
+// 监听element主题变化，当变化时更新echart视图
+watch(
+  () => useProjectSetting.elementTheme,
+  () => {
+    if (echartInstance) echartInstance.dispose() // 销毁实例
+    updateChartView()
+  },
+)
+
+// 监听chartRef的变化，当变化时更新echart视图
 onMounted(() => {
   updateChartView()
   // 增加事件监听 resize 监听window的窗口尺寸变化

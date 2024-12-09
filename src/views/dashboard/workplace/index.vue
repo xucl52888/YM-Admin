@@ -117,21 +117,22 @@
         </template>
         <div class="flex flex-col">
           <!--  -->
-          <template v-for="item in 7" :key="item">
+          <template v-for="(item, index) in dynamicList" :key="item">
             <el-card shadow="never" style="border: 0" :body-style="{ padding: '10px 20px' }">
               <div class="flex">
                 <div class="mr-3 flex items-center justify-center">
-                  <el-avatar :src="logoImgUrl" :size="40" />
+                  <!-- <el-avatar :src="logoImgUrl" :size="40" /> -->
+                  <el-avatar :src="`https://picsum.photos/id/25${index}/200/200`" :size="40" />
                 </div>
                 <div class="flex items-center">
                   <div class="flex flex-col">
-                    <div>刚才把工作台页面随便写了一些，凑合能看了！</div>
-                    <div class="mt-1 text-xs text-gray-500">2024-07-04 22:37:16。</div>
+                    <div>{{ item.content }}</div>
+                    <div class="mt-1 text-xs text-gray-500">{{ item.time }}</div>
                   </div>
                 </div>
               </div>
             </el-card>
-            <el-divider v-if="item !== 7" style="margin: 0" />
+            <el-divider v-if="index !== 7" style="margin: 0" />
           </template>
         </div>
       </el-card>
@@ -207,12 +208,42 @@
 import { ref } from 'vue'
 import logoImgUrl from '@/assets/logo.png'
 const nowDate = ref(new Date())
+// 动态列表
+const dynamicList = ref([
+  {
+    content: ' 今日提交 35 次，合并 12 个 Pull Requests！',
+    time: '2023-01-01 10:30:00',
+  },
+  {
+    content: '当前开发任务完成 80%，预计明日提交代码。',
+    time: '2023-03-12 12:40:00',
+  },
+  {
+    content: '今天已解决 5 个 Bug，剩余 3 个待修复。',
+    time: '2023-03-22 16:20:00',
+  },
+  {
+    content: '项目代码覆盖率提升至 90%，稳定性提升显著。',
+    time: '2023-04-08 15:32:00',
+  },
+  {
+    content: '本周共编写代码 40 小时，重构模块 10 小时。',
+    time: '2023-04-17 13:45:00',
+  },
+  {
+    content: '当前构建成功率 98%，最近一次构建成功！',
+    time: '2023-05-05 8:24:00',
+  },
+  {
+    content: '今天已审查 6 个代码提交，明日继续优化。',
+    time: '2023-06-01 20:50:00',
+  },
+])
 </script>
 
 <style scoped lang="scss">
 .project-card {
   margin-right: -6px;
-
   &-item {
     margin: -1px;
     width: 33.333333%;

@@ -1,6 +1,7 @@
 // 这里的数据会被深度合并
 const BASEOPTIONS = {
   backgroundColor: 'transparent',
+  width: '100%',
   title: {
     text: '数据',
     left: 'center',

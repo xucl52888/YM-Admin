@@ -19,10 +19,12 @@
     </div>
     <!-- 主题切换 -->
     <div class="bars-hover flex cursor-pointer items-center p-2" @click="handleThemeSwitch($event)">
-      <el-icon :size="20">
-        <Sunny v-if="useProjectSetting?.elementTheme === 'dark'" />
-        <Moon v-else />
-      </el-icon>
+      <el-tooltip class="box-item" effect="dark" content="主题切换" placement="bottom">
+        <el-icon :size="20">
+          <Sunny v-if="useProjectSetting?.elementTheme === 'dark'" />
+          <Moon v-else />
+        </el-icon>
+      </el-tooltip>
     </div>
     <!-- 设置 -->
     <div class="bars-hover flex cursor-pointer items-center p-2" @click="openDrawer">

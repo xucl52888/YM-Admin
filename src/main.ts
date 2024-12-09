@@ -1,11 +1,12 @@
 import './styles/tailwind.css'
 import './styles/style.scss'
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createApp } from 'vue' // vue
+import App from './App.vue' // 根组件
+import router from './router' // 路由
+import { createPinia } from 'pinia' // pinia
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate' // 持久化
 
+// element-plus相关
 import 'element-plus/dist/index.css' // element css
 import * as ElementPlusIconsVue from '@element-plus/icons-vue' // element图标
 import ElementPlus from 'element-plus'
@@ -14,6 +15,8 @@ import 'element-plus/theme-chalk/dark/css-vars.css' // 暗黑模式
 
 // 按需引入echarts
 import { setupEcharts } from './plugins/echarts'
+
+// 注册全局自定义指令
 import { setupDirectives } from './plugins/directives'
 
 async function bootstrap() {
