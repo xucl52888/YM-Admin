@@ -15,11 +15,10 @@ Vue YM Admin作为一个免费开源的中后台模板，它采用了最新的 V
 
 测试账号: admin/123456
 
-<!-- <p align="center">
-    <img alt="VbenAdmin Logo" width="100%" src="https://anncwb.github.io/anncwb/images/preview1.png">
-    <img alt="VbenAdmin Logo" width="100%" src="https://anncwb.github.io/anncwb/images/preview2.png">
-    <img alt="VbenAdmin Logo" width="100%" src="https://anncwb.github.io/anncwb/images/preview3.png">
-</p> -->
+<p align="center">
+    <img alt="VbenAdmin Logo" width="100%" src="https://blogxcl52888.oss-cn-shenzhen.aliyuncs.com/blog/images/001.png">
+    <img alt="VbenAdmin Logo" width="100%" src="https://blogxcl52888.oss-cn-shenzhen.aliyuncs.com/blog/images/0002.png">
+</p>
 
 ## 安装使用
 
