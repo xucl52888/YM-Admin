@@ -53,7 +53,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
     ],
     // 全局变量
     define: {
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
+      __APP_INFO__: JSON.stringify(__APP_INFO__), // 获取package.json中的name
     },
     css: {},
     // 别名
