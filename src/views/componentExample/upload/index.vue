@@ -20,6 +20,8 @@
         <div class="el-upload__tip">大文件分片上传</div>
       </template>
     </el-upload>
+    <div>花费的时间：{{ executionTime }}</div>
+    <div>分片数据：{{ fileCounts }}</div>
   </el-card>
 </template>
 
@@ -51,19 +53,19 @@ const beforeRemove: UploadProps['beforeRemove'] = (uploadFile, uploadFiles) => {
   )
 }
 
-const uploadRef = ref<UploadInstance>()
 import { cutFile } from './cutFile'
+const uploadRef = ref<UploadInstance>()
 const fileListLengthRef = ref(0)
+let fileCounts = ref<any>([])
+const executionTime = ref(0)
 const handleChange = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
   fileListLengthRef.value = uploadFiles.length
-  console.log(uploadFile, uploadFiles, 8888)
   const startTime = new Date().getTime() // 开始时间
   // 分片方法 传入文件，获取所有分片
-  cutFile(uploadFile).then((fileCount) => {
+  cutFile(uploadFile?.raw as File).then((fileCount) => {
     const endTime = new Date().getTime() // 结束时间
-    const executionTime = endTime - startTime // 花费时间
-    console.log('花费时间:', executionTime + 'ms')
-    console.log(fileCount, 8888)
+    executionTime.value = endTime - startTime // 花费时间
+    fileCounts.value = fileCount
   })
 }
 </script>
