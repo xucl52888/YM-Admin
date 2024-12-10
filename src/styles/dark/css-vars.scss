@@ -28,3 +28,15 @@ html.dark {
     background-color: #36363a;
   }
 }
+
+html[data-vxe-ui-theme='dark'] {
+  --vxe-ui-table-header-background-color: #27292d;
+  --vxe-ui-layout-background-color: #1c1e23;
+  --vxe-ui-table-border-color: #36363a;
+  --vxe-ui-table-resizable-line-color: #8c8c8c;
+  --vxe-ui-font-primary-hover-color: #fff;
+  --vxe-ui-table-row-background-color: #27292d;
+  --vxe-ui-table-row-striped-background-color: #27292d;
+  --vxe-ui-table-row-hover-striped-background-color: #36363a;
+  --vxe-ui-table-row-hover-background-color: #36363a;
+}

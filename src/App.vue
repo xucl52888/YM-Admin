@@ -4,6 +4,7 @@
 <script lang="ts" setup>
 import { ref, onBeforeMount, watch, nextTick } from 'vue'
 import { useThemeColor } from '@/hooks/useThemeSwitcher'
+import { VxeUI } from 'vxe-pc-ui'
 
 // console.log('环境变量', import.meta.env.MODE, import.meta.env.VITE_ENV)
 // console.log('环境变量接口地址', import.meta.env.VITE_BASE_URL)
@@ -16,8 +17,13 @@ onBeforeMount(() => {
   const dark = ref<string | null>(useProjectSettingStore().elementTheme)
   const element = document.querySelector('html') as HTMLElement | null
   if (element) {
-    if (dark.value === 'dark') element.className = 'dark'
-    else element.className = 'light'
+    if (dark.value === 'dark') {
+      element.className = 'dark'
+      VxeUI.setTheme('dark')
+    } else {
+      element.className = 'light'
+      VxeUI.setTheme('light')
+    }
   }
 })
 
@@ -31,14 +37,17 @@ if (useProjectSettingStore().elementTheme === 'dark') {
   })
 }
 setThemeColor(useProjectSettingStore().themeColor)
+
 // 监听主题变化
 watch(
   () => useProjectSettingStore().elementTheme,
   (newVal) => {
     if (newVal === 'dark') {
       setDarkThemeColor()
+      VxeUI.setTheme('dark')
     } else {
       setThemeColor(useProjectSettingStore().themeColor)
+      VxeUI.setTheme('light')
     }
   },
 )

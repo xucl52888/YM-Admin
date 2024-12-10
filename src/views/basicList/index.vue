@@ -18,24 +18,29 @@
       </el-form-item>
     </el-form>
     <!--  -->
-    <el-table :data="tableData" stripe style="width: 100%" highlight-current-row>
-      <el-table-column type="index" label="#" width="50" />
-      <el-table-column prop="brand" label="品牌" width="180" />
-      <el-table-column prop="name" label="商品名称" width="180" />
-      <el-table-column prop="length" label="长度" width="80" />
-      <el-table-column prop="width" label="宽度" width="80" />
-      <el-table-column prop="height" label="高度" width="80" />
-      <el-table-column prop="heatDissipation" label="CPU散热器限高" width="150" />
-      <el-table-column prop="gpuLength" label="显卡限长" width="80" />
-      <el-table-column prop="price" label="价格" width="80" />
-      <el-table-column prop="type" label="类型" width="180" />
-      <el-table-column prop="describe" label="描述" min-width="350" />
-    </el-table>
+    <vxe-table
+      :border="isBorder"
+      :stripe="isStripe"
+      :loading="loading"
+      :column-config="{ resizable: true }"
+      :row-config="{ isHover: true }"
+      :checkbox-config="{ labelField: 'id', highlight: true, range: true }"
+      :data="tableData"
+    >
+      <vxe-column type="seq" width="70"></vxe-column>
+      <vxe-column type="checkbox" title="ID" width="140"></vxe-column>
+      <vxe-column field="name" title="Name" sortable></vxe-column>
+      <vxe-column field="sex" title="Sex" :filters="sexOptions" :filter-multiple="false" :formatter="formatterSex"></vxe-column>
+      <vxe-column field="age" title="Age" :filters="ageOptions" :filter-method="filterAgeMethod" sortable></vxe-column>
+      <vxe-column field="address" title="Address" show-overflow></vxe-column>
+    </vxe-table>
   </el-card>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+
+import type { VxeColumnPropTypes } from 'vxe-table'
 
 const formInline = reactive({
   user: '',
@@ -46,92 +51,68 @@ const formInline = reactive({
 const onSubmit = () => {
   console.log('submit!')
 }
-const tableData = [
-  {
-    brand: '机械大师',
-    name: '机械大师 f36',
-    length: '40.2cm',
-    width: '21.6cm',
-    height: '36.9cm',
-    price: '359',
-    heatDissipation: '16.6cm',
-    gpuLength: '38cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，散热器风冷可以支持15.7cm，体积偏大，价格偏高',
-  },
-  {
-    brand: '机械大师',
-    name: '机械大师 if17',
-    length: '34.6cm',
-    width: '18.9cm',
-    height: '28.5cm',
-    price: '398',
-    heatDissipation: '14.2cm',
-    gpuLength: '33cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，但散热器风冷只能是13.5cm的，价格偏高，支持背插主板',
-  },
-  {
-    brand: '乔思伯',
-    name: '乔思伯 Z20',
-    length: '37.0cm',
-    width: '18.6cm',
-    height: '29.5cm',
-    price: '347',
-    heatDissipation: '16.3cm',
-    gpuLength: '36cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，散热器风冷可以支持15.7cm，有多色可选，颜值不错，但是撞色价格偏贵',
-  },
-  {
-    brand: '吕小宝',
-    name: '吕小宝 E90Pro',
-    length: '37.7cm',
-    width: '18.7cm',
-    height: '29.8cm',
-    price: '139',
-    heatDissipation: '16.0cm',
-    gpuLength: '35cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，散热器风冷可以支持15.7cm，价格便宜，性价比较高，不支持背插主板',
-  },
-  {
-    brand: '鱼巢',
-    name: '鱼巢 X7',
-    length: '37.7cm',
-    width: '18.7cm',
-    height: '29.8cm',
-    price: '158',
-    heatDissipation: '16.0cm',
-    gpuLength: '37cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，散热器风冷可以支持15.7cm，价格便宜，性价比较高，支持背插主板，但是后面距离不是很够需要直角转接头',
-  },
-  {
-    brand: '闪鳞',
-    name: '闪鳞 G400',
-    length: '35.2cm',
-    width: '18.8cm',
-    height: '28.5cm',
-    price: '398',
-    heatDissipation: '16.4cm',
-    gpuLength: '34cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，散热器风冷可以支持15.7cm，价格偏高',
-  },
-  {
-    brand: '笨牛',
-    name: '笨牛 N20',
-    length: '38.1cm',
-    width: '19.9cm',
-    height: '30.0cm',
-    price: '169',
-    heatDissipation: '16.5cm',
-    gpuLength: '36.4cm',
-    type: '玻璃侧透机箱',
-    describe: '支持MATX主板，散热器风冷可以支持15.7cm，支持走背线，性价比较高',
-  },
-]
+const isBorder = ref(false)
+const isStripe = ref(true)
+
+interface RowVO {
+  id: number
+  name: string
+  role: string
+  sex: string
+  age: number
+  address: string
+}
+
+const loading = ref(false)
+const tableData = ref<RowVO[]>([])
+const sexOptions = ref([
+  { label: '女', value: '0' },
+  { label: '男', value: '1' },
+])
+
+const ageOptions = ref([
+  { label: '大于16岁', value: 16 },
+  { label: '大于26岁', value: 26 },
+  { label: '大于30岁', value: 30 },
+])
+
+const formatterSex: VxeColumnPropTypes.Formatter<RowVO> = ({ cellValue }) => {
+  const item = sexOptions.value.find((item) => item.value === cellValue)
+  return item ? item.label : ''
+}
+
+const filterAgeMethod: VxeColumnPropTypes.FilterMethod<RowVO> = ({ value, row }) => {
+  return row.age >= value
+}
+
+onMounted(() => {
+  loading.value = true
+  setTimeout(() => {
+    tableData.value = [
+      { id: 10001, name: 'Test1', role: 'Develop', sex: '0', age: 28, address: 'test abc' },
+      { id: 10002, name: 'Test2', role: 'Test', sex: '1', age: 22, address: 'Guangzhou' },
+      { id: 10003, name: 'Test3', role: 'PM', sex: '0', age: 32, address: 'Shanghai' },
+      { id: 10004, name: 'Test4', role: 'Designer', sex: '1', age: 23, address: 'test abc' },
+      { id: 10005, name: 'Test5', role: 'Develop', sex: '1', age: 30, address: 'Shanghai' },
+      { id: 10006, name: 'Test6', role: 'Designer', sex: '1', age: 21, address: 'test abc' },
+      { id: 10007, name: 'Test7', role: 'Test', sex: '0', age: 29, address: 'test abc' },
+      { id: 10008, name: 'Test8', role: 'Develop', sex: '0', age: 35, address: 'test abc' },
+      { id: 10009, name: 'Test9', role: 'Test', sex: '1', age: 21, address: 'test abc' },
+      { id: 10010, name: 'Test10', role: 'Develop', sex: '0', age: 28, address: 'test abc' },
+      { id: 10011, name: 'Test11', role: 'Test', sex: '0', age: 29, address: 'test abc' },
+      { id: 10012, name: 'Test12', role: 'Develop', sex: '1', age: 27, address: 'test abc' },
+      { id: 10013, name: 'Test13', role: 'Test', sex: '0', age: 24, address: 'test abc' },
+      { id: 10014, name: 'Test14', role: 'Develop', sex: '1', age: 34, address: 'test abc' },
+      { id: 10015, name: 'Test15', role: 'Test', sex: '1', age: 21, address: 'test abc' },
+      { id: 10016, name: 'Test16', role: 'Develop', sex: '0', age: 20, address: 'test abc' },
+      { id: 10017, name: 'Test17', role: 'Test', sex: '1', age: 31, address: 'test abc' },
+      { id: 10018, name: 'Test18', role: 'Develop', sex: '0', age: 32, address: 'test abc' },
+      { id: 10019, name: 'Test19', role: 'Test', sex: '1', age: 37, address: 'test abc' },
+      { id: 10020, name: 'Test20', role: 'Develop', sex: '1', age: 41, address: 'test abc' },
+    ]
+    loading.value = false
+  }, 500)
+})
 </script>
 
 <style scoped lang="scss">

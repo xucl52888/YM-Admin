@@ -1,5 +1,6 @@
 import { defineConfig, ConfigEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+// element-plus自动引入
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -12,6 +13,8 @@ const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
   lastBuildTime: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
 }
+
+import { lazyImport, VxeResolver } from 'vite-plugin-lazy-import'
 
 // mock-plugin
 import { viteMockServe } from 'vite-plugin-mock'
@@ -37,6 +40,16 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
       }),
       Components({
         resolvers: [ElementPlusResolver()],
+      }),
+      lazyImport({
+        resolvers: [
+          VxeResolver({
+            libraryName: 'vxe-table',
+          }),
+          VxeResolver({
+            libraryName: 'vxe-pc-ui',
+          }),
+        ],
       }),
       // 配置mock
       viteMockServe({
