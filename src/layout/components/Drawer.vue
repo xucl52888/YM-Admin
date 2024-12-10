@@ -85,7 +85,7 @@
       </div>
     </div>
     <!-- 动画 -->
-    <div>
+    <div v-if="false">
       <el-divider content-position="center">界面功能</el-divider>
       <div class="flex flex-col">
         <div class="mb-2 flex items-center justify-between">

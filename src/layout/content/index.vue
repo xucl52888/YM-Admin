@@ -3,11 +3,11 @@
     <div class="p-6">
       <!--  -->
       <RouterView v-if="isRouterAlive" v-slot="{ Component, route }">
-        <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType">
-          <KeepAlive :include="tagStore.keepAlive">
-            <component :is="Component" :key="route.fullPath"></component>
-          </KeepAlive>
-        </transition>
+        <!-- <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType"> -->
+        <KeepAlive :include="tagStore.keepAlive">
+          <component :is="Component" :key="route.fullPath"></component>
+        </KeepAlive>
+        <!-- </transition> -->
       </RouterView>
     </div>
   </el-scrollbar>

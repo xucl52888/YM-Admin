@@ -20,8 +20,15 @@
         <div class="el-upload__tip">大文件分片上传</div>
       </template>
     </el-upload>
-    <div>花费的时间：{{ executionTime }}</div>
-    <div>分片数据：{{ fileCounts }}</div>
+    <div>文件大小：{{ uploadFileCurrent?.size }}</div>
+    <div>花费的时间：{{ executionTime }}ms</div>
+    <el-table :data="fileCounts" style="width: 100%; height: 300px" class="mt-4" border>
+      <el-table-column prop="start" label="开始（start）" />
+      <el-table-column prop="end" label="结束（end）" />
+      <el-table-column prop="index" label="下标（index）" />
+      <el-table-column prop="hash" label="hash" />
+      <el-table-column prop="blob" label="blob" />
+    </el-table>
   </el-card>
 </template>
 
@@ -54,18 +61,24 @@ const beforeRemove: UploadProps['beforeRemove'] = (uploadFile, uploadFiles) => {
 }
 
 import { cutFile } from './cutFile'
+// 上传组件实例
 const uploadRef = ref<UploadInstance>()
-const fileListLengthRef = ref(0)
+// 分片数据列表
 let fileCounts = ref<any>([])
+// 分片花费的时间
 const executionTime = ref(0)
+const uploadFileCurrent = ref<any>(null)
+// 文件改变时的钩子
 const handleChange = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
-  fileListLengthRef.value = uploadFiles.length
   const startTime = new Date().getTime() // 开始时间
+  uploadFileCurrent.value = uploadFile
+  console.log(uploadFile)
   // 分片方法 传入文件，获取所有分片
-  cutFile(uploadFile?.raw as File).then((fileCount) => {
+  cutFile(uploadFile?.raw).then((fileCount) => {
     const endTime = new Date().getTime() // 结束时间
     executionTime.value = endTime - startTime // 花费时间
     fileCounts.value = fileCount
+    console.log(fileCount)
   })
 }
 </script>
