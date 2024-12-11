@@ -11,7 +11,7 @@
       </div>
       <el-space size="large">
         <el-switch v-model="isStripe" />
-        <el-button @click="loadDataTable" icon="Refresh" circle />
+        <el-button @click="loadDataTable" icon="Refresh" circle type="primary" />
       </el-space>
     </div>
     <el-table v-loading="loading" :data="tableData" style="width: 100%" :stripe="isStripe">

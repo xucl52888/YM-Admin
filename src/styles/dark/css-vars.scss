@@ -30,13 +30,14 @@ html.dark {
 }
 
 html[data-vxe-ui-theme='dark'] {
-  --vxe-ui-table-header-background-color: #27292d;
-  --vxe-ui-layout-background-color: #1c1e23;
+  --vxe-ui-table-header-background-color: #27292d; // 表头背景色
   --vxe-ui-table-border-color: #36363a;
   --vxe-ui-table-resizable-line-color: #8c8c8c;
   --vxe-ui-font-primary-hover-color: #fff;
-  --vxe-ui-table-row-background-color: #27292d;
-  --vxe-ui-table-row-striped-background-color: #27292d;
-  --vxe-ui-table-row-hover-striped-background-color: #36363a;
-  --vxe-ui-table-row-hover-background-color: #36363a;
+
+  --vxe-ui-layout-background-color: #1c1e23;
+  --vxe-ui-table-row-background-color: #27292d; // 表格行背景色
+  --vxe-ui-table-row-hover-background-color: #2c2e33; // 表格行hover背景色
+  --vxe-ui-table-row-striped-background-color: #27292d; // 表格行斑马纹背景色
+  --vxe-ui-table-row-hover-striped-background-color: #2c2e33; // 表格行斑马纹hover背景色
 }
