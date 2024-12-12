@@ -16,6 +16,7 @@
     "element-plus": "^2.8.7",
     "element-resize-detector": "^1.2.4",
     "lodash-es": "^4.17.21",
+    "md-editor-v3": "^4.19.2",
     "mitt": "^3.0.1",
     "mockjs": "^1.1.0",
     "pinia": "^2.2.6",
