@@ -1,23 +1,53 @@
 <template>
   <el-card style="border: 0" shadow="never">
-    <MdEditor v-model="text" :theme="useProjectSetting.elementTheme" :toolbars="toolbars" style="height: 80vh">
-      <!-- <template #defToolbars>
-        <Emoji />
-      </template> -->
-    </MdEditor>
+    <div style="border: 1px solid #ccc">
+      <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
+      <Editor
+        style="height: calc(100vh - 300px); overflow-y: hidden"
+        v-model="valueHtml"
+        :defaultConfig="editorConfig"
+        :mode="mode"
+        @onCreated="handleCreated"
+      />
+    </div>
   </el-card>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { MdEditor } from 'md-editor-v3'
-import 'md-editor-v3/lib/style.css'
+import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import { useProjectSettingStore } from '@/store/projectSetting'
 const useProjectSetting = useProjectSettingStore()
-import { toolbars } from './toolbars'
-// import { Emoji } from '@vavt/v3-extension'
 
-const text = ref('# Hello Editor')
+// 编辑器实例，必须用 shallowRef
+const editorRef = shallowRef()
+
+// 内容 HTML
+const valueHtml = ref('<p>hello</p>')
+
+// 模拟 ajax 异步获取内容
+onMounted(() => {
+  setTimeout(() => {
+    valueHtml.value = '<p>模拟接口异步设置内容YM：Admin 是一个基于 vue3,vite,TypeScript 的中后台管理系统</p>'
+  }, 1500)
+})
+
+const toolbarConfig = {}
+const editorConfig = { placeholder: '请输入内容...' }
+
+// 组件销毁时，也及时销毁编辑器
+onBeforeUnmount(() => {
+  const editor = editorRef.value
+  if (editor == null) return
+  editor.destroy()
+})
+
+const handleCreated = (editor) => {
+  editorRef.value = editor // 记录 editor 实例，重要！
+}
+
+const mode = ref('default')
 </script>
 
 <style scoped lang="scss"></style>

@@ -7,7 +7,8 @@ html.dark {
       background-color: #000c !important;
     }
   }
-  // layout 暗黑模式样式
+
+  /** layout 暗黑模式样式 **/
   .layout-content {
     background-color: #14161a;
   }
@@ -23,12 +24,39 @@ html.dark {
   .layout-content-header {
     border-bottom: 1px solid #36363a;
   }
-  /** layout 暗黑模式样式end **/
+  // header 右侧按钮 暗黑模式样式
   .bars-hover:hover {
     background-color: #36363a;
   }
+  /** layout 暗黑模式样式end **/
+
+  /** 编辑器 暗黑模式样式 **/
+  /* textarea - css vars */
+  --w-e-textarea-bg-color: #14161a; /* 背景色变暗 */
+  --w-e-textarea-color: #f5f5f5; /* 字体颜色变亮 */
+  --w-e-textarea-border-color: #36363a; /* 边框颜色调整为暗色 */
+  --w-e-textarea-slight-border-color: #666; /* 浅边框颜色 */
+  --w-e-textarea-slight-color: #bbb; /* 浅字体颜色 */
+  --w-e-textarea-slight-bg-color: #3a3a3a; /* 浅背景色 */
+  --w-e-textarea-selected-border-color: var(--el-color-primary); /* 选中边框颜色 */
+  --w-e-textarea-handler-bg-color: var(--el-color-primary); /* 工具按钮背景色 */
+
+  /* toolbar - css vars */
+  --w-e-toolbar-color: #f5f5f5; /* 工具栏文字颜色 */
+  --w-e-toolbar-bg-color: #14161a; /* 工具栏背景色 */
+  --w-e-toolbar-active-color: #fff; /* 激活项文字颜色 */
+  --w-e-toolbar-active-bg-color: #36363a; /* 激活项背景色 */
+  --w-e-toolbar-disabled-color: #888; /* 禁用项颜色 */
+  --w-e-toolbar-border-color: #36363a; /* 工具栏边框颜色 */
+
+  /* modal - css vars */
+  --w-e-modal-button-bg-color: #36363a; /* 按钮背景色 */
+  --w-e-modal-button-border-color: #36363a; /* 按钮边框色 */
+
+  /** 编辑器 暗黑模式样式end **/
 }
 
+// vxe-table 暗黑模式样式
 html[data-vxe-ui-theme='dark'] {
   --vxe-ui-table-header-background-color: #27292d; // 表头背景色
   --vxe-ui-table-border-color: #36363a;
