@@ -26,6 +26,7 @@
     "spark-md5": "^3.0.2",
     "use-element-plus-theme": "^0.0.5",
     "vue": "^3.5.12",
+    "vue-draggable-plus": "^0.6.0",
     "vue-router": "4",
     "vxe-pc-ui": "^4.3.24",
     "vxe-table": "^4.9.20"
