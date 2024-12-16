@@ -19,7 +19,7 @@
               <el-tag type="primary">日</el-tag>
             </div>
           </template>
-          <VueDraggable class="draggable-ul" v-model="demandList" animation="150" ghostClass="ghost" group="people">
+          <VueDraggable class="draggable-ul" v-model="demandList" :animation="150" ghostClass="ghost" group="people">
             <template v-for="(item, index) in demandList" :key="item.id">
               <div class="flex cursor-move items-center px-4 py-4">
                 <el-tag type="info" class="mr-2">需求</el-tag>
@@ -39,7 +39,7 @@
               <el-tag type="primary">月</el-tag>
             </div>
           </template>
-          <VueDraggable class="draggable-ul" v-model="exploitList" animation="150" ghostClass="ghost" group="people">
+          <VueDraggable class="draggable-ul" v-model="exploitList" :animation="150" ghostClass="ghost" group="people">
             <template v-for="(item, index) in exploitList" :key="item.id">
               <div class="flex cursor-move items-center px-4 py-4">
                 <el-tag type="warning" class="mr-2">需求</el-tag>
@@ -59,7 +59,7 @@
               <el-tag type="primary">月</el-tag>
             </div>
           </template>
-          <VueDraggable class="draggable-ul" v-model="completeList" animation="150" ghostClass="ghost" group="people">
+          <VueDraggable class="draggable-ul" v-model="completeList" :animation="150" ghostClass="ghost" group="people">
             <template v-for="(item, index) in completeList" :key="item.id">
               <div class="flex cursor-move items-center px-4 py-4">
                 <el-tag type="primary" class="mr-2">需求</el-tag>
@@ -79,7 +79,7 @@
               <el-tag type="primary">月</el-tag>
             </div>
           </template>
-          <VueDraggable class="draggable-ul" v-model="approvedList" animation="150" ghostClass="ghost" group="people">
+          <VueDraggable class="draggable-ul" v-model="approvedList" :animation="150" ghostClass="ghost" group="people">
             <template v-for="(item, index) in approvedList" :key="item.id">
               <div class="flex cursor-move items-center px-4 py-4">
                 <el-tag type="success" class="mr-2">需求</el-tag>
