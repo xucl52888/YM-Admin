@@ -3,6 +3,9 @@
 * {
   margin: 0;
   padding: 0;
+  // 修改vxe-ui主题色
+  --vxe-ui-font-primary-color: var(--el-color-primary); // vxe-ui主题色
+  --vxe-ui-switch-open-background-color: var(--el-color-primary); // vxe-ui开关打开背景色
 }
 // element-plus样式修改
 .el-dropdown-menu__item:hover,
