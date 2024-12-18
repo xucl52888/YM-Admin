@@ -2,6 +2,7 @@ import router from '@/router'
 import { cloneDeep } from 'lodash-es'
 import { Parent } from '@/interface/user'
 import { useMenuStore } from '@/store/useMenuStore'
+import { userInfoStore } from '@/store/userInfoStore'
 
 interface Child {
   parentView: string
@@ -23,6 +24,9 @@ interface Child extends Omit<Parent, 'children'> {
 
 // 1. 动态添加路由 => 整个过程
 export const initRouter = () => {
+  // 1.1 判断是否登录，没有登录则不执行
+  if (!userInfoStore().getToken || useMenuStore().getMenu.length === 0) return
+  // 1.2 获取菜单
   let menu: Parent[] = useMenuStore().getMenu //获取菜单
   let menuRouter: Child[] = filterRouter(menu) //过滤路由
   menuRouter = flatRoutes(menuRouter) //扁平化路由

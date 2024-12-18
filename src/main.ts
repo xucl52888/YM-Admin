@@ -21,6 +21,7 @@ import { setupVxetable } from './plugins/vxetable'
 
 // 注册全局自定义指令
 import { setupDirectives } from './plugins/directives'
+import { initRouter } from '@/hooks/useInitTouter'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -46,6 +47,7 @@ async function bootstrap() {
   setupDirectives(app)
 
   // router
+  await initRouter()
   app.use(router)
 
   // element 国际化

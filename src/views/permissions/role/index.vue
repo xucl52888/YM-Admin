@@ -113,7 +113,7 @@ interface Tree {
 }
 const dialogVisible = ref(false)
 const data: Tree[] = useMenuStore().getMenu
-console.log(useMenuStore().getMenu)
+
 const treeRef = ref<InstanceType<typeof ElTree>>()
 const defaultProps = {
   children: 'children',

@@ -4,9 +4,10 @@
       <!--  -->
       <RouterView v-if="isRouterAlive" v-slot="{ Component, route }">
         <!-- <transition :name="useProjectSetting.isPageAnimate ? '' : useProjectSetting.pageAnimateType"> -->
-        <KeepAlive :include="tagStore.keepAlive">
+        <!-- <keep-alive :include="tagStore.keepAlive"> -->
+        <keep-alive>
           <component :is="Component" :key="route.fullPath"></component>
-        </KeepAlive>
+        </keep-alive>
         <!-- </transition> -->
       </RouterView>
     </div>
