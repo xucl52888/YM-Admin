@@ -14,7 +14,13 @@
     </template>
     <!--  -->
     <template v-else>
-      <el-menu-item :index="item.path">
+      <el-menu-item v-if="item.path !== '/external'" :index="item.path">
+        <el-icon>
+          <component :is="item.meta?.icon ? item.meta?.icon.replace('el-icon-', '') : 'Loading'" />
+        </el-icon>
+        <span>{{ item.name }}</span>
+      </el-menu-item>
+      <el-menu-item v-else @click="onChant(item)">
         <el-icon>
           <component :is="item.meta?.icon ? item.meta?.icon.replace('el-icon-', '') : 'Loading'" />
         </el-icon>
@@ -34,5 +40,8 @@ const props = defineProps({
     default: () => [],
   },
 })
+const onChant = (item: Parent) => {
+  window.open(item.meta.link)
+}
 </script>
 <style lang="scss" scoped></style>
