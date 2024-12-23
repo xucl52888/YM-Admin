@@ -4,7 +4,7 @@
     <logo-avatar></logo-avatar>
   </div>
   <!-- 菜单 -->
-  <el-scrollbar height="calc(100vh - 64px)">
+  <el-scrollbar height="calc(100vh - 64px)" class="px-2">
     <nav-menu menuWidth=""></nav-menu>
   </el-scrollbar>
 </template>

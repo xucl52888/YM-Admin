@@ -328,7 +328,7 @@ const menuList = () => {
     {
       id: '12312345345',
       name: '文档示例',
-      path: '/permissions',
+      path: '/iframe',
       redirect: null,
       parentView: 'layout',
       component: null,

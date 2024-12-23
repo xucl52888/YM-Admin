@@ -1,7 +1,7 @@
 <template>
   <el-container class="layout-container" style="height: 100vh">
     <!-- 菜单侧边栏 -->
-    <el-aside class="layout-content-sidebar px-2" style="width: auto" v-if="useProjectSetting?.navigationBarMode === 'leftMenu'">
+    <el-aside class="layout-content-sidebar" style="width: auto" v-if="useProjectSetting?.navigationBarMode === 'leftMenu'">
       <Sidebar></Sidebar>
     </el-aside>
 
