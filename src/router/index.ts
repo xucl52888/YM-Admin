@@ -1,3 +1,4 @@
+import { App } from 'vue'
 import { createWebHashHistory, createRouter, RouteRecordRaw } from 'vue-router'
 import setupGuards from './guards'
 
@@ -7,6 +8,9 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'layout',
     redirect: '/dashboard/workplace',
+    meta: {
+      title: 'layout',
+    },
     component: () => import('@/layout/index.vue'),
     children: [],
   },
@@ -14,29 +18,10 @@ const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/index.vue'),
+    meta: {
+      title: '登录',
+    },
   },
-  // {
-  //   path: '/:path(.*)*',
-  //   name: '404',
-  //   component: () => import('@/layout/index.vue'),
-  //   children: [
-  //     {
-  //       path: '/:path(.*)*',
-  //       name: '404',
-  //       component: import('@/views/exception/404.vue'),
-  //       meta: {
-  //         title: '404',
-  //         affix: false,
-  //         breadcrumb: [
-  //           {
-  //             path: '/404',
-  //             name: '404',
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   ],
-  // },
 ]
 const router = createRouter({
   // history: createWebHistory(),  // 路由History模式
@@ -44,7 +29,11 @@ const router = createRouter({
   routes, // 路由合集
 })
 
-// 路由守卫
+// 创建路由守卫
 setupGuards(router)
+
+export function setupRouter(app: App) {
+  app.use(router)
+}
 
 export default router

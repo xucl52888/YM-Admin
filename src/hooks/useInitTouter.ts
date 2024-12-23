@@ -1,8 +1,8 @@
+import { RouteRecordRaw } from 'vue-router'
 import router from '@/router'
 import { cloneDeep } from 'lodash-es'
 import { Parent } from '@/interface/user'
 import { useMenuStore } from '@/store/useMenuStore'
-import { userInfoStore } from '@/store/userInfoStore'
 
 interface Child {
   parentView: string
@@ -22,11 +22,43 @@ interface Child extends Omit<Parent, 'children'> {
   children?: Child[] | null
 }
 
+// 404页面
+const ErrorPageRoute: RouteRecordRaw = {
+  path: '/:path(.*)*',
+  name: 'ErrorPage',
+  meta: {
+    title: 'ErrorPage',
+    hideBreadcrumb: true,
+  },
+  component: () => import('@/layout/index.vue'),
+  children: [
+    {
+      path: '/:path(.*)*',
+      name: 'ErrorPageSon',
+      component: import('@/views/exception/404.vue'),
+      meta: {
+        title: '404',
+        affix: false,
+        children: null,
+        breadcrumb: [
+          {
+            path: '/404',
+            name: '404',
+            meta: {
+              title: '404',
+              icon: 'el-icon-house',
+              affix: false,
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+
 // 1. 动态添加路由 => 整个过程
 export const initRouter = () => {
-  // 1.1 判断是否登录，没有登录则不执行
-  if (!userInfoStore().getToken || useMenuStore().getMenu.length === 0) return
-  // 1.2 获取菜单
+  // 获取菜单
   let menu: Parent[] = useMenuStore().getMenu //获取菜单
   let menuRouter: Child[] = filterRouter(menu) //过滤路由
   menuRouter = flatRoutes(menuRouter) //扁平化路由
@@ -34,6 +66,14 @@ export const initRouter = () => {
     // 如果父级是layout，则添加到layout下，否则添加到根路由下
     router.addRoute(item.parentView == 'layout' ? 'layout' : '', item)
   })
+
+  // 添加404
+  const isErrorPage = router.getRoutes().findIndex((item) => item.name === ErrorPageRoute.name) // 避免重复添加
+  if (isErrorPage === -1) {
+    router.addRoute(ErrorPageRoute as unknown as RouteRecordRaw)
+  }
+
+  useMenuStore().setDynamicRouteAdded(true) // 设置动态路由已添加
 }
 
 // 2. 把component 重构成 箭头函数的形式

@@ -2,9 +2,8 @@ import './styles/tailwind.css'
 import './styles/style.scss'
 import { createApp } from 'vue' // vue
 import App from './App.vue' // 根组件
-import router from './router' // 路由
-import { createPinia } from 'pinia' // pinia
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate' // 持久化
+import router, { setupRouter } from './router' // 路由
+import { setupStore } from '@/store'
 
 // element-plus相关
 import 'element-plus/dist/index.css' // element css
@@ -21,16 +20,14 @@ import { setupVxetable } from './plugins/vxetable'
 
 // 注册全局自定义指令
 import { setupDirectives } from './plugins/directives'
-import { initRouter } from '@/hooks/useInitTouter'
 
+// 挂载全局方法
 async function bootstrap() {
+  // 创建vue实例
   const app = createApp(App)
 
-  // pinia
-  const pinia = createPinia()
-  pinia.use(piniaPluginPersistedstate) // 使用持久化插件
-
-  app.use(pinia)
+  // 挂载状态管理
+  setupStore(app)
 
   // 注册element图标
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -46,16 +43,16 @@ async function bootstrap() {
   // 注册全局自定义指令，如：v-permission权限指令
   setupDirectives(app)
 
-  // router
-  await initRouter()
-  app.use(router)
+  // 挂载路由
+  setupRouter(app)
+  // 路由准备就绪后挂载 APP 实例
+  await router.isReady() // 等待路由准备就绪
 
   // element 国际化
-  app.use(ElementPlus, {
-    locale: zhCn,
-  })
+  app.use(ElementPlus, { locale: zhCn })
 
-  app.mount('#app')
+  // 挂载应用
+  app.mount('#app', true)
 }
 
 void bootstrap()

@@ -23,7 +23,7 @@ const useLogin = async (res) => {
   await initRouter()
 
   //4. 跳转后台管理系统首页
-  router.push('/dashboard/workplace')
+  router.push('/')
 
   return
 }
