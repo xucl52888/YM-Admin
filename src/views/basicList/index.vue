@@ -1,4 +1,5 @@
 <template>
+  <!-- <watermark text="内部资料，请勿外传" color="rgba(255, 0, 0, 0.2)" :angle="-45" :gap="150"></watermark> -->
   <el-card style="border: 0" shadow="never">
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-form-item label="名称">
@@ -45,6 +46,7 @@
       <vxe-column field="create_date" title="创建时间" show-overflow></vxe-column>
     </vxe-table>
   </el-card>
+
   <!--  -->
   <el-dialog v-model="dialogVisible" title="新建" width="500" :close-on-click-modal="false">
     <div class="p-4">
@@ -79,6 +81,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import type { VxeColumnPropTypes } from 'vxe-table'
 import { getBasicList } from '@/api/basicList/basicList'
+// import watermark from '@/components/watermark/index.vue'
 
 const formInline = reactive({
   user: '',
