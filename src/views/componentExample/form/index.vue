@@ -72,6 +72,19 @@
 import { reactive, ref } from 'vue'
 import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
 
+import { useWatermark } from '@/hooks/useWatermark' // 引入自定义组合函数
+const { loadMark, clearWatermark, watermarkSettings } = useWatermark()
+const addWatermark = () => {
+  loadMark({
+    watermark_txt: 'YM-Admin',
+    watermark_alpha: 0.3,
+  })
+}
+
+const removeWatermark = () => {
+  clearWatermark()
+}
+
 interface RuleForm {
   name: string
   region: string
