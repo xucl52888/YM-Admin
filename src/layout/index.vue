@@ -52,6 +52,7 @@ const drawer = ref(false)
 const openDrawer = () => {
   drawer.value = true
 }
+
 provide('openDrawer', openDrawer)
 </script>
 
