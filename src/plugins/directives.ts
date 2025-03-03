@@ -5,6 +5,7 @@ import copy from '@/directives/copy'
 import debounce from '@/directives/debounce'
 import throttle from '@/directives/throttle'
 import draggable from '@/directives/draggable'
+import resize from '@/directives/resize'
 
 /**
  * 注册全局自定义指令
@@ -21,4 +22,6 @@ export function setupDirectives(app: App) {
   app.directive('throttle', throttle)
   // 拖拽指令
   app.directive('draggable', draggable)
+  // 监听元素尺寸变化指令
+  app.directive('resize', resize)
 }
