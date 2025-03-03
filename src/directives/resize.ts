@@ -1,4 +1,5 @@
 import type { Directive, DirectiveBinding } from 'vue'
+import throttle from 'lodash/throttle' // 引入 lodash 的 throttle 方法
 
 const map = new WeakMap()
 const ob = new ResizeObserver((entries: ResizeObserverEntry[]) => {
@@ -15,7 +16,8 @@ const ob = new ResizeObserver((entries: ResizeObserverEntry[]) => {
 const resize: Directive = {
   // 指令的钩子函数，指令绑定到元素时触发
   mounted(el: HTMLButtonElement, binding: DirectiveBinding) {
-    map.set(el, binding.value)
+    const throttledHandler = throttle(binding.value, 200) // 200ms 节流
+    map.set(el, throttledHandler)
     ob.observe(el)
   },
   unmounted(el: HTMLButtonElement) {
