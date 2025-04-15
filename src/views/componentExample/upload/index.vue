@@ -30,11 +30,15 @@
       <el-table-column prop="blob" label="blob" />
     </el-table>
   </el-card>
+  <el-card class="mb-4">
+    <upload-flie />
+  </el-card>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import uploadFlie from './uploadFlie.vue'
 
 import type { UploadProps, UploadUserFile, UploadInstance, UploadFile, UploadFiles } from 'element-plus'
 
