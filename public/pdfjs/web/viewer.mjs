@@ -563,6 +563,14 @@ const Type = {
   UNDEFINED: 0x10
 };
 const defaultOptions = {
+  water_mark_img_base64: {
+    value: "",
+    kind: OptionKind.BROWSER
+  },
+  water_mark_img_obj: {
+    value: null,
+    kind: OptionKind.BROWSER
+  },
   allowedGlobalEvents: {
     value: null,
     kind: OptionKind.BROWSER
@@ -7464,6 +7472,7 @@ function getXfaHtmlForPrinting(printContainer, pdfDocument) {
 ;// ./web/pdf_print_service.js
 
 
+
 let activeService = null;
 let dialog = null;
 let overlayManager = null;
@@ -7510,6 +7519,7 @@ class PDFPrintService {
     printResolution,
     printAnnotationStoragePromise = null
   }) {
+    this.water_mark_img_obj = AppOptions.get("water_mark_img_obj");
     this.pdfDocument = pdfDocument;
     this.pagesOverview = pagesOverview;
     this.printContainer = printContainer;
@@ -7580,6 +7590,19 @@ class PDFPrintService {
   }
   useRenderedPage() {
     this.throwIfInactive();
+    const scratchCanvas = this.scratchCanvas;
+    if (this.water_mark_img_obj) {
+      const waterMarkCanvas = document.createElement("canvas");
+      waterMarkCanvas.width = this.water_mark_img_obj.width;
+      waterMarkCanvas.height = this.water_mark_img_obj.height;
+      const waterMarkCtx = waterMarkCanvas.getContext("2d");
+      waterMarkCtx.drawImage(this.water_mark_img_obj, 0, 0, this.water_mark_img_obj.width, this.water_mark_img_obj.height);
+      const ctx = scratchCanvas.getContext("2d");
+      const pattern = ctx.createPattern(waterMarkCanvas, "repeat");
+      ctx.fillStyle = pattern;
+      ctx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+      ctx.fill();
+    }
     const img = document.createElement("img");
     this.scratchCanvas.toBlob(blob => {
       img.src = URL.createObjectURL(blob);
@@ -8561,8 +8584,10 @@ class PDFThumbnailView {
     linkService,
     renderingQueue,
     pageColors,
-    enableHWA
+    enableHWA,
+    water_mark_img_obj
   }) {
+    this.water_mark_img_obj = water_mark_img_obj;
     this.id = id;
     this.renderingId = "thumbnail" + id;
     this.pageLabel = null;
@@ -8677,6 +8702,18 @@ class PDFThumbnailView {
       throw new Error("#convertCanvasToImage: Rendering has not finished.");
     }
     const reducedCanvas = this.#reduceImage(canvas);
+    if (this.water_mark_img_obj) {
+      const waterMarkCanvas = document.createElement("canvas");
+      waterMarkCanvas.width = this.water_mark_img_obj.width / 10;
+      waterMarkCanvas.height = this.water_mark_img_obj.height / 10;
+      const waterMarkCtx = waterMarkCanvas.getContext("2d");
+      waterMarkCtx.drawImage(this.water_mark_img_obj, 0, 0, waterMarkCanvas.width, waterMarkCanvas.height);
+      const ctx = reducedCanvas.getContext("2d");
+      const pattern = ctx.createPattern(waterMarkCanvas, "repeat");
+      ctx.fillStyle = pattern;
+      ctx.fillRect(0, 0, reducedCanvas.width, reducedCanvas.height);
+      ctx.fill();
+    }
     const image = document.createElement("img");
     image.className = "thumbnailImage";
     image.setAttribute("data-l10n-id", "pdfjs-thumb-page-canvas");
@@ -8816,6 +8853,7 @@ class PDFThumbnailView {
 }
 
 ;// ./web/pdf_thumbnail_viewer.js
+
 
 
 const THUMBNAIL_SCROLL_MARGIN = -19;
@@ -8958,6 +8996,7 @@ class PDFThumbnailViewer {
           linkService: this.linkService,
           renderingQueue: this.renderingQueue,
           pageColors: this.pageColors,
+          water_mark_img_obj: AppOptions.get("water_mark_img_obj"),
           enableHWA: this.enableHWA
         });
         this._thumbnails.push(thumbnail);
@@ -10049,7 +10088,159 @@ class TextLayerBuilder {
   }
 }
 
+;// ./web/watermark.js
+class Watermark {
+  constructor(options = {}) {
+    this.options = {
+      container: document.body,
+      text: "Watermark",
+      base64: "",
+      width: 200,
+      height: 150,
+      font: "16px sans-serif",
+      fillStyle: "rgba(0, 0, 0, 0.1)",
+      rotate: -20,
+      zIndex: 9999,
+      id: "__watermark_container__",
+      ...options
+    };
+    this._observer = null;
+    this._initing = false;
+    this._init();
+  }
+  async _init() {
+    if (this._initing) return;
+    this._initing = true;
+    this.remove();
+    const wmDiv = await this._createWatermark();
+    this.remove();
+    this.options.container.appendChild(wmDiv);
+    this._observe(wmDiv);
+  }
+  async _createWatermark() {
+    const {
+      text,
+      base64,
+      width,
+      height,
+      font,
+      fillStyle,
+      rotate,
+      zIndex,
+      id
+    } = this.options;
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (base64) {
+      await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = base64;
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          ctx.clearRect(0, 0, width, height);
+          ctx.save();
+          ctx.translate(width / 2, height / 2);
+          ctx.rotate(Math.PI / 180 * rotate);
+          ctx.drawImage(img, -img.width / 2, -img.height / 2);
+          ctx.restore();
+          resolve();
+        };
+        img.onerror = reject;
+      });
+    } else {
+      ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      ctx.translate(width / 2, height / 2);
+      ctx.rotate(Math.PI / 180 * rotate);
+      ctx.font = font;
+      ctx.fillStyle = fillStyle;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(text, 0, 0);
+      ctx.restore();
+      return this._wrapDiv(canvas.toDataURL());
+    }
+    return this._wrapDiv(canvas.toDataURL());
+  }
+  _wrapDiv(dataUrl) {
+    const {
+      container,
+      zIndex,
+      id
+    } = this.options;
+    const div = document.createElement("div");
+    div.id = id;
+    div.setAttribute("style", `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: ${container.scrollWidth}px;
+      height: ${container.scrollHeight}px;
+      pointer-events: none;
+      background-repeat: repeat;
+      background-image: url('${dataUrl}');
+      z-index: ${zIndex};
+    `);
+    return div;
+  }
+  _setWatermarkBg(dataUrl) {
+    const wmDiv = document.getElementById(this.options.id);
+    if (wmDiv) {
+      wmDiv.style.backgroundImage = `url('${dataUrl}')`;
+    }
+  }
+  _observe(wmNode) {
+    if (!window.MutationObserver) return;
+    this._observer = new MutationObserver(() => {
+      const existing = document.getElementById(this.options.id);
+      if (!existing) {
+        console.warn("水印被删除，已重新创建");
+        this._init();
+      }
+    });
+    this._observer.observe(this.options.container, {
+      childList: true,
+      subtree: true
+    });
+    const styleObserver = new MutationObserver(() => {
+      const wm = document.getElementById(this.options.id);
+      if (wm) {
+        const expected = this._wrapDiv("").getAttribute("style");
+        if (wm.getAttribute("style") !== expected) {
+          console.warn("水印样式被修改，已恢复");
+          this._init();
+        }
+      }
+    });
+    styleObserver.observe(wmNode, {
+      attributes: true,
+      attributeFilter: ["style"]
+    });
+  }
+  remove() {
+    const {
+      id
+    } = this.options;
+    const elements = document.querySelectorAll(`#${id}`);
+    elements.forEach(el => el.remove());
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
+  }
+  update(newOptions = {}) {
+    this.options = {
+      ...this.options,
+      ...newOptions
+    };
+    this._init();
+  }
+}
+/* harmony default export */ const watermark = (Watermark);
 ;// ./web/pdf_page_view.js
+
 
 
 
@@ -10090,6 +10281,7 @@ class PDFPageView {
     const container = options.container;
     const defaultViewport = options.defaultViewport;
     this.id = options.id;
+    this.water_mark_img_base64 = options.water_mark_img_base64;
     this.renderingId = "page" + this.id;
     this.#layerProperties = options.layerProperties || DEFAULT_LAYER_PROPERTIES;
     this.pdfPage = null;
@@ -10636,6 +10828,13 @@ class PDFPageView {
       pdfPage,
       viewport
     } = this;
+    if (this.water_mark_img_base64) {
+      const wm = new watermark({
+        container: div,
+        id: `watermark_${this.id || this.pdfPage._pageIndex}`,
+        base64: this.water_mark_img_base64
+      });
+    }
     if (!pdfPage) {
       this.renderingState = RenderingStates.FINISHED;
       throw new Error("pdfPage is not loaded");
@@ -10865,6 +11064,7 @@ class PDFPageView {
 }
 
 ;// ./web/pdf_viewer.js
+
 
 
 
@@ -11430,6 +11630,7 @@ class PDFViewer {
           imageResourcesPath: this.imageResourcesPath,
           maxCanvasPixels: this.maxCanvasPixels,
           pageColors,
+          water_mark_img_base64: AppOptions.get("water_mark_img_base64"),
           l10n: this.l10n,
           layerProperties: this._layerProperties,
           enableHWA: this.#enableHWA
@@ -13214,8 +13415,28 @@ const PDFViewerApplication = {
   _caretBrowsing: null,
   _isScrolling: false,
   editorUndoBar: null,
+  async loadImg(imgSrc) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = imgSrc;
+      img.onload = () => {
+        resolve(img);
+      };
+      img.onerror = error => {
+        reject(new Error("Failed to load image: " + error));
+      };
+    });
+  },
   async initialize(appConfig) {
     this.appConfig = appConfig;
+    const watermarkData = parseQueryString(this.initialBookmark);
+    if (watermarkData.has("water_mark_url")) {
+      const water_mark_url = watermarkData.get("water_mark_url");
+      const resData = await (await fetch(water_mark_url)).json();
+      const imgObj = await this.loadImg(resData.img);
+      AppOptions.set("water_mark_img_base64", resData.img);
+      AppOptions.set("water_mark_img_obj", imgObj);
+    }
     try {
       await this.preferences.initializedPromise;
     } catch (ex) {
@@ -13401,6 +13622,7 @@ const PDFViewerApplication = {
       maxCanvasPixels: AppOptions.get("maxCanvasPixels"),
       enablePermissions: AppOptions.get("enablePermissions"),
       pageColors,
+      water_mark_img_base64: AppOptions.get("water_mark_img_base64"),
       mlManager: this.mlManager,
       abortSignal: this._globalAbortController.signal,
       enableHWA,
@@ -13417,6 +13639,7 @@ const PDFViewerApplication = {
         renderingQueue: pdfRenderingQueue,
         linkService: pdfLinkService,
         pageColors,
+        water_mark_img_obj: AppOptions.get("water_mark_img_obj"),
         abortSignal: this._globalAbortController.signal,
         enableHWA
       });
@@ -15150,7 +15373,7 @@ function beforeUnload(evt) {
 
 
 const pdfjsVersion = "4.10.0";
-const pdfjsBuild = "";
+const pdfjsBuild = "2d2b8b2";
 const AppConstants = {
   LinkTarget: LinkTarget,
   RenderingStates: RenderingStates,

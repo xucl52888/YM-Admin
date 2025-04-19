@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 // import PdfViewer from '@/components/PdfViewer.vue'
-const src = `${import.meta.env.VITE_BASE_URL}/pdfjs/web/viewer.html?file=${import.meta.env.VITE_BASE_URL}/sdfs.pdf`
+const src = `${import.meta.env.VITE_BASE_URL}/pdfjs/web/viewer.html?file=${import.meta.env.VITE_BASE_URL}/watermark.pdf#water_mark_url=${import.meta.env.VITE_BASE_URL}/watermark.json`
 /**
  * 解决pdfjs上传到服务器后，无法预览问题
  * https://blog.csdn.net/m0_63057114/article/details/140456591

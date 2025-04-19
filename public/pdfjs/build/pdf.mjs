@@ -13235,7 +13235,7 @@ class InternalRenderTask {
   }
 }
 const version = "4.10.0";
-const build = "";
+const build = "2d2b8b2";
 
 ;// ./src/shared/scripting_utils.js
 function makeColorComp(n) {
@@ -21551,7 +21551,7 @@ class DrawLayer {
 
 
 const pdfjsVersion = "4.10.0";
-const pdfjsBuild = "";
+const pdfjsBuild = "2d2b8b2";
 {
   globalThis.pdfjsTestingUtils = {
     HighlightOutliner: HighlightOutliner
