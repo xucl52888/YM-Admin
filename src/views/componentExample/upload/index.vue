@@ -30,7 +30,7 @@
       <el-table-column prop="blob" label="blob" />
     </el-table>
   </el-card>
-  <el-card class="mb-4">
+  <el-card class="mb-4" v-show="false">
     <upload-flie />
   </el-card>
 </template>
