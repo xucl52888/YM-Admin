@@ -1,0 +1,52 @@
+name: CI
+
+# 持续集成：在 push 到 main 和提交 PR 时触发代码检查与构建验证
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# 同一分支的并发构建只保留最新一次，节省资源
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Lint & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 项目 .gitignore 忽略了 package-lock.json，使用 npm install 而非 npm ci
+      - name: Install dependencies
+        run: npm install
+
+      # 构建包含 vue-tsc 类型检查，同时会生成 auto-import 相关配置文件
+      - name: Build
+        run: npm run build
+
+      # ESLint 9 + .eslintrc.js(CJS) + "type":"module" 存在兼容性问题
+      # 将 .eslintrc.js 重命名为 .eslintrc.cjs 后可移除 continue-on-error
+      - name: Lint
+        continue-on-error: true
+        env:
+          ESLINT_USE_FLAT_CONFIG: 'false'
+        run: npx eslint .
+
+      # 上传构建产物，便于下载检查
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
