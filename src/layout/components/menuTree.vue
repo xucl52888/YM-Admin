@@ -20,7 +20,7 @@
         </el-icon>
         <span>{{ item.name }}</span>
       </el-menu-item>
-      <el-menu-item v-else @click="onChant(item)">
+      <el-menu-item v-else :index="item.path" @click="onChant(item)">
         <el-icon>
           <component :is="item.meta?.icon ? item.meta?.icon.replace('el-icon-', '') : 'Loading'" />
         </el-icon>
