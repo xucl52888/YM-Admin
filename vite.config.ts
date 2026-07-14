@@ -31,6 +31,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
   }
   const prodMock = true
   return {
+    base: './', // 打包时会给资源路径变成./**/**...（Vite 顶级配置，放在 build 内不生效）
     plugins: [
       vue(),
       AutoImport({
@@ -77,7 +78,6 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }: ConfigEnv
     },
     // 打包
     build: {
-      base: './', // 打包时会给资源路劲变成./**/**...
       // target: 'es2015',
       // cssTarget: 'chrome80',
       // outDir: 'dist', // 指定输出路径（相对于项目根目录) 默认：dist
