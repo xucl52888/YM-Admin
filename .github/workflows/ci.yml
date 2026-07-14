@@ -28,7 +28,7 @@ jobs:
 
       # 项目 .gitignore 忽略了 package-lock.json，使用 npm install 而非 npm ci
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       # 构建包含 vue-tsc 类型检查，同时会生成 auto-import 相关配置文件
       - name: Build
