@@ -25,7 +25,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       # 项目 .gitignore 忽略了 package-lock.json，使用 npm install 而非 npm ci
       - name: Install dependencies
